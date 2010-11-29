@@ -1,0 +1,12 @@
+<p class="error"></p>
+<f:if condition="{logindata.loggedin}">
+	<f:then>
+		Logged in as: {logindata.data.screen_name}<br />
+		<f:link.action action="logout">Logout</f:link.action>
+	</f:then>
+	<f:else>
+		<f:link.external uri="{logindata.url}">
+			<img src="http://res.twitcode.org/images/twitter-signin.png" alt="Login" title="Login" width="153" height="24" />
+		</f:link.external>
+	</f:else>
+</f:if>

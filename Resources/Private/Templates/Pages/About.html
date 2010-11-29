@@ -1,0 +1,21 @@
+<f:layout name="Index.html" />
+
+<f:section name="content">
+	<div id="maincontent">
+		<f:flashMessages class="flashmessages" />
+
+		<f:if condition="{logindata.loggedin}">
+			<ul>
+				<li>
+					<f:link.action action="create" controller="Standard" package="Twitcode">Create new snippet</f:link.action>
+				</li>
+			</ul>
+		</f:if>
+
+		<h3>Twitcode About</h3>
+		<p>This is a small private project. The idea came up a year ago and this is now the first relaunch of the
+		project. I decided to relaunch the project because I had some trouble with OAuth in the first place. Also I
+		wanted to try out a framework and make some new experience with this framework. The framework this page is build
+		on is cald FLOW3 and can be found on flow3.typo3.org</p>
+	</div>
+</f:section>

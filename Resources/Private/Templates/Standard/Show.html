@@ -1,0 +1,26 @@
+{namespace tc=F3\Twitcode\ViewHelpers}
+<f:layout name="Index.html" />
+
+<f:section name="content">
+	<div id="maincontent">
+
+		<f:if condition="{logindata.loggedin}">
+			<f:render partial="Headernav" />
+		</f:if>
+
+		<f:flashMessages class="flashmessages" />
+
+		<f:if condition="{editable}">
+			<f:link.action action="edit" controller="Standard" package="Twitcode" arguments="{code: code}">
+				Edit snippet
+			</f:link.action>
+			<br /><br />
+		</f:if>
+
+		<strong>Name:</strong> <f:raw>{code.label}</f:raw><br />
+		<strong>Type:</strong> {code.codetype.name}<br />
+		<strong>Code:</strong> <tc:geshi code="{code.code}" codetype="{code.codetype.type}" /><br />
+		<strong>Comment:</strong> <f:raw>{code.comment}</f:raw><br />
+
+	</div>
+</f:section>

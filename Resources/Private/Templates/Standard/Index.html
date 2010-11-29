@@ -1,0 +1,41 @@
+<f:layout name="Index.html" />
+
+<f:section name="content">
+	<div id="maincontent">
+
+		<f:if condition="{logindata.loggedin}">
+			<f:render partial="Headernav" />
+		</f:if>
+
+        <f:flashMessages class="flashmessages" />
+
+		<h3>Welcome to Twitcode</h3>
+		<p>To upload code it is required that you log in. There is no registration required. You can log in using your Twitter account.</p>
+		<p>What can twitcode do for you?
+			<ul>
+				<li>Publish your code with syntaxhighlight</li>
+				<li>Easily share your code via twitter</li>
+				<li>No registration required, use your twitter account to login</li>
+				<li>Syntaxhighlight for a lot of languages like PHP, C++, C#, TypoScript, Perl, Ruby, etc ...</li>
+			</ul>
+		</p>
+		<br />
+
+		<f:if condition="{logindata.loggedin}">
+			<p>Looks like you are successfully logged in. What are the next steps?</p>
+			<ul>
+				<li>
+					<f:link.action action="create" controller="Standard" package="Twitcode">
+					Create a new snippet
+					</f:link.action>
+				</li>
+				<li>
+					<f:link.action action="showbyuser" controller="Codelib" package="Twitcode">
+					Browse your own snippets
+					</f:link.action>
+				</li>
+			</ul>
+		</f:if>
+
+	</div>
+</f:section>

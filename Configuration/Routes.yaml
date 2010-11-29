@@ -1,0 +1,57 @@
+#                                                                        #
+# Routes configuration                                                   #
+#                                                                        #
+# This file contains the configuration for the MVC router.               #
+# Just add your own modifications as necessary.                          #
+#                                                                        #
+# Please refer to the FLOW3 manual for possible configuration options.   #
+#                                                                        #
+
+# $Id: Routes.yaml 3848 2010-02-23 22:08:54Z k-fish $
+
+##
+# Subroutes for the Twitcode package
+#
+
+
+-
+    name: 'Codelibrary Routes'
+    uriPattern: 'codelib/{@action}'
+    defaults:
+        @package: Twitcode
+        @controller: Codelib
+        @format: 'html'
+
+-
+    name: 'Pages Routes'
+    uriPattern: 'pages/{@action}'
+    defaults:
+        @package: Twitcode
+        @controller: Pages
+        @format: 'html'
+
+-
+    name: 'Show Snippet Action Route'
+    uriPattern: '{@action}/{code}'
+    defaults:
+        @package: Twitcode
+        @controller: Standard
+        @format: 'html'
+    routeParts:
+      code:
+        handler: F3\Twitcode\RoutePartHandlers\StandardRoutePartHandler
+
+-
+    name: 'Standard Action Route'
+    uriPattern: '{@action}'
+    defaults:
+        @package: Twitcode
+        @controller: Standard
+        @format: 'html'
+
+-
+    name: 'Homepage'
+    uriPattern: ''
+    defaults:
+        @package: Twitcode
+        @format: 'html'

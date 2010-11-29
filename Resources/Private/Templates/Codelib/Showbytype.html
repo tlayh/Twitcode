@@ -1,0 +1,22 @@
+<f:layout name="Index.html" />
+
+<f:section name="content">
+	<div id="maincontent">
+		<f:flashMessages class="flashmessages" />
+
+		<f:if condition="{logindata.loggedin}">
+			<f:if condition="{logindata.loggedin}">
+				<f:render partial="Headernav" />
+			</f:if>
+		</f:if>
+
+		<h3>Twitcode snippets by type: <b></b>{codetype.name}</h3>
+		<p>
+			<f:for each="{snippets}" as="snippet">
+				<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
+					<f:raw>{snippet.label}</f:raw><br />
+				</f:link.action>
+			</f:for>
+		</p>
+	</div>
+</f:section>

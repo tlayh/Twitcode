@@ -1,0 +1,25 @@
+<f:layout name="Index.html" />
+
+<f:section name="content">
+	<div id="maincontent">
+		<f:flashMessages class="flashmessages" />
+
+		<f:if condition="{logindata.loggedin}">
+			<ul>
+				<li>
+					<f:link.action action="create" controller="Standard" package="Twitcode">Create new snippet</f:link.action>
+				</li>
+			</ul>
+		</f:if>
+
+		<h3>Twitcode Contact</h3>
+		<p>Contact me via:</p>
+		<p>
+			<ul>
+				<li>Twitter: <a href="http://twitter.com/twitcode_org">twitcode_org</a> / <a href="http://twitter.com/tlayh">tlayh</a></li>
+				<li>Email: info (at) twitcode.org</li>
+			</ul>
+		</p>
+
+	</div>
+</f:section>
