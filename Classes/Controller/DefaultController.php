@@ -47,7 +47,7 @@ class DefaultController extends \F3\FLOW3\MVC\Controller\ActionController {
 	 * @var \F3\Twitcode\Domain\Repository\CodeRepository
 	 * @inject
 	 */
-	protected $codeRepository;	
+	protected $codeRepository;
 
     /**
 	 * @var array

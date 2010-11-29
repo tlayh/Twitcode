@@ -40,16 +40,14 @@ class CodelibController extends \F3\Twitcode\Controller\DefaultController {
 	protected $codetypeRepository;
 
 	public function indexAction() {
-		$this->getLoginData();
-        $this->sideBarSnippets();
+		$this->initSidebarLogin();
         
 		$codeTypes = $this->codetypeRepository->findAllWithSnippets();
 		$this->view->assign('codetypes', $codeTypes);
 	}
 
 	public function showbyuserAction() {
-		$this->getLoginData();
-        $this->sideBarSnippets();
+		$this->initSidebarLogin();
         
 		if($this->login->isLoggedIn()) {
 			$loginData = $this->login->checkSession();
@@ -65,32 +63,11 @@ class CodelibController extends \F3\Twitcode\Controller\DefaultController {
 	 * @return void
 	 */
 	public function showbytypeAction(\F3\Twitcode\Domain\Model\Codetype $codetype) {
-        $this->getLoginData();
-        $this->sideBarSnippets();
+        $this->initSidebarLogin();
         
 		$snippets = $this->codeRepository->findByCodetype($codetype);
 		$this->view->assign('codetype', $codetype);
 		$this->view->assign('snippets', $snippets);
-	}
-
-	/**
-	 * Initializes login data
-	 *
-	 * @return void
-	*/
-	protected function getLoginData() {
-		// check login
-		$loginData = array();
-		if($this->login->isLoggedIn()) {
-			// get Login data
-			$loginData['data'] = $this->login->checkSession();
-			$loginData['loggedin'] = true;
-		} else {
-			// get Login Url
-			$loginData['loggedin'] = false;
-			$loginData['url'] = $this->login->getLoginUrl();
-		}
-		$this->view->assign('logindata', $loginData);
 	}
 
 }
