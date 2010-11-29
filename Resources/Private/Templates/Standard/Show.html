@@ -2,25 +2,31 @@
 <f:layout name="Index.html" />
 
 <f:section name="content">
-	<div id="maincontent">
 
-		<f:if condition="{logindata.loggedin}">
-			<f:render partial="Headernav" />
-		</f:if>
+	<f:flashMessages class="flashmessages" />
 
-		<f:flashMessages class="flashmessages" />
+	<f:render partial="Headernav" arguments="{logindata: logindata}" />
 
-		<f:if condition="{editable}">
-			<f:link.action action="edit" controller="Standard" package="Twitcode" arguments="{code: code}">
-				Edit snippet
-			</f:link.action>
-			<br /><br />
-		</f:if>
 
-		<strong>Name:</strong> <f:raw>{code.label}</f:raw><br />
-		<strong>Type:</strong> {code.codetype.name}<br />
-		<strong>Code:</strong> <tc:geshi code="{code.code}" codetype="{code.codetype.type}" /><br />
-		<strong>Comment:</strong> <f:raw>{code.comment}</f:raw><br />
+	<f:if condition="{editable}">
+		<f:link.action action="edit" controller="Standard" package="Twitcode" arguments="{code: code}">
+			Edit snippet
+		</f:link.action>
+		<br /><br />
+	</f:if>
 
-	</div>
+	<label>Name</label> <f:raw>{code.label}</f:raw><br />
+
+	<label>Type</label> {code.codetype.name}<br />
+
+	<label>Modified</label> <f:format.date>{code.modified}</f:format.date><br />
+
+	<label>User</label> <f:link.external uri="http://twitter.com/{code.user.name}">{code.user.name}</f:link.external><br />
+
+	<br />
+	<label>Comment</label><br />
+	<f:raw>{code.comment}</f:raw><br />
+
+	<tc:geshi code="{code.code}" codetype="{code.codetype.type}" /><br />
+
 </f:section>

@@ -71,6 +71,11 @@ class Login {
 	/**
 	 * @var string
 	 */
+	protected $userImg;
+
+	/**
+	 * @var string
+	 */
 	protected $oauthToken;
 
 	/**
@@ -194,6 +199,7 @@ class Login {
 	protected function setSession($twitterInfo, $token, $secret) {
 		$this->screenName = $twitterInfo->__get('screen_name');
 		$this->userId = $twitterInfo->__get('id');
+		$this->userImg = $twitterInfo->__get('profile_image_url');
 		$this->oauthToken = $token;
 		$this->oauthTokenSecret = $secret;
 	}
@@ -221,6 +227,7 @@ class Login {
 		// get data from session
 		$data['screen_name'] = $this->screenName;
 		$data['user_id'] = $this->userId;
+		$data['user_img'] = $this->userImg;
 		$data['oauth_token'] = $this->oauthToken;
 		$data['oauth_token_secret'] = $this->oauthTokenSecret;
 

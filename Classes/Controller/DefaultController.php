@@ -61,7 +61,7 @@ class DefaultController extends \F3\FLOW3\MVC\Controller\ActionController {
 
 	protected function sideBarSnippets() {
 		// get latest snippets
-		$latestSnippets = $this->codeRepository->findLatestSnippets(5);
+		$latestSnippets = $this->codeRepository->findLatestSnippets(10);
 		$this->view->assign('latestSnippets', $latestSnippets);
 	}
 

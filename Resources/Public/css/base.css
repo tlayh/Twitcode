@@ -6,225 +6,311 @@ version: 2.5.1
 */
 /* base.css, part of YUI's CSS Foundation */
 h1 {
-	/*18px via YUI Fonts CSS foundation*/
-	font-size:138.5%; 
+/*18px via YUI Fonts CSS foundation*/
+	font-size: 138.5%;
 
 }
+
 h2 {
-	/*16px via YUI Fonts CSS foundation*/
-	font-size:123.1%; 
+/*16px via YUI Fonts CSS foundation*/
+	font-size: 123.1%;
 }
+
 h3 {
-	/*14px via YUI Fonts CSS foundation*/
-	font-size:108%;  
+/*14px via YUI Fonts CSS foundation*/
+	font-size: 108%;
 }
-h1,h2,h3 {
-	/* top & bottom margin based on font size */
-	margin:1em 0;
-		color:#3198D3;
+
+h1, h2, h3 {
+/* top & bottom margin based on font size */
+	margin: 1em 0;
+	color: #AFD3E5;
 }
-h1,h2,h3,h4,h5,h6,strong {
-	/*bringing boldness back to headers and the strong element*/
-	font-weight:bold; 
+
+h1, h2, h3, h4, h5, h6, strong {
+/*bringing boldness back to headers and the strong element*/
+	font-weight: bold;
 }
-abbr,acronym {
-	/*indicating to users that more info is available */
-	border-bottom:1px dotted #000;
-	cursor:help;
-} 
+
+abbr, acronym {
+/*indicating to users that more info is available */
+	border-bottom: 1px dotted #000;
+	cursor: help;
+}
+
 em {
-	/*bringing italics back to the em element*/
-	font-style:italic;
+/*bringing italics back to the em element*/
+	font-style: italic;
 }
-blockquote,ul,ol,dl {
-	/*giving blockquotes and lists room to breath*/
-	margin:1em;
+
+blockquote, ul, ol, dl {
+/*giving blockquotes and lists room to breath*/
+	margin: 1em;
 }
-ol,ul,dl {
-	/*bringing lists on to the page with breathing room */
-	margin-left:2em;
+
+ol, ul, dl {
+/*bringing lists on to the page with breathing room */
+	margin-left: 2em;
 }
+
 ol li {
-	/*giving OL's LIs generated numbers*/
-	list-style: decimal outside;	
+/*giving OL's LIs generated numbers*/
+	list-style: decimal outside;
 }
+
 ul li {
-	/*giving UL's LIs generated disc markers*/
+/*giving UL's LIs generated disc markers*/
 	list-style: disc outside;
 }
+
 dl dd {
-	/*giving UL's LIs generated numbers*/
-	margin-left:1em;
+/*giving UL's LIs generated numbers*/
+	margin-left: 1em;
 }
-th,td {
-	/*borders and padding to make the table readable*/
-	border:1px solid #000;
-	padding:.5em;
+
+th, td {
+/*borders and padding to make the table readable*/
+	border: 1px solid #000;
+	padding: .5em;
 }
+
 th {
-	/*distinguishing table headers from data cells*/
-	font-weight:bold;
-	text-align:center;
+/*distinguishing table headers from data cells*/
+	font-weight: bold;
+	text-align: center;
 }
+
 caption {
-	/*coordinated margin to match cell's padding*/
-	margin-bottom:.5em;
-	/*centered so it doesn't blend in to other content*/
-	text-align:center;
+/*coordinated margin to match cell's padding*/
+	margin-bottom: .5em; /*centered so it doesn't blend in to other content*/
+	text-align: center;
 }
-p,fieldset,table,pre {
-	/*so things don't run into each other*/
-	margin-bottom:1em;
+
+p, fieldset, table, pre {
+/*so things don't run into each other*/
+	margin-bottom: 1em;
 }
 
 /* my styles */
 
 body {
-	font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size:11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
 }
 
 a {
-	color:#000;
+	color: #000;
+	text-decoration:none;
 }
 
-a:hover {
+a span.blue {
 	color:#3198D3;
 }
 
+a:hover {
+	color: #3198D3;
+}
+
 #maincontent {
-	clear:both;
-	background-color:transparent;
-	padding:20px;
+	clear: both;
+	background-color: transparent;
+	padding: 15px;
 }
 
 #sidebar {
-	padding:2px;
-  height:100%;
-  background-color:transparent;
-  color:#FFFFFF;
+	padding-right: 15px;
+	min-height: 500px;
+	width: 320px;
+	background-color: #CAE3F0;
+	color: #000000;
+	margin-top: -16px;
 }
 
-#sidebar * {
- color:#FFFFFF;
-}
-
-#sidebar a {
-	font-size:10px;
+#sidebar h3 {
+	color: #FFFFFF;
+	font-size: 16px;
+	padding-left: 15px;
+	padding-top: 10px;
 }
 
 #sidebar ul {
-	margin-left:0;
+	margin-left: 0;
 }
 
 #sidebar ul li {
-	list-style:none;
-	margin-bottom:5px;
+	list-style: none;
+	list-style: none outside none;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
+
+#sidebar ul li a {
+	color: #000000;
 }
 
 #hd h1 {
-	float:left;
+	float: left;
 }
 
-.loginform {padding-top:10px;}
+#headernav {
+	background-image: url(/_Resources/Static/Packages/Twitcode/images/gradient-header-nav.png);
+	background-repeat: repeat-x;
+	height: 38px;
+	padding: 11px 11px 0;
+}
 
+#headernav a {
+	color: #1693d3;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#headernav a:hover {
+	color: #FFFFFF;
+}
+
+.loginform {
+	padding-top: 10px;
+}
 
 #yui-main {
-	background-image:url(/_Resources/Static/Packages/Twitcode/images/header.png);
-	background-repeat:no-repeat;
-
+	background-image: url(/_Resources/Static/Packages/Twitcode/images/header.png);
+	background-repeat: no-repeat;
+	margin-top: -15px;
 }
 
 #bd {
-	background-image:url(/_Resources/Static/Packages/Twitcode/images/bdbg.png);
-	background-repeat:repeat-y;
-	clear:both;
-	background-color:transparent;
-	}
+	clear: both;
+	background-color: #FFFFFF;
+	margin-top: 60px;
+}
+
 hr {
-	background-image:url(/_Resources/Static/Packages/Twitcode/images/hr.png);
-	background-repeat:repeat-x;
-	border-width:0px;
-	width: 80%;
+	background-image: url(/_Resources/Static/Packages/Twitcode/images/hr.png);
+	background-repeat: repeat-x;
+	border-width: 0px;
+	width: 100%;
 }
 
 div.code {
-	background-color: #DFDFDF;
+	background-color: #FCFCFC;
+	border: 1px solid #F0F0F0;
 	padding: 5px 10px;
+	margin-top: 10px;
 }
 
 #ft {
-	background-image:url(/_Resources/Static/Packages/Twitcode/images/footerbg.png);
-	background-repeat:no-repeat;
-	background-position:top;
-	
-	padding-top:30px;
-}
-#footer {
-	
-	padding:0;
-	font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size:10px;
-	line-height:12px;
-}
-#copyright {
-	margin:0px 20px 6px 0px;
-	float:left;
-}
-.menu {
-	float:right;
-	margin-right:10px;
-}
-#bottomlogo {
-	clear:both;
-	float:right;
+	background-image: url(/_Resources/Static/Packages/Twitcode/images/footerbg.png);
+	background-repeat: no-repeat;
+	background-position: top;
+	padding-top: 20px;
 }
 
-#footer p {margin: 0px 0px 0px 5px;}
+#footer {
+	padding: 0;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 12px;
+	color: #8FC8E8;
+}
+
+#footer a {
+	color: #8FC8E8;
+	text-decoration: none;
+}
+
+#copyright {
+	margin: 0px 20px 6px 0px;
+	float: right;
+}
+
+.menu {
+	float: left;
+	margin-left: 15px;
+}
+
+#bottomlogo {
+	clear: both;
+	float: right;
+}
+
+#footer p {
+	margin: 0px 0px 0px 5px;
+}
 
 #sidebar span.newsdate {
-	font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size:10px;
-	font-style:italic;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: italic;
 }
-
 
 .i-text {
-  height:16px;
-  width:250px;
-  font-size:10px;
-  line-height:16px;
-  font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-  border:1px solid #3198D3;
-  
+	height: 16px;
+	width: 250px;
+	font-size: 10px;
+	line-height: 16px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	border: 1px solid #3198D3;
+
 }
+
 .i-buttonlogin {
-border-width:0px;
-background-image:url(/_Resources/Static/Packages/Twitcode/images/twitter-signin.png);
-color:transparent;
-width:153px;
-height:24px;
-float:left;
+	border-width: 0px;
+	background-image: url(/_Resources/Static/Packages/Twitcode/images/twitter-signin.png);
+	color: transparent;
+	width: 153px;
+	height: 24px;
+	float: left;
 }
 
 .twitcode {
-float:left;
-float:left;
-width:647px;
-text-align:left;
+	float: left;
+	width: 612px;
+	text-align: left;
+	height:85px;
 }
+
 .share {
-font-family: Courier, serif;
-font-size:16px;
+	font-family: Courier, serif;
+	font-size: 16px;
 }
 
 p.errormessage {
 	color: #FF0000;
 }
 
-#maincontent label { width:100px; display:block; margin-top:5px; }
+#maincontent label {
+	width: 100px;
+	display: block;
+	float: left;
+	color: #999999;
+}
 
 #maincontant ul.flashmessages {
-	display:block;
-	border:1px solid #FF0000;
+	display: block;
+	border: 1px solid #FF0000;
+}
+
+div.loginarea {
+	float:right;
+	width: 305px;
+	text-align:right;
+	margin-right:15px;
+}
+
+div.loggedin {
+	text-align:right;
+}
+
+div.loggedin a {
+	text-decoration:underline;
+}
+
+div.loggedin img {
+	float:right;
+	padding-left:15px;
 }

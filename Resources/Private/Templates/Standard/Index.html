@@ -1,11 +1,8 @@
 <f:layout name="Index.html" />
 
 <f:section name="content">
-	<div id="maincontent">
 
-		<f:if condition="{logindata.loggedin}">
-			<f:render partial="Headernav" />
-		</f:if>
+		<f:render partial="Headernav" arguments="{logindata: logindata}" />
 
         <f:flashMessages class="flashmessages" />
 
@@ -36,6 +33,4 @@
 				</li>
 			</ul>
 		</f:if>
-
-	</div>
 </f:section>

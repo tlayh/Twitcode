@@ -85,7 +85,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 		$succesfullLogin = $this->login->loginUser($oauthToken);
 
 		if($succesfullLogin) {
-			$this->flashMessageContainer->add('Your login was successful!!');
+			$this->flashMessageContainer->add('Congratulations!! Looks like you still remember your twitter account. Your login was successful!!');
 		} else {
 			$this->flashMessageContainer->add('Login failed!! Sometimes OAuth is a bitch so please be patient and try again.');
 		}
@@ -140,7 +140,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 			$this->view->assign('codetypes', $codeTypes);
 		    $this->view->assign('code', $code);
 		} else {
-			$this->flashMessageContainer->add('Please login first');
+			$this->flashMessageContainer->add('Well, if you want to edit something, it really should belong to you. So please login first.');
 			$this->redirect('index');
 		}
 	}
@@ -152,6 +152,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	 */
 	public function updateAction(\F3\Twitcode\Domain\Model\Code $code) {
 		$this->codeRepository->update($code);
+		$this->flashMessageContainer->add('Congratulations!! Your snippet was changed.');
 	    $this->redirect('show', 'Standard', 'Twitcode', array('code'=>$code));
 	}
 
@@ -169,7 +170,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 			$codeTypes = $this->codetypeRepository->findAll();
 			$this->view->assign('codetypes', $codeTypes);
 		} else {
-			$this->flashMessageContainer->add('Please login first');
+			$this->flashMessageContainer->add('Wouldn\'t echo be nice if people would know that this is your snippet? So please login first before creating a snippet!!');
 			$this->redirect('index');
 		}
 	}

@@ -39,22 +39,38 @@ class CodetypeRepository extends \F3\FLOW3\Persistence\Repository {
 	public function findAllWithSnippets() {
 		$query = $this->createQuery();
 		$codeTypes = $query
-				->matching($query->logicalNot($query->equals('type', '')))
+				->matching($query->logicalNot($query->equals('name', '')))
 				->setOrderings(array('name' => \F3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING))
 				->execute();
 
 		$codetypesWithSnippets = array();
 		$i=0;
 
-		if($codeTypes)
+		if($codeTypes) {
 			foreach($codeTypes as $ct) {
 				$res = $this->codeRepository->findCountByCodetype($ct);
 				if($res > 0) {
-					$codetypesWithSnippets[$i]['codetype'] = $ct;
 					$codetypesWithSnippets[$i]['count'] = $res;
+					$codetypesWithSnippets[$i]['codetype'] = $ct;
 					$i++;
 				}
 			}
+		}
+
+		// divide in three blocks
+		/*
+		$count = count($codetypesWithSnippets);
+		$perRow =  intval($count/3)+1;
+		$codeTypesRow = array();
+		$i=0;
+		if($codetypesWithSnippets)
+		foreach($codetypesWithSnippets as $ctws) {
+			for($j=0; $j<$perRow; $j++) {
+				$codeTypesRow[$i][$j] = $ctws;
+			}
+		    $i++;
+		}
+		*/
 
 		return $codetypesWithSnippets;
 		 

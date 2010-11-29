@@ -62,6 +62,7 @@ class CodeRepository extends \F3\FLOW3\Persistence\Repository {
 		$query = $this->createQuery();
 		$result = $query
 				->matching($query->equals('user', $user))
+				->setOrderings(array('modified' => \F3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
 				->execute();
 		return $result->toArray();
 	}

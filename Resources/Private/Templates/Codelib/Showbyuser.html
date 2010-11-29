@@ -1,14 +1,10 @@
 <f:layout name="Index.html" />
 
 <f:section name="content">
-	<div id="maincontent">
-		<f:flashMessages class="flashmessages" />
 
-		<f:if condition="{logindata.loggedin}">
-			<f:if condition="{logindata.loggedin}">
-				<f:render partial="Headernav" />
-			</f:if>
-		</f:if>
+	<f:render partial="Headernav" arguments="{logindata: logindata}" />
+
+		<f:flashMessages class="flashmessages" />
 
 		<h3>Twitcode snippets by user</h3>
 		<p>All your published codesnippets</p>
@@ -19,5 +15,5 @@
 				</f:link.action>
 			</f:for>
 		</p>
-	</div>
+
 </f:section>

@@ -28,14 +28,16 @@
 			<br />
 			<span class="share">//share your code on twitter</span>
 		</div>
-		<div>
+		<div class="loginarea">
 			<f:render partial="Login" arguments="{logindata: logindata}" />
 		</div>
 	</div>
 	<div id="bd">
 		<div id="yui-main">
 			<div class="yui-b">
-				<f:render section="content" />
+				<div id="maincontent">
+					<f:render section="content" />
+				</div>
 			</div>
 		</div>
 		<div class="yui-b">

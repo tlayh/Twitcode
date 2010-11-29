@@ -1,27 +1,28 @@
 <f:layout name="Index.html" />
 
 <f:section name="content">
-	<div id="maincontent">
-		<f:flashMessages class="flashmessages" />
 
-		<f:if condition="{logindata.loggedin}">
-			<f:render partial="Headernav" />
-		</f:if>
+		<f:render partial="Headernav" arguments="{logindata: logindata}" />
+
+		<f:flashMessages class="flashmessages" />
 
 		<f:form.errors for="code">
 			<div class="error">
-				<strong>{error.propertyName}</strong>: <f:for each="{error.errors}" as="errorDetail">{errorDetail.message}</f:for>
+				<strong>{error.propertyName}</strong>:
+				<f:for each="{error.errors}" as="errorDetail">
+					{errorDetail.message}
+				</f:for>
 			</div>
 		</f:form.errors>
 
 		<h3>Create a new snippet</h3>
 		<f:form action="save" controller="Standard" package="Twitcode" object="{code}" name="code" method="post">
-			<label for="label">Name:</label> <f:form.textbox property="label" id="label" /><br />
-			<label for="codetype">Codetype:</label> <f:form.select id="codetype" property="codetype" options="{codetypes}" optionLabelField="name" size="1" /><br />
-			<label for="code">Code:</label> <f:form.textarea id="code" property="code" rows="15" cols="70" /><br />
-			<label for="comment">Comment:</label> <f:form.textarea id="comment" property="comment" rows="5" cols="70" /><br />
-			<label for="twitter">Don't tweet:</label> <f:form.checkbox id="twitter" value="1" name="twitter" /><br />
+			<label for="label">Name:</label> <f:form.textbox property="label" id="label" /><br /><br />
+			<label for="codetype">Codetype:</label> <f:form.select id="codetype" property="codetype" options="{codetypes}" optionLabelField="name" size="1" /><br /><br />
+			<label for="code">Code:</label> <f:form.textarea id="code" property="code" rows="15" cols="70" /><br /><br />
+			<label for="comment">Comment:</label> <f:form.textarea id="comment" property="comment" rows="5" cols="70" /><br /><br />
+			<label for="twitter">Don't tweet:</label> <f:form.checkbox id="twitter" value="1" name="twitter" /><br /><br />
 			<f:form.submit value="Submit" />
 		</f:form>
-	</div>
+
 </f:section>

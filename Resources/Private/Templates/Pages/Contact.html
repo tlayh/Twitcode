@@ -1,16 +1,10 @@
 <f:layout name="Index.html" />
 
 <f:section name="content">
-	<div id="maincontent">
-		<f:flashMessages class="flashmessages" />
 
-		<f:if condition="{logindata.loggedin}">
-			<ul>
-				<li>
-					<f:link.action action="create" controller="Standard" package="Twitcode">Create new snippet</f:link.action>
-				</li>
-			</ul>
-		</f:if>
+		<f:render partial="Headernav" arguments="{logindata: logindata}" />
+
+		<f:flashMessages class="flashmessages" />
 
 		<h3>Twitcode Contact</h3>
 		<p>Contact me via:</p>
@@ -21,5 +15,4 @@
 			</ul>
 		</p>
 
-	</div>
 </f:section>

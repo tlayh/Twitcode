@@ -1,23 +1,20 @@
+{namespace tc=F3\Twitcode\ViewHelpers}
 <f:layout name="Index.html" />
 
 <f:section name="content">
-	<div id="maincontent">
+
 		<f:flashMessages class="flashmessages" />
 
-		<f:if condition="{logindata.loggedin}">
-			<f:if condition="{logindata.loggedin}">
-				<f:render partial="Headernav" />
-			</f:if>
-		</f:if>
+		<f:render partial="Headernav" arguments="{logindata: logindata}" />
 
 		<h3>Twitcode Codelibrary</h3>
 		<p>All published codesnippets sorted by code type.</p>
 		<p>
 			<f:for each="{codetypes}" as="ct">
 				<f:link.action action="showbytype" controller="Codelib" package="Twitcode" arguments="{codetype: ct.codetype}">
-					{ct.codetype.name} ({ct.count})<br />
+					{ct.codetype.name} <span class="blue">({ct.count})</span><br />
 				</f:link.action>
 			</f:for>
 		</p>
-	</div>
+
 </f:section>

@@ -1,11 +1,14 @@
 <div id="sidebar">
-	<h3>Sidebar - latest snippets</h3>
+	<h3>Latest Snippets</h3>
 	<ul>
 	<f:for each="{latestSnippets}" as="snippet">
 		<li>
 			<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
 				<f:raw>{snippet.label}</f:raw>
 			</f:link.action>
+		</li>
+		<li>
+			<hr />
 		</li>
 	</f:for>
 	</ul>

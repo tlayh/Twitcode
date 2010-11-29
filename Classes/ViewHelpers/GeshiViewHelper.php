@@ -36,9 +36,6 @@ require_once('/var/www/vhosts/twitcode.org/subdomains/flow/httpdocs/Packages/App
  * <tc:geshi code={code.code} />
  * </code>
  *
- * Output:
- * <img class="gravatar" src="http://www.gravatar.com/avatar/<hash>?d=http%3A%2F%2Fdomain.com%2Fgravatar_default.gif" />
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @scope prototype
  */
 
