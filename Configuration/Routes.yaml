@@ -7,8 +7,6 @@
 # Please refer to the FLOW3 manual for possible configuration options.   #
 #                                                                        #
 
-# $Id: Routes.yaml 3848 2010-02-23 22:08:54Z k-fish $
-
 ##
 # Subroutes for the Twitcode package
 #
