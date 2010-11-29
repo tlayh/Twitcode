@@ -78,9 +78,26 @@ class Login {
 	 */
 	protected $oauthTokenSecret;
 
-	// dev values
-	protected $consumerKey = '2Y9OuyccVEgaEJFtVMQeyg';
-	protected $consumerSecret = 'mx6gJaMbBfSDxlBuO9N74quNLVdcEjbFJAb1wQB7uQ';
+	/**
+	 * @var string $consumerKey for oauth, injected via Settings.yaml
+	 */
+	protected $consumerKey = '';
+
+	/**
+	 * @var string $consumerSecret for oauth, injected via Settings.yaml
+	 */
+	protected $consumerSecret = '';
+
+	/**
+	 * Inject the settings for oauth
+	 *
+	 * @param array $settings
+	 * @return void
+	 */
+	public function injectSettings(array $settings) {
+		$this->consumerKey = $settings['oauth']['consumerkey'];
+		$this->consumerSecret = $settings['oauth']['consumersecret'];
+	}
 
 	/**
 	 * get the login url from oauth
