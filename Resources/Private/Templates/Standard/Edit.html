@@ -17,7 +17,7 @@
 		<h3>Create a new snippet</h3>
 		<f:form action="/update" controller="Standard" package="Twitcode" object="{code}" name="code" method="post">
 			<label for="label">Name:</label> <f:form.textbox property="label" id="label" /><br />
-			<label for="codetype">Codetype:</label> <f:form.select value="{code.codetype.type}" id="codetype" property="codetype" options="{codetypes}" optionValueField="type" optionLabelField="name" size="1" /><br />
+			<label for="codetype">Codetype:</label> <f:form.select value="{code.codetype.type}" id="codetype" property="codetype" options="{codetypes}" optionLabelField="name" size="1" /><br />
 			<label for="code">Code:</label> <f:form.textarea id="code" property="code" rows="15" cols="70" /><br />
 			<label for="comment">Comment:</label> <f:form.textarea id="comment" property="comment" rows="5" cols="70" /><br />
 			<f:form.submit value="Submit" />
