@@ -28,7 +28,6 @@ namespace F3\Twitcode\RoutePartHandlers;
 /**
  * Codelib route part handler
  *
- * @author Thomas Layh <thomas@layh.com>
  * @scope prototype
  */
 class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart {

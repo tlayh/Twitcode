@@ -11,7 +11,10 @@
 		<p>
 			<f:for each="{snippets}" as="snippet">
 				<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
-					<f:raw>{snippet.label}</f:raw><br />
+					<label>Name</label> <f:raw>{snippet.label}</f:raw><br />
+					<label>Date</label> <f:format.date>{snippet.modified}</f:format.date><br />
+					<label>Codetype</label> {snippet.codetype.name}<br />
+					<br />
 				</f:link.action>
 			</f:for>
 		</p>
