@@ -11,6 +11,16 @@
 # Subroutes for the Twitcode package
 #
 
+-
+    name: 'Codelibrary Routes with type'
+    uriPattern: 'codelib/{@action}/{codetype}'
+    defaults:
+        @package: Twitcode
+        @controller: Codelib
+        @format: 'html'
+    routeParts:
+      codetype:
+        handler: F3\Twitcode\RoutePartHandlers\CodelibRoutePartHandler
 
 -
     name: 'Codelibrary Routes'

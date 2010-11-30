@@ -26,12 +26,12 @@ namespace F3\Twitcode\RoutePartHandlers;
  ***************************************************************/
 
 /**
- * Standard route part handler
+ * Codelib route part handler
  *
  * @author Thomas Layh <thomas@layh.com>
  * @scope prototype
  */
-class StandardRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart {
+class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart {
 
 	/**
 	 * Splits the given value into the date and title of the post and sets this
@@ -44,10 +44,9 @@ class StandardRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePar
 		if (!parent::matchValue($value)) {
 			return FALSE;
 		}
-		$value = substr($value, 0, strpos($value, '/'));
 		$this->value = array(
 			'__identity' => array(
-				'uid' => intval($value)
+				'type' => $value
 			)
 		);
 		return TRUE;
@@ -69,19 +68,21 @@ class StandardRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePar
 	}
 
 	/**
-	 * Resolves the name of the code
+	 * Resolves the name of the codetype
 	 *
-	 * @param \F3\Twitcode\Domain\Model\Code $value The Code object
-	 * @return boolean TRUE if the code could be resolved and stored in $this->value, otherwise FALSE.
+	 * @param \F3\Twitcode\Domain\Model\Codetype $value The Codetype object
+	 * @return boolean TRUE if the codetype could be resolved and stored in $this->value, otherwise FALSE.
 	 */
 	protected function resolveValue($value) {
-		if (!$value instanceof \F3\Twitcode\Domain\Model\Code) return FALSE;
-		$this->value = $value->getUid();
+		if (!$value instanceof \F3\Twitcode\Domain\Model\Codetype) { return FALSE; }
+		$this->value = $value->getType();
 
 		// prepare label for url
-		$label = strtolower(str_replace(' ', '-', $value->getLabel()));
+		/*
+		$label = strtolower(str_replace(' ', '-', $value->getName()));
 		$label = preg_replace('/[^0-9a-zA-Z-_]/', '', $label);
 		$this->value .= '/'.$label;
+		*/
 
 
 		return TRUE;
