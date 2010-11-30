@@ -339,4 +339,36 @@ ul.snippetsbytype li {
 	margin-bottom:4px;
 }
 
+div#wrapper-codetocopy {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	background-image: url(/_Resources/Static/Packages/Twitcode/images/trans.png);
+	background-repeat: repeat;
+	z-index:100;
+}
+
+div#codetocopy {
+	margin:120px auto;
+	background-color:white;
+	z-index:101;
+	width:607px;
+	height:445px;
+}
+
+div#codetocopy div.popupnav {
+	width:100%;
+	padding-top:15px;
+}
+div#codetocopy div.popupnav span.left { float:left; margin-left:15px; }
+div#codetocopy div.popupnav span.right { float:right; margin-right:15px; }
+
+div#codetocopy textarea {
+	margin-left:15px;
+	/*margin-top:30px;*/
+	width:577px;
+	height:400px;
+}
 

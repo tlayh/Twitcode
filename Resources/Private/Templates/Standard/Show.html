@@ -27,6 +27,22 @@
 	<label>Comment</label><br />
 	<f:raw>{code.comment}</f:raw><br />
 
+	<a href="#" onclick="showPopup(); return false;">Show plain code</a>
 	<tc:geshi code="{code.code}" codetype="{code.codetype.type}" /><br />
+
+	<!-- popup layer to copy code -->
+	<div id="wrapper-codetocopy" style="display:none;">
+		<div id="codetocopy">
+			<div class="popupnav">
+				<span class="left">{code.label}</span>
+				<span class="right">
+					<a href="#" onclick="closePopup(); return false;">
+						<img src="{f:uri.resource(path: 'images/close_icon.png')}" alt="close window" title="close window" />
+					</a>
+				</span>
+			</div>
+			<textarea>{code.code}</textarea>
+		</div>
+	</div>
 
 </f:section>
