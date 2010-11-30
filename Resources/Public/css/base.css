@@ -314,3 +314,29 @@ div.loggedin img {
 	float:right;
 	padding-left:15px;
 }
+
+ul.showbytype {
+	width: 600px;
+	margin-left:0px;
+}
+
+ul.showbytype li {
+	float:left;
+	width:200px;
+	list-style:none;
+	margin-bottom:4px;
+}
+
+ul.snippetsbytype {
+	width: 600px;
+	margin-left:0px;
+}
+
+ul.snippetsbytype li {
+	float:left;
+	width:300px;
+	list-style:none;
+	margin-bottom:4px;
+}
+
+

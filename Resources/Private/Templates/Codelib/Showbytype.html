@@ -7,12 +7,14 @@
 		<f:flashMessages class="flashmessages" />
 
 		<h3>Twitcode snippets by type: <b></b>{codetype.name}</h3>
-		<p>
+		<ul class="snippetsbytype">
 			<f:for each="{snippets}" as="snippet">
+				<li>
 				<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
 					<f:raw>{snippet.label}</f:raw><br />
 				</f:link.action>
+				</li>
 			</f:for>
-		</p>
+		</ul>
 
 </f:section>
