@@ -159,9 +159,11 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	/**
 	 * show snippet form
 	 *
+	 * @param \F3\Twitcode\Domain\Model\Code $code
+	 * @dontvalidate $code
 	 * @return void
 	 */
-	public function createAction() {
+	public function createAction(\F3\Twitcode\Domain\Model\Code $code=NULL) {
 		$this->initSidebarLogin();
 		
 		// check for login
@@ -169,8 +171,9 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 			// assign codetypes
 			$codeTypes = $this->codetypeRepository->findAll();
 			$this->view->assign('codetypes', $codeTypes);
+		    $this->view->assign('code', $code);
 		} else {
-			$this->flashMessageContainer->add('Wouldn\'t echo be nice if people would know that this is your snippet? So please login first before creating a snippet!!');
+			$this->flashMessageContainer->add('Wouldn\'t it be nice if people would know that this is your snippet? So please login first before creating a snippet!!');
 			$this->redirect('index');
 		}
 	}

@@ -1,3 +1,4 @@
+{namespace tc=F3\Twitcode\ViewHelpers}
 <f:layout name="Index.html" />
 
 <f:section name="content">
@@ -8,7 +9,9 @@
 
 		<f:form.errors for="code">
 			<div class="error">
-				<strong>{error.propertyName}</strong>:
+				<strong>
+					<tc:replaceerror error="{error.propertyName}" />
+				</strong>:
 				<f:for each="{error.errors}" as="errorDetail">
 					{errorDetail.message}
 				</f:for>

@@ -269,7 +269,7 @@ div.code {
 
 .twitcode {
 	float: left;
-	width: 612px;
+	width: 600px;
 	text-align: left;
 	height:85px;
 }
@@ -297,7 +297,7 @@ p.errormessage {
 
 div.loginarea {
 	float:right;
-	width: 305px;
+	width: 333px;
 	text-align:right;
 	margin-right:15px;
 }
@@ -380,4 +380,9 @@ ul.flashmessages li { list-style:none; margin-left:-24px; }
 
 div.error {
 	color:#FF0000;
+}
+
+div.loginarea {
+	border:1px solid #FFFFFF;
+	background-color:#EBF6FC;
 }

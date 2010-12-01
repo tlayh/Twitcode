@@ -57,21 +57,6 @@ class CodetypeRepository extends \F3\FLOW3\Persistence\Repository {
 			}
 		}
 
-		// divide in three blocks
-		/*
-		$count = count($codetypesWithSnippets);
-		$perRow =  intval($count/3)+1;
-		$codeTypesRow = array();
-		$i=0;
-		if($codetypesWithSnippets)
-		foreach($codetypesWithSnippets as $ctws) {
-			for($j=0; $j<$perRow; $j++) {
-				$codeTypesRow[$i][$j] = $ctws;
-			}
-		    $i++;
-		}
-		*/
-
 		return $codetypesWithSnippets;
 		 
 	}
