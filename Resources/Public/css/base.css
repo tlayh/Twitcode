@@ -372,3 +372,12 @@ div#codetocopy textarea {
 	height:400px;
 }
 
+ul.flashmessages {
+	color:#FF0000;
+}
+
+ul.flashmessages li { list-style:none; margin-left:-24px; }
+
+div.error {
+	color:#FF0000;
+}

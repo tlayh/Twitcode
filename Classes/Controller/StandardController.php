@@ -248,6 +248,20 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 		$this->redirect('show', 'Standard', 'Twitcode', array('code'=>$code));
 	}
 
+	/**
+	 * Override getErrorFlashMessage to present nice flash error messages.
+	 *
+	 * @return string
+	 */
+	protected function getErrorFlashMessage() {
+		switch ($this->actionMethodName) {
+			case 'saveAction' :
+				return 'Could not save the snippet. Please fill out all required fields.';
+			default :
+				return parent::getErrorFlashMessage();
+		}
+	}
+
 }
 
 ?>
