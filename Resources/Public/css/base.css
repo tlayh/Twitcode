@@ -18,13 +18,13 @@ h2 {
 
 h3 {
 /*14px via YUI Fonts CSS foundation*/
-	font-size: 108%;
+	font-size: 18px;
 }
 
 h1, h2, h3 {
 /* top & bottom margin based on font size */
 	margin: 1em 0;
-	color: #AFD3E5;
+	color: #A4CEE6;
 }
 
 h1, h2, h3, h4, h5, h6, strong {
@@ -113,15 +113,17 @@ a:hover {
 
 #maincontent {
 	clear: both;
-	background-color: transparent;
-	padding: 15px;
+	padding: 0 15px 15px;
 }
 
+#maincontent input#label { width:200px; }
+#maincontent select#codetype { width:203px; }
+
 #sidebar {
-	padding-right: 15px;
+	padding-left: 15px;
+    padding-right: 15px;
 	min-height: 500px;
 	width: 320px;
-	background-color: #CAE3F0;
 	color: #000000;
 	margin-top: -16px;
 }
@@ -177,15 +179,21 @@ a:hover {
 }
 
 #yui-main {
-	background-image: url(/_Resources/Static/Packages/Twitcode/images/header.png);
-	background-repeat: no-repeat;
-	margin-top: -15px;
+
 }
 
 #bd {
 	clear: both;
-	background-color: #FFFFFF;
-	margin-top: 60px;
+	background-image: url(/_Resources/Static/Packages/Twitcode/images/bg.gif);
+	background-repeat: repeat-y;
+	margin-top: 15px;
+}
+
+#content-header {
+	background-image: url(/_Resources/Static/Packages/Twitcode/images/header.png);
+	background-repeat: no-repeat;
+	position:relative;
+	top:70px;
 }
 
 hr {
@@ -195,10 +203,15 @@ hr {
 	width: 100%;
 }
 
+hr.spacer {
+	background:none;
+	border-bottom:1px solid #F0F0F0;
+}
+
 div.code {
 	background-color: #FCFCFC;
 	border: 1px solid #F0F0F0;
-	padding: 5px 10px;
+	padding: 15px 10px 5px;
 	margin-top: 10px;
 }
 
@@ -224,18 +237,30 @@ div.code {
 }
 
 #copyright {
-	margin: 0px 20px 6px 0px;
-	float: right;
+	color: #C0C0C0;
+    font-weight: normal;
+    margin: 5px 20px 6px 15px;
+}
+
+#copyright a {
+	color:#C0C0C0;
+}
+
+input.submit {
+	background-image: url(/_Resources/Static/Packages/Twitcode/images/submit.png);
+	border: 0 none;
+    height: 24px;
+    width: 107px;
 }
 
 .menu {
-	float: left;
 	margin-left: 15px;
 }
 
 #bottomlogo {
 	clear: both;
 	float: right;
+	margin-top:-30px;
 }
 
 #footer p {
@@ -275,8 +300,9 @@ div.code {
 }
 
 .share {
-	font-family: Courier, serif;
-	font-size: 16px;
+	color: #8FC8E8;
+    font-size: 12px;
+    margin-left: 34px;
 }
 
 p.errormessage {
@@ -308,6 +334,10 @@ div.loggedin {
 
 div.loggedin a {
 	text-decoration:underline;
+}
+
+div.loggedin img.logout {
+	margin-top:9px;
 }
 
 div.loggedin img {
@@ -350,12 +380,28 @@ div#wrapper-codetocopy {
 	z-index:100;
 }
 
+span.copycode {
+	position:relative;
+	top:33px;
+	left:490px;
+}
+
+span.copycode a {
+	color:#C0C0C0;
+	font-size:11px;
+}
+
+span.copycode img {
+	margin-bottom:-1px;
+}
+
 div#codetocopy {
 	margin:120px auto;
 	background-color:white;
 	z-index:101;
 	width:607px;
 	height:445px;
+	border:15px solid #CAE3F0;
 }
 
 div#codetocopy div.popupnav {
@@ -367,7 +413,7 @@ div#codetocopy div.popupnav span.right { float:right; margin-right:15px; }
 
 div#codetocopy textarea {
 	margin-left:15px;
-	/*margin-top:30px;*/
+	border:0;
 	width:577px;
 	height:400px;
 }
@@ -380,9 +426,4 @@ ul.flashmessages li { list-style:none; margin-left:-24px; }
 
 div.error {
 	color:#FF0000;
-}
-
-div.loginarea {
-	border:1px solid #FFFFFF;
-	background-color:#EBF6FC;
 }

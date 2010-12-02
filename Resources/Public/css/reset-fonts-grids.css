@@ -123,6 +123,9 @@ body {
 
 #yui-main {
 	width: 100%;
+	background-image: url("/_Resources/Static/Packages/Twitcode/images/bg.gif");
+	background-position: center 15px;
+	background-repeat: repeat-y;
 }
 
 .yui-t1 #yui-main, .yui-t2 #yui-main, .yui-t3 #yui-main {
@@ -174,7 +177,7 @@ body {
 }
 
 .yui-t4 #yui-main .yui-b {
-	margin-right: 350px;
+	margin-right: 335px;
 }
 
 .yui-t5 .yui-b {

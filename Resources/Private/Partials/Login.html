@@ -4,13 +4,15 @@
 			<img src="{logindata.data.user_img}" title="profile image" />
 			<p>
 				Hello {logindata.data.screen_name}<br />
-				<f:link.action action="logout">Logout</f:link.action>
+				<f:link.action action="logout">
+					<img class="logout" src="{f:uri.resource(path: 'images/logout.png')}" alt="Logout" title="Logout" />
+				</f:link.action>
 			</p>
 		</div>
 	</f:then>
 	<f:else>
 		<f:link.external uri="{logindata.url}">
-			<img src="http://res.twitcode.org/images/twitter-signin.png" alt="Login" title="Login" />
+			<img src="{f:uri.resource(path: 'images/twitter-signin.png')}" alt="Login" title="Login" />
 		</f:link.external>
 	</f:else>
 </f:if>
