@@ -27,12 +27,12 @@ namespace F3\Twitcode\ViewHelpers;
 
 
 /**
- * A view helper to display nicer error messages
+ * A view helper to remove script tags
  *
  * = Examples =
  *
  * <code title="Simple">
- * <tc:geshi code={code.code} />
+ * <tc:striptag></tc:striptag>
  * </code>
  *
  * @scope prototype
@@ -60,8 +60,6 @@ class StriptagViewHelper extends \F3\Fluid\Core\ViewHelper\AbstractViewHelper {
 		$value = str_replace('>', '&gt;', $value);
 
 		return $value;
-
-		//return strip_tags($value);
 	}
 
 }

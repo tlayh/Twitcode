@@ -252,6 +252,17 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	}
 
 	/**
+	 * delete a snippet
+	 *
+	 * @param \F3\Twitcode\Domain\Model\Code $code
+	 */
+	public function deleteAction(\F3\Twitcode\Domain\Model\Code $code) {
+		$this->codeRepository->remove($code);
+	    $this->flashMessageContainer->add('Snippet deleted successfully');
+	    $this->redirect('index');
+	}
+
+	/**
 	 * Override getErrorFlashMessage to present nice flash error messages.
 	 *
 	 * @return string
