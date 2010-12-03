@@ -420,11 +420,16 @@ div#codetocopy textarea {
 	height:400px;
 }
 
-ul.flashmessages {
-	color:#FF0000;
-}
+ul.flashmessages {}
 
-ul.flashmessages li { list-style:none; margin-left:-24px; }
+ul.flashmessages li {
+    background-color: #EFEFEF;
+    border: 1px solid #AF0000;
+    color: #8FC8E8;
+    list-style: none outside none;
+    margin-left: -24px;
+    padding: 5px;
+}
 
 div.error {
 	color:#FF0000;

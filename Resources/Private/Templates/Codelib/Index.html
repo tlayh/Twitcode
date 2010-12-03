@@ -3,20 +3,22 @@
 
 <f:section name="content">
 
-		<f:flashMessages class="flashmessages" />
+	<f:render partial="Headernav" arguments="{logindata: logindata}" />
 
-		<f:render partial="Headernav" arguments="{logindata: logindata}" />
+	<f:flashMessages class="flashmessages" />
 
-		<h3>Twitcode Codelibrary</h3>
-		<p>All published codesnippets sorted by code type.</p>
-		<ul class="showbytype">
-			<f:for each="{codetypes}" as="ct">
-				<li>
-				<f:link.action action="showbytype" controller="Codelib" package="Twitcode" arguments="{codetype: ct.codetype}">
-					{ct.codetype.name} <span class="blue">({ct.count})</span><br />
-				</f:link.action>
-				</li>
-			</f:for>
-		</ul>
+	<f:render partial="Back" />
+
+	<h3>Twitcode Codelibrary</h3>
+	<p>All published codesnippets sorted by code type.</p>
+	<ul class="showbytype">
+		<f:for each="{codetypes}" as="ct">
+			<li>
+			<f:link.action action="showbytype" controller="Codelib" package="Twitcode" arguments="{codetype: ct.codetype}">
+				{ct.codetype.name} <span class="blue">({ct.count})</span><br />
+			</f:link.action>
+			</li>
+		</f:for>
+	</ul>
 
 </f:section>
