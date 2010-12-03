@@ -4,19 +4,21 @@
 
 	<f:render partial="Headernav" arguments="{logindata: logindata}" />
 
-		<f:flashMessages class="flashmessages" />
+	<f:flashMessages class="flashmessages" />
 
-		<h3>Twitcode snippets by user</h3>
-		<p>All your published codesnippets</p>
-		<p>
-			<f:for each="{snippets}" as="snippet">
-				<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
-					<label>Name</label> <f:raw>{snippet.label}</f:raw><br />
-					<label>Date</label> <f:format.date>{snippet.modified}</f:format.date><br />
-					<label>Codetype</label> {snippet.codetype.name}<br />
-					<br />
-				</f:link.action>
-			</f:for>
-		</p>
+	<f:render partial="Back" />
+
+	<h3>Twitcode snippets by user</h3>
+	<p>All your published codesnippets</p>
+	<p>
+		<f:for each="{snippets}" as="snippet">
+			<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
+				<label>Name</label> <f:raw>{snippet.label}</f:raw><br />
+				<label>Date</label> <f:format.date>{snippet.modified}</f:format.date><br />
+				<label>Codetype</label> {snippet.codetype.name}<br />
+				<br />
+			</f:link.action>
+		</f:for>
+	</p>
 
 </f:section>

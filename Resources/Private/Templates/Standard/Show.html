@@ -3,10 +3,11 @@
 
 <f:section name="content">
 
-	<f:flashMessages class="flashmessages" />
-
 	<f:render partial="Headernav" arguments="{logindata: logindata}" />
 
+	<f:flashMessages class="flashmessages" />
+
+	<f:render partial="Back" />
 
 	<f:if condition="{editable}">
 		<f:link.action action="edit" controller="Standard" package="Twitcode" arguments="{code: code}">
@@ -15,7 +16,7 @@
 		<br /><br />
 	</f:if>
 
-	<label>Name</label> <f:raw>{code.label}</f:raw><br />
+	<label>Name</label> <f:raw><tc:striptag>{code.label}</tc:striptag></f:raw><br />
 
 	<label>Type</label> {code.codetype.name}<br />
 
@@ -26,7 +27,7 @@
 	<hr class="spacer" />
 
 	<label>Comment</label><br />
-	<f:raw>{code.comment}</f:raw><br />
+	<f:raw><tc:striptag>{code.comment}</tc:striptag></f:raw><br />
 
 	<span class="copycode">
 		<a href="#" onclick="showPopup(); return false;">
@@ -45,7 +46,7 @@
 					</a>
 				</span>
 			</div>
-			<textarea>{code.code}</textarea>
+			<textarea readonly>{code.code}</textarea>
 		</div>
 	</div>
 

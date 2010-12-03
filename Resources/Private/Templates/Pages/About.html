@@ -2,24 +2,32 @@
 
 <f:section name="content">
 
-		<f:render partial="Headernav" arguments="{logindata: logindata}" />
+	<f:render partial="Headernav" arguments="{logindata: logindata}" />
 
-		<f:flashMessages class="flashmessages" />
+	<f:flashMessages class="flashmessages" />
 
-		<h3>Twitcode About</h3>
-		<p>
-			This is a small private project. The idea came up a year ago and this is now the first relaunch of the
-			project. I decided to relaunch the project because I had some trouble with OAuth in the first place. Also I
-			wanted to try out a framework and make some new experience with this framework. The framework this page is build
-			on is cald FLOW3 and can be found on <f:link.external uri="http://flow3.typo3.org">flow3.typo3.org</f:link.external>
-		</p>
+	<f:render partial="Back" />
 
-		<p>
-			I also decided to make this project public for everyone and to publish it via github under the GPL licence.
-		</p>
+	<h3>Twitcode About</h3>
+	<p>
+		This is a small private project. The idea came up a year ago and this is now the first relaunch of the
+		project. I decided to relaunch the project because I had some trouble with OAuth in the first place. Also I
+		wanted to try out a framework and make some new experience with this framework. The framework this page is build
+		on is cald FLOW3 and can be found on <f:link.external uri="http://flow3.typo3.org">flow3.typo3.org</f:link.external>
+	</p>
 
-		<p>
-			The project can found here: <f:link.external uri="https://github.com/tlayh/Twitcode">https://github.com/tlayh/Twitcode</f:link.external>
-		</p>
+	<p>
+		I also decided to make this project public for everyone and to publish it via github under the GPL licence.
+	</p>
+
+	<p>
+		The project can found here: <f:link.external uri="https://github.com/tlayh/Twitcode">https://github.com/tlayh/Twitcode</f:link.external>
+	</p>
+
+	<p>
+		If you have any questions about this project feel free to contact me.<br /><br />
+		<f:link.action action="contact" controller="Pages" package="Twitcode">Contact</f:link.action>
+
+	</p>
 
 </f:section>

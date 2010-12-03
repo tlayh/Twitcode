@@ -411,6 +411,8 @@ div#codetocopy div.popupnav {
 div#codetocopy div.popupnav span.left { float:left; margin-left:15px; }
 div#codetocopy div.popupnav span.right { float:right; margin-right:15px; }
 
+span.right { float:right; }
+
 div#codetocopy textarea {
 	margin-left:15px;
 	border:0;
@@ -426,4 +428,28 @@ ul.flashmessages li { list-style:none; margin-left:-24px; }
 
 div.error {
 	color:#FF0000;
+}
+
+div.homepage-logo {
+	width:100%;
+	text-align:center;
+	margin-top:80px;
+	margin-bottom:20px;
+}
+
+div.share-teaser {
+	width:100%;
+	text-align:center;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+p.homepage {
+	margin-left:15px;
+	line-height:1.5em;
+}
+
+h4 {
+	margin-top:8px;
+	margin-bottom:5px;
 }

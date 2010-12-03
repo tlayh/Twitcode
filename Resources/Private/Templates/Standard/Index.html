@@ -6,18 +6,29 @@
 
         <f:flashMessages class="flashmessages" />
 
-		<h3>Welcome to Twitcode</h3>
-		<p>To upload code it is required that you log in. There is no registration required. You can log in using your Twitter account.</p>
-		<p>What can twitcode do for you?
-			<ul>
-				<li>Publish your code with syntaxhighlight</li>
-				<li>Easily share your code via twitter</li>
-				<li>No registration required, use your twitter account to login</li>
-				<li>Syntaxhighlight for a lot of languages like PHP, C++, C#, TypoScript, Perl, Ruby, etc ...</li>
-			</ul>
-		</p>
-		<br />
+		<div class="homepage-logo">
+			<img style="width:330px;" src="{f:uri.resource(path: 'images/hp_twitter.jpg')}" alt="homepage-logo" title="homepage-logo" />
+		</div>
 
+		<p class="homepage" style="text-align:center;">
+			A service to make it easy for you to publish and share your code snippets via twitter.
+		</p>
+
+		<div class="share-teaser">
+			<img style="width:450px" src="{f:uri.resource(path: 'images/hp_share.jpg')}" alt="homepage-logo" title="homepage-logo" />
+		</div>
+
+		<br />
+		<p class="homepage">
+			This project is based on FLOW3. An brand new and upcoming, auspicious PHP framework with the original target to create a stable
+			base for TYPO3 v5.
+
+			<span class="right">
+				<img src="{f:uri.resource(path: 'images/flow3.gif')}" alt="FLOW3 Logo" title="FLOW3 Logo" />
+			</span>
+		</p>
+
+	<!--
 		<f:if condition="{logindata.loggedin}">
 			<p>Looks like you are successfully logged in. What are the next steps?</p>
 			<ul>
@@ -33,4 +44,5 @@
 				</li>
 			</ul>
 		</f:if>
+	-->
 </f:section>

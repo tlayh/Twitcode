@@ -39,4 +39,12 @@ class PagesController extends \F3\Twitcode\Controller\DefaultController {
 		$this->initSidebarLogin();
 	}
 
+	public function termsAction() {
+		$this->initSidebarLogin();
+	}
+
+	public function privacyAction() {
+		$this->initSidebarLogin();
+	}
+
 }

@@ -2,21 +2,21 @@
 
 <f:section name="content">
 
-		<f:render partial="Headernav" arguments="{logindata: logindata}" />
+	<f:render partial="Headernav" arguments="{logindata: logindata}" />
 
-		<f:flashMessages class="flashmessages" />
+	<f:flashMessages class="flashmessages" />
 
-		<f:link.action action="index" controller="Codelib" package="Twitcode">&lt;&lt; Back</f:link.action>
+	<f:render partial="Back" />
 
-		<h3>Twitcode snippets by type: <b></b>{codetype.name}</h3>
-		<ul class="snippetsbytype">
-			<f:for each="{snippets}" as="snippet">
-				<li>
-				<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
-					<f:raw>{snippet.label}</f:raw><br />
-				</f:link.action>
-				</li>
-			</f:for>
-		</ul>
+	<h3>Twitcode snippets by type: <b></b>{codetype.name}</h3>
+	<ul class="snippetsbytype">
+		<f:for each="{snippets}" as="snippet">
+			<li>
+			<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
+				<f:raw>{snippet.label}</f:raw><br />
+			</f:link.action>
+			</li>
+		</f:for>
+	</ul>
 
 </f:section>
