@@ -458,3 +458,9 @@ h4 {
 	margin-top:8px;
 	margin-bottom:5px;
 }
+
+span.editable {
+	display: block;
+    margin-bottom: -17px;
+    margin-top: 11px;
+}
