@@ -425,7 +425,7 @@ ul.flashmessages {}
 ul.flashmessages li {
     background-color: #EFEFEF;
     border: 1px solid #AF0000;
-    color: #8FC8E8;
+    color: #AF0000;
     list-style: none outside none;
     margin-left: -24px;
     padding: 5px;
