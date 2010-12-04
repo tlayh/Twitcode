@@ -64,8 +64,9 @@ class CodelibController extends \F3\Twitcode\Controller\DefaultController {
 	 */
 	public function showbytypeAction(\F3\Twitcode\Domain\Model\Codetype $codetype) {
         $this->initSidebarLogin();
-        
+
 		$snippets = $this->codeRepository->findByCodetype($codetype);
+
 		$this->view->assign('codetype', $codetype);
 		$this->view->assign('snippets', $snippets);
 	}
