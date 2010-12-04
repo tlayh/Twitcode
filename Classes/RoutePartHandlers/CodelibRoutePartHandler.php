@@ -43,6 +43,7 @@ class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart
 		if (!parent::matchValue($value)) {
 			return FALSE;
 		}
+
 		$this->value = array(
 			'__identity' => array(
 				'type' => $value
@@ -75,15 +76,6 @@ class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart
 	protected function resolveValue($value) {
 		if (!$value instanceof \F3\Twitcode\Domain\Model\Codetype) { return FALSE; }
 		$this->value = $value->getType();
-
-		// prepare label for url
-		/*
-		$label = strtolower(str_replace(' ', '-', $value->getName()));
-		$label = preg_replace('/[^0-9a-zA-Z-_]/', '', $label);
-		$this->value .= '/'.$label;
-		*/
-
-
 		return TRUE;
 	}
 
