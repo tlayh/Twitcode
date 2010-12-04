@@ -80,8 +80,14 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	 * @return void
 	 */
 	public function loginAction() {
-		$oauthToken = $this->request->getArgument('oauth_token');
 
+		// check if the user really comes back from twitter and if the oauth token is set
+		try {
+			$oauthToken = $this->request->getArgument('oauth_token');
+		} catch (\Exception $e) {
+			$oauthToken = null;
+		}
+		
 		$succesfullLogin = $this->login->loginUser($oauthToken);
 
 		if($succesfullLogin) {
