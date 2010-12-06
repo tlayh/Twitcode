@@ -33,7 +33,7 @@ require_once('/var/www/vhosts/twitcode.org/subdomains/flow/httpdocs/Packages/App
  * = Examples =
  *
  * <code title="Simple">
- * <tc:geshi code={code.code} />
+ * <tc:geshi code="{code.code}" codetype="{code.codetype.type}" />
  * </code>
  *
  * @scope prototype
