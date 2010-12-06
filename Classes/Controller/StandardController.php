@@ -221,7 +221,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 				$comment = $code->getComment();
 
 				// build short url
-				$url = 'http://flow.twitcode.org/show/';
+				$url = 'http://twitcode.org/show/';
 				$url .= $code->getUid().'/'.str_replace(' ', '-', $code->getLabel());
 
 				// use bit.ly to shorten url
