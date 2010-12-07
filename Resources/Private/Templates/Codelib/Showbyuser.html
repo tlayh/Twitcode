@@ -11,15 +11,27 @@
 
 	<h3>Twitcode snippets by user</h3>
 	<p>All your published codesnippets</p>
-	<p>
-		<f:for each="{snippets}" as="snippet">
-			<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
-				<label>Name</label> <f:raw><tc:striptag>{snippet.label}</tc:striptag></f:raw><br />
-				<label>Date</label> <f:format.date>{snippet.modified}</f:format.date><br />
-				<label>Codetype</label> {snippet.codetype.name}<br />
-				<br />
-			</f:link.action>
-		</f:for>
-	</p>
+	<table>
+		<thead>
+		<tr>
+			<td class="name">Name</td>
+			<td class="date">Date</td>
+			<td class="type">Codetype</td>
+		</tr>
+		</thead>
+		<tbody>
+			<f:for each="{snippets}" as="snippet">
+				<tr>
+					<td class="name">
+						<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
+							<f:raw><tc:striptag>{snippet.label}</tc:striptag></f:raw>
+						</f:link.action>
+					</td>
+					<td class="date"><f:format.date>{snippet.modified}</f:format.date></td>
+					<td class="type">{snippet.codetype.name}</td>
+				</tr>
+			</f:for>
+		</tbody>
+	</table>
 
 </f:section>

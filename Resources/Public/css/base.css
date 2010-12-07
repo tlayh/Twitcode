@@ -464,3 +464,30 @@ span.editable {
     margin-bottom: -17px;
     margin-top: 11px;
 }
+
+table thead {
+	color: #999999;
+}
+
+table thead td {
+	border:none;
+	border-bottom:1px solid #000000;
+}
+
+table tbody td {
+	border:none;
+	border-bottom:1px solid #999999;
+	font-size:11px;
+}
+
+table td.name {
+	width:379px;
+}
+
+table td.date {
+	width:75px;
+}
+
+table td.type {
+	width:100px;
+}
