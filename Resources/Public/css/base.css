@@ -420,14 +420,16 @@ div#codetocopy textarea {
 	height:400px;
 }
 
-ul.flashmessages {}
+ul.flashmessages {
+	background-color: #48616F;
+    margin-left: 0;
+    width: 594px;
+}
 
 ul.flashmessages li {
-    background-color: #EFEFEF;
-    border: 1px solid #AF0000;
-    color: #AF0000;
+    border: 1px solid #48616F;
+    color: #FFFFFF;
     list-style: none outside none;
-    margin-left: -24px;
     padding: 5px;
 }
 
