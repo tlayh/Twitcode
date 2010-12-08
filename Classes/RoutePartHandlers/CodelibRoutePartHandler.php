@@ -33,8 +33,7 @@ namespace F3\Twitcode\RoutePartHandlers;
 class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart {
 
 	/**
-	 * Splits the given value into the date and title of the post and sets this
-	 * value to an identity array accordingly.
+	 * Checks for the current code type
 	 *
 	 * @param string $value The value (ie. part of the request path) to match. This string is rendered by findValueToMatch()
 	 * @return boolean TRUE if the request path formally matched
@@ -43,7 +42,6 @@ class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart
 		if (!parent::matchValue($value)) {
 			return FALSE;
 		}
-
 		$this->value = array(
 			'__identity' => array(
 				'type' => $value
@@ -53,12 +51,7 @@ class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart
 	}
 
 	/**
-	 * Checks if the remaining request path starts with the path signature of a post, which
-	 * is: YYYY/MM/DD/TITLE eg. 2009/03/09/my-first-blog-entry
-	 *
-	 * If the request path matches this pattern, the matching part is returned as the "value
-	 * to match" for further processing in matchValue(). The remaining part of the requestPath
-	 * (eg. the format ".html") is ignored.
+	 * 
 	 *
 	 * @param string $requestPath The request path acting as the subject for matching in this Route Part
 	 * @return string The post identifying part of the request path or an empty string if it doesn't match
@@ -76,6 +69,7 @@ class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart
 	protected function resolveValue($value) {
 		if (!$value instanceof \F3\Twitcode\Domain\Model\Codetype) { return FALSE; }
 		$this->value = $value->getType();
+
 		return TRUE;
 	}
 
