@@ -7,7 +7,7 @@
         <f:flashMessages class="flashmessages" />
 
 		<div class="homepage-logo">
-			<img style="width:330px;" src="{f:uri.resource(path: 'images/hp_twitter.jpg')}" alt="homepage-logo" title="homepage-logo" />
+			<img style="width:330px;" src="{f:uri.resource(path: 'images/hp_twitter.jpg')}" alt="twitter-logo" title="twitter-logo" />
 		</div>
 
 		<p class="homepage" style="text-align:center;">
@@ -16,7 +16,7 @@
 
 		<div class="share-teaser">
 			<f:link.action action="create" controller="Standard" package="Twitcode">
-				<img style="width:450px" src="{f:uri.resource(path: 'images/hp_share.jpg')}" alt="homepage-logo" title="homepage-logo" />
+				<img style="width:450px" src="{f:uri.resource(path: 'images/hp_share.jpg')}" alt="create share show" title="create share show" />
 			</f:link.action>
 		</div>
 
@@ -30,21 +30,4 @@
 			</span>
 		</p>
 
-	<!--
-		<f:if condition="{logindata.loggedin}">
-			<p>Looks like you are successfully logged in. What are the next steps?</p>
-			<ul>
-				<li>
-					<f:link.action action="create" controller="Standard" package="Twitcode">
-					Create a new snippet
-					</f:link.action>
-				</li>
-				<li>
-					<f:link.action action="showbyuser" controller="Codelib" package="Twitcode">
-					Browse your own snippets
-					</f:link.action>
-				</li>
-			</ul>
-		</f:if>
-	-->
 </f:section>
