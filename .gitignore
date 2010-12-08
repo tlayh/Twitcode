@@ -1,2 +1,3 @@
 Classes/Controller/SetupController.php
 Configuration/Settings.yaml
+Configuration/Production/Settings.yaml
