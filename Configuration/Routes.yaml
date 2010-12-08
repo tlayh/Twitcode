@@ -11,7 +11,7 @@
 # Subroutes for the Twitcode package
 #
 
--
+--
     name: 'Codelibrary Routes with type'
     uriPattern: 'codelib/{@action}/{codetype}'
     defaults:
@@ -22,7 +22,7 @@
       codetype:
         handler: F3\Twitcode\RoutePartHandlers\CodelibRoutePartHandler
 
--
+--
     name: 'Codelibrary Routes'
     uriPattern: 'codelib/{@action}'
     defaults:
@@ -30,7 +30,7 @@
         @controller: Codelib
         @format: 'html'
 
--
+--
     name: 'Pages Routes'
     uriPattern: 'pages/{@action}'
     defaults:
@@ -38,7 +38,7 @@
         @controller: Pages
         @format: 'html'
 
--
+--
     name: 'Show Snippet Action Route'
     uriPattern: '{@action}/{code}'
     defaults:
@@ -49,17 +49,19 @@
       code:
         handler: F3\Twitcode\RoutePartHandlers\StandardRoutePartHandler
 
--
+--
     name: 'Standard Action Route'
     uriPattern: '{@action}'
     defaults:
         @package: Twitcode
         @controller: Standard
         @format: 'html'
+        @action: 'index'
 
--
+--
     name: 'Homepage'
     uriPattern: ''
     defaults:
         @package: Twitcode
         @format: 'html'
+        @action: 'index'
