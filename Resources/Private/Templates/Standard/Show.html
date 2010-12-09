@@ -27,8 +27,11 @@
 			<f:link.action action="edit" controller="Standard" package="Twitcode" arguments="{code: code}">
 				<img src="{f:uri.resource(path:'images/edit.gif')}" title="edit" alt="edit" />
 			</f:link.action>
-			<f:link.action action="delete" controller="Standard" package="Twitcode" arguments="{code: code}" id="deletelink">
+			<f:link.action action="delete" controller="Standard" package="Twitcode" arguments="{code: code}" class="deletelink">
 				<img src="{f:uri.resource(path:'images/delete.gif')}" title="delete" alt="delete" />
+			</f:link.action>
+			<f:link.action action="twitter" controller="Standard" package="Twitcode" arguments="{code: code}" class="twitterlink">
+				<img src="{f:uri.resource(path:'images/twitter.gif')}" title="twitter" alt="twitter" />
 			</f:link.action>
 		</span>
 	</f:if>
