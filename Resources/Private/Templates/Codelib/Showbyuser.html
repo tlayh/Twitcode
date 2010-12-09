@@ -11,12 +11,13 @@
 
 	<h3>Twitcode snippets by user</h3>
 	<p>All your published codesnippets</p>
-	<table>
+	<table class="showbyuser">
 		<thead>
 		<tr>
 			<td class="name">Name</td>
 			<td class="date">Date</td>
 			<td class="type">Codetype</td>
+			<td>&nbsp;</td>
 		</tr>
 		</thead>
 		<tbody>
@@ -29,6 +30,19 @@
 					</td>
 					<td class="date"><f:format.date>{snippet.modified}</f:format.date></td>
 					<td class="type">{snippet.codetype.name}</td>
+					<td>
+						<span class="editable">
+							<f:link.action action="edit" controller="Standard" package="Twitcode" arguments="{code: snippet}">
+								<img src="{f:uri.resource(path:'images/edit.gif')}" title="edit" alt="edit" />
+							</f:link.action>
+							<f:link.action action="delete" controller="Standard" package="Twitcode" arguments="{code: snippet}" class="deletelink">
+								<img src="{f:uri.resource(path:'images/delete.gif')}" title="delete" alt="delete" />
+							</f:link.action>
+							<f:link.action action="twitter" controller="Standard" package="Twitcode" arguments="{code: snippet}" class="twitterlink">
+								<img src="{f:uri.resource(path:'images/twitter.gif')}" title="twitter" alt="twitter" />
+							</f:link.action>
+						</span>
+					</td>
 				</tr>
 			</f:for>
 		</tbody>

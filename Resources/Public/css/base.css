@@ -474,16 +474,18 @@ table thead {
 table thead td {
 	border:none;
 	border-bottom:1px solid #000000;
+	padding:5px;
 }
 
 table tbody td {
 	border:none;
 	border-bottom:1px solid #999999;
 	font-size:11px;
+	padding:5px;
 }
 
 table td.name {
-	width:379px;
+	width:387px;
 }
 
 table td.date {
@@ -492,4 +494,37 @@ table td.date {
 
 table td.type {
 	width:100px;
+}
+
+table.showbyuser td span.editable {
+	margin:0;
+}
+
+table.showbyuser thead td {
+	border:none;
+	border-bottom:1px solid #000000;
+	padding:2px;
+}
+
+table.showbyuser tbody td {
+	border:none;
+	border-bottom:1px solid #999999;
+	font-size:11px;
+	padding:2px;
+}
+
+table.showbyuser td.name {
+	width:355px;
+}
+
+table.showbyuser td.date {
+	width:75px;
+}
+
+table.showbyuser td.type {
+	width:80px;
+}
+
+table.showbyuser td span.editable {
+	margin:0;
 }

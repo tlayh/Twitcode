@@ -55,6 +55,11 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	protected $consumerSecret = '';
 
 	/**
+	 * @var string $baseUrl used for bit.ly
+	 */
+	protected $baseUrl;
+
+	/**
 	 * Inject the settings for oauth
 	 *
 	 * @param array $settings
@@ -63,6 +68,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	public function injectSettings(array $settings) {
 		$this->consumerKey = $settings['oauth']['consumerkey'];
 		$this->consumerSecret = $settings['oauth']['consumersecret'];
+	    $this->baseUrl = $settings['bitly']['url'];
 	}
 
 	/**
@@ -216,45 +222,72 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 
 			// twitter snippet if checkbox is NOT checked
 			if($this->request->getArgument('twitter') != 1) {
-
-				// build message text
-				$comment = $code->getComment();
-
-				// build short url
-				$url = 'http://twitcode.org/show/';
-				$url .= $code->getUid().'/'.str_replace(' ', '-', $code->getLabel());
-
-				// use bit.ly to shorten url
-				$urlToShorten = 'http://api.bit.ly/v3/shorten?login=twitcodeorg&apiKey=R_9cde3d48cc497d36ddaa84bb41278b48&longUrl='.$url.'&format=txt';
-				$handle = fopen($urlToShorten, 'r');
-				$shortenUrl = fgets($handle);
-
-				$statusText = $shortenUrl.' - '.$comment;
-				if(strlen($statusText) > 140) {
-					$statusText = substr($statusText, 0 , 136).'...';
-				}
-
-				// twitter snippet
-				$this->twitterObj = new \F3\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
-				$this->twitterObj->setToken($data['oauth_token']);
-				$token = $this->twitterObj->getAccessToken(array('oauth_verifier' => $data['oauth_token_secret']));
-				$this->twitterObj->setToken($data['oauth_token'], $data['oauth_token_secret']);
-				$resp = $this->twitterObj->post('/statuses/update.json', array('status' => $statusText));
-				if($resp->__get('code') === 200) {
-					$this->flashMessageContainer->add('Codesnippet twittered successfully');
-				} else {
-					$this->flashMessageContainer->add('Twittering codesnippet failed');
-				}
-
+				$this->twitterSnippet($code, $data);
 			}
-			// redirect to showSnippetAction
+
+			// add success message
 			$this->flashMessageContainer->add('Codesnippet added successfully');
 
 		} else {
-			$this->flashMessageContainer->add('Please login first');
+			// add error message
+			$this->flashMessageContainer->add('Looks like for some reason you got here without being logged in. Please login first.');
 		}
 
+		// redirect to showSnippetAction
 		$this->redirect('show', 'Standard', 'Twitcode', array('code'=>$code));
+	}
+
+
+	public function twitterAction(\F3\Twitcode\Domain\Model\Code $code) {
+		$this->getLoginData();
+		if($this->login->isLoggedIn()) {
+			// get current user data
+			$data = $this->login->checkSession();
+		    $this->twitterSnippet($code, $data);
+		} else {
+			// add error message
+			$this->flashMessageContainer->add('Looks like for some reason you got here without being logged in. Please login first.');
+		}
+
+	    $this->redirect('show', 'Standard', 'Twitcode', array('code'=>$code));
+	}
+
+	/**
+	 * generate short url via bit.ly and send snippet to twitter
+	 *
+	 * @param \F3\Twitcode\Domain\Model\Code $code
+	 * @param array $data
+	 * @return void
+	 */
+	protected function twitterSnippet(\F3\Twitcode\Domain\Model\Code $code, $data) {
+		// build message text
+		$comment = $code->getComment();
+
+		// build short url
+		$url = 'http://'.$this->baseUrl.'/show/';
+		$url .= $code->getUid().'/'.str_replace(' ', '-', $code->getLabel());
+
+		// use bit.ly to shorten url
+		$urlToShorten = 'http://api.bit.ly/v3/shorten?login=twitcodeorg&apiKey=R_9cde3d48cc497d36ddaa84bb41278b48&longUrl='.$url.'&format=txt';
+		$handle = fopen($urlToShorten, 'r');
+		$shortenUrl = fgets($handle);
+
+		$statusText = $shortenUrl.' - '.$comment;
+		if(strlen($statusText) > 140) {
+			$statusText = substr($statusText, 0 , 136).'...';
+		}
+
+		// twitter snippet
+		$this->twitterObj = new \F3\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
+		$this->twitterObj->setToken($data['oauth_token']);
+		$token = $this->twitterObj->getAccessToken(array('oauth_verifier' => $data['oauth_token_secret']));
+		$this->twitterObj->setToken($data['oauth_token'], $data['oauth_token_secret']);
+		$resp = $this->twitterObj->post('/statuses/update.json', array('status' => $statusText));
+		if($resp->__get('code') === 200) {
+			$this->flashMessageContainer->add('Codesnippet twittered successfully');
+		} else {
+			$this->flashMessageContainer->add('Twittering codesnippet failed');
+		}
 	}
 
 	/**
