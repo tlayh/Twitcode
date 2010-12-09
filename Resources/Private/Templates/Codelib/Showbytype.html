@@ -10,14 +10,27 @@
 	<f:render partial="Back" />
 
 	<h3>Twitcode snippets by type: <b>{codetype.name}</b></h3>
-	<ul class="snippetsbytype">
-		<f:for each="{snippets}" as="snippet">
-			<li>
-			<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
-				<f:raw><tc:striptag>{snippet.label}</tc:striptag></f:raw><br />
-			</f:link.action>
-			</li>
-		</f:for>
-	</ul>
+	<table>
+		<thead>
+		<tr>
+			<td class="name">Name</td>
+			<td class="date">Date</td>
+			<td class="type">Codetype</td>
+		</tr>
+		</thead>
+		<tbody>
+			<f:for each="{snippets}" as="snippet">
+				<tr>
+					<td class="name">
+						<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
+							<f:raw><tc:striptag>{snippet.label}</tc:striptag></f:raw>
+						</f:link.action>
+					</td>
+					<td class="date"><f:format.date>{snippet.modified}</f:format.date></td>
+					<td class="type">{snippet.codetype.name}</td>
+				</tr>
+			</f:for>
+		</tbody>
+	</table>
 
 </f:section>
