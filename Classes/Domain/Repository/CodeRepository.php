@@ -86,6 +86,7 @@ class CodeRepository extends \F3\FLOW3\Persistence\Repository {
 	public function findByCodetype(\F3\Twitcode\Domain\Model\Codetype $ct) {
 		$query = $this->createQuery();
 		$result = $query->matching($query->equals('codetype', $ct))
+				->setOrderings(array('modified' => \F3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
 				->execute();
 		return $result;
 	}
