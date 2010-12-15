@@ -90,11 +90,13 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 		// check if the user really comes back from twitter and if the oauth token is set
 		try {
 			$oauthToken = $this->request->getArgument('oauth_token');
+		    $oauthVerifier = $this->request->getArgument('oauth_verifier');
 		} catch (\Exception $e) {
 			$oauthToken = null;
+		    $oauthVerifier = null;
 		}
 		
-		$succesfullLogin = $this->login->loginUser($oauthToken);
+		$succesfullLogin = $this->login->loginUser($oauthToken, $oauthVerifier);
 
 		if($succesfullLogin) {
 			$this->flashMessageContainer->add('Congratulations!! Looks like you still remember your twitter account. Your login was successful!!');

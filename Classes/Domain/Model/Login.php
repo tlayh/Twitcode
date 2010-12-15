@@ -131,16 +131,19 @@ class Login {
 	 *
 	 * @return boolean
 	 */
-	public function loginUser($oauthtoken) {
+	public function loginUser($oauthtoken, $oauthVerifier) {
 		$success = false;
 
 		try {
+
 			$this->twitterObj = new \F3\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
+			$this->twitterObj->useSSL(true);
 
 			$this->twitterObj->setToken($this->oauthToken);
-			$token = $this->twitterObj->getAccessToken(array('oauth_verifier' => $this->oauthTokenSecret));
+			$token = $this->twitterObj->getAccessToken(array('oauth_verifier' => $oauthVerifier));
 			$this->twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);
-			$twitterInfo = $this->twitterObj->get('/account/verify_credentials.json');
+
+			$twitterInfo = $this->twitterObj->get_accountVerify_credentials();
 
 			// if login is successful, set session data
 			if($twitterInfo->__get('code') === 200) {
