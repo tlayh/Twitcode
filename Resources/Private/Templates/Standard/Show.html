@@ -56,5 +56,30 @@
 			<textarea readonly>{code.code}</textarea>
 		</div>
 	</div>
+	<!-- end of popup layer -->
+
+	<!-- area for comments -->
+	<div id="wrapper-discussions">
+
+		<!--list discussions for this snippet -->
+
+		<!-- show form for discussion -->
+		<f:if condition="{loggedin}">
+		<f:then>
+			<f:form action="save" controller="Discussion" package="Twitcode" object="{discussion}" name="discussion" method="post">
+				<label for="discussion">Comment:</label>
+				<f:form.hidden id="code" property="code" value={code} />
+				<f:form.textarea name="discussion" id="discussion" property="discussion" rows="5" cols="70" /><br /><br />
+				<f:form.submit class="submit" value="" />
+			</f:form>
+		</f:then>
+		<f:else>
+				<p>Please loggin to leave a comment!!</p>
+		</f:else>
+		</f:if>
+		<!-- end form for discussions -->
+
+	</div>
+	<!-- end of comments -->
 
 </f:section>

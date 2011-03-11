@@ -33,10 +33,10 @@ namespace F3\Twitcode\Controller;
 class StandardController extends \F3\Twitcode\Controller\DefaultController {
 
 	/**
-	 * @var \F3\Twitcode\Domain\Repository\BookRepository
+	 * @var \F3\Twitcode\Domain\Repository\DiscussionRepository
 	 * @inject
 	*/
-	protected $bookRepository;
+	protected $discussionRepository;
 
 	/**
 	 * @var \F3\Twitcode\Domain\Repository\UserRepository
@@ -134,6 +134,12 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 			$this->view->assign('editable', true);
 		} else {
 			$this->view->assign('editable', false);
+		}
+
+		if($this->login->isLoggedIn()) {
+			$this->view->assign('loggedin', true);
+		} else {
+			$this->view->assign('loogedin', false);
 		}
 
 		$this->view->assign('code', $code);

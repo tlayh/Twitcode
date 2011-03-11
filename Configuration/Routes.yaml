@@ -31,6 +31,14 @@
         @format: 'html'
 
 --
+    name: 'Discussion Routes'
+    uriPattern: 'discussion/{@action}'
+    defaults:
+        @package: Twitcode
+        @controller: Discussion
+        @format: 'html'
+
+--
     name: 'Pages Routes'
     uriPattern: 'pages/{@action}'
     defaults:
