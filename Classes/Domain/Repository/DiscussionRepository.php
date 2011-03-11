@@ -26,8 +26,9 @@ namespace F3\Twitcode\Domain\Repository;
  ***************************************************************/
 
 /**
- * A repository for books
+ * A repository for comments
  */
-class BookRepository extends \F3\FLOW3\Persistence\Repository {
+class DiscussionRepository extends \F3\FLOW3\Persistence\Repository {
+
 }
 ?>
