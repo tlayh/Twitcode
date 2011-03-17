@@ -24,22 +24,16 @@ namespace F3\Twitcode\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+	
 /**
- * Discussion controller for the Twitcode package
+ * ProfilController
  *
- * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
+ * Show settings of a user and save them
+ *
+ * @author Thomas Layh <thomas.@layh.com>
+ * Date: 13.03.11
+ * Time: 19:50
  */
-class DiscussionController extends \F3\Twitcode\Controller\DefaultController {
-
-	/**
-	 * Save the discussion
-	 *
-	 * @param \F3\Twitcode\Domain\Model\Discussion $discussion
-	 * @return void
-	 */
-	public function saveAction(\F3\Twitcode\Domain\Model\Discussion $discussion, \F3\Twitcode\Domain\Model\Code $code) {
-		die('discussion controller action = save');
-	}
+class ProfilController extends \F3\FLOW3\MVC\Controller\ActionController {
 
 }

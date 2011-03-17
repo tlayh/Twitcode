@@ -121,7 +121,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	}
 
 	/**
-	 * display snippet with short url
+	 * display snippet with
 	 *
 	 * @dontvalidate $code
 	 * @return void

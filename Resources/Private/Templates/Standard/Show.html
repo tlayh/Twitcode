@@ -66,9 +66,9 @@
 		<!-- show form for discussion -->
 		<f:if condition="{loggedin}">
 		<f:then>
-			<f:form action="save" controller="Discussion" package="Twitcode" object="{discussion}" name="discussion" method="post">
+			<f:form actionUri="/discussion/save" object="{discussion}" name="discussion" method="post">
+				<f:form.hidden name="code" id="code" property="code" value="{code}" />
 				<label for="discussion">Comment:</label>
-				<f:form.hidden id="code" property="code" value={code} />
 				<f:form.textarea name="discussion" id="discussion" property="discussion" rows="5" cols="70" /><br /><br />
 				<f:form.submit class="submit" value="" />
 			</f:form>
