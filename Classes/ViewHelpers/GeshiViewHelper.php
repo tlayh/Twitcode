@@ -25,7 +25,7 @@ namespace F3\Twitcode\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-require_once('/var/www/vhosts/twitcode.org/subdomains/flow/httpdocs/Packages/Application/Twitcode/Resources/Private/Lib/geshi/geshi.php');
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Application/Twitcode/Resources/Private/Lib/geshi/geshi.php');
 
 /**
  * A view helper to display the sintaxhighlight using GeSHi

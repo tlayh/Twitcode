@@ -35,9 +35,10 @@ class Code {
 
 	/**
 	 * @var integer
-	 * @identity
+	 * @Id
+	 * @GeneratedValue
 	 */
-	protected $uid = 0;
+	protected $uid;
 
 	/**
 	 * The code label

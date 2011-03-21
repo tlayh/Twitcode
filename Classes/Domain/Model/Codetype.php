@@ -44,7 +44,7 @@ class Codetype {
 	 * The type
 	 *
 	 * @var string
-	 * @identity
+	 * @Id
 	 */
 	protected $type = '';
 

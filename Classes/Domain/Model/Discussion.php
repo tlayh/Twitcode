@@ -34,6 +34,13 @@ namespace F3\Twitcode\Domain\Model;
 class Discussion {
 
 	/**
+	 * @var integer
+	 * @Id
+	 * @GeneratedValue
+	 */
+	protected $id = 0;
+
+	/**
 	 * The user the discussion belongs to
 	 * @var F3\Twitcode\Domain\Model\User
 	 */
@@ -61,6 +68,14 @@ class Discussion {
 
 	public function __construct() {
 		$this->modified = new \DateTime();
+	}
+
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	public function getId() {
+		return $this->id;
 	}
 
 	/**

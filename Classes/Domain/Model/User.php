@@ -35,6 +35,13 @@ namespace F3\Twitcode\Domain\Model;
 class User {
 
 	/**
+	 * @var integer
+	 * @Id
+	 * @GeneratedValue
+	 */
+	protected $id;
+
+	/**
 	 * The screen name
 	 *
 	 * @var string
@@ -47,6 +54,14 @@ class User {
 	 * @var integer
 	 */
 	protected $user_id;
+
+	public function setId($id) {
+		$this->id = $id;
+	}
+
+	public function getId($id) {
+		return $this->id;
+	}
 
 	/**
 	 * @return string
