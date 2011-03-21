@@ -113,7 +113,7 @@ class Login {
 
 		$this->twitterObj = new \F3\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
 
-		/** @var $requestToken \F3\Twitcode\Lib\oauth\EpiOAuthResponse */
+		/** @var $requestToken EpiOAuthResponse */
 		$requestToken = $this->twitterObj->getRequestToken();
 
 		$this->oauthToken = $requestToken->__get('oauth_token');
@@ -135,7 +135,6 @@ class Login {
 		$success = false;
 
 		try {
-
 			$this->twitterObj = new \F3\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
 			$this->twitterObj->useSSL(true);
 

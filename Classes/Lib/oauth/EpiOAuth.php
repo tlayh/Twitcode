@@ -148,7 +148,7 @@ class EpiOAuth
     curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
     curl_setopt($ch, CURLOPT_TIMEOUT, $this->requestTimeout);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectionTimeout);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    //curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_ENCODING, '');
     if(isset($_SERVER ['SERVER_ADDR']) && !empty($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] != '127.0.0.1')
       curl_setopt($ch, CURLOPT_INTERFACE, $_SERVER ['SERVER_ADDR']);
@@ -363,52 +363,6 @@ class EpiOAuth
   }
 }
 
-class EpiOAuthResponse
-{
-  private $__resp;
-  protected $debug = false;
 
-  public function __construct($resp)
-  {
-    $this->__resp = $resp;
-  }
-
-  public function __get($name)
-  {
-    if($this->__resp->code != 200)
-      EpiOAuthException::raise($this->__resp, $this->debug);
-
-    parse_str($this->__resp->data, $result);
-    foreach($result as $k => $v)
-    {
-      $this->$k = $v;
-    }
-
-    return isset($result[$name]) ? $result[$name] : null;
-  }
-
-  public function __toString()
-  {
-    return $this->__resp->data;
-  }
-}
-
-class EpiOAuthException extends \Exception
-{
-  public static function raise($response, $debug)
-  {
-    $message = $response->responseText;
-
-    switch($response->code)
-    {
-      case 400:
-        throw new EpiOAuthBadRequestException($message, $response->code);
-      case 401:
-        throw new EpiOAuthUnauthorizedException($message, $response->code);
-      default:
-        throw new EpiOAuthException($message, $response->code);
-    }
-  }
-}
 class EpiOAuthBadRequestException extends EpiOAuthException{}
 class EpiOAuthUnauthorizedException extends EpiOAuthException{}
