@@ -13,7 +13,7 @@
 Twitcode:
 
    oauth:
-     consumerkey: <consumerkey>
-     consumersecret: <consumersecret>
+     consumerkey: 2Y9OuyccVEgaEJFtVMQeyg
+     consumersecret: mx6gJaMbBfSDxlBuO9N74quNLVdcEjbFJAb1wQB7uQ
    bitly:
-     url: <url>
+     url: flow.twitcode.org
