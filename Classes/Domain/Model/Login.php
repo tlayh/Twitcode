@@ -94,12 +94,12 @@ class Login {
 	protected $consumerSecret = '';
 
 	/**
-	 * Inject the settings for oauth
+	 * Set the settings for oauth
 	 *
 	 * @param array $settings
 	 * @return void
 	 */
-	public function injectSettings(array $settings) {
+	public function setSettings(array $settings) {
 		$this->consumerKey = $settings['oauth']['consumerkey'];
 		$this->consumerSecret = $settings['oauth']['consumersecret'];
 	}
