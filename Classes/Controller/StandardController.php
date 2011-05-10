@@ -59,6 +59,9 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	 */
 	protected $baseUrl;
 
+	/** @var array $settings */
+	protected $settings;
+
 	/**
 	 * Inject the settings for oauth
 	 *
@@ -66,9 +69,18 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	 * @return void
 	 */
 	public function injectSettings(array $settings) {
-		$this->consumerKey = $settings['oauth']['consumerkey'];
-		$this->consumerSecret = $settings['oauth']['consumersecret'];
-	    $this->baseUrl = $settings['bitly']['url'];
+
+		$this->settings = $settings;
+
+		if(isset($settings['oauth']['consumerkey'])) {
+			$this->consumerKey = $settings['oauth']['consumerkey'];
+		}
+		if (isset($settings['oauth']['consumersecret'])) {
+			$this->consumerSecret = $settings['oauth']['consumersecret'];
+		}
+		if (isset($settings['bitly']['url'])) {
+			$this->baseUrl = $settings['bitly']['url'];
+		}
 	}
 
 	/**
@@ -113,6 +125,9 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	 * @return void
 	 */
 	public function indexAction() {
+
+		$this->login->setSettings($this->settings);
+
 		$this->initSidebarLogin();
 
 		$snippets = $this->codeRepository->findAll()->toArray();
