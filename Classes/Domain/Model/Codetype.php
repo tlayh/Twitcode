@@ -43,6 +43,7 @@ class Codetype {
 	/**
 	 * The type
 	 *
+	 * @identity
 	 * @var string
 	 * @Id
 	 */

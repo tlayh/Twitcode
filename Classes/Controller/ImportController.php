@@ -1,11 +1,11 @@
 <?php
 declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Domain\Model;
+namespace F3\Twitcode\Controller;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2010 Thomas Layh <info@twitcode.org>
+ *  (c) 2011 Thomas Layh <info@twitcode.org>
  *  All rights reserved
  *
  *  This script is part of the Twitcode project. The Twitcode project is
@@ -26,72 +26,17 @@ namespace F3\Twitcode\Domain\Model;
  ***************************************************************/
 
 /**
- * A book
+ * Import controller for the Twitcode package
  *
- * @scope prototype
- * @entity
- * @lazy
+ * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class User {
+class ImportController extends \F3\FLOW3\MVC\Controller\ActionController {
 
 	/**
-	 * @identity
-	 * @var integer
-	 * @Id
-	 * @GeneratedValue
-	 */
-	protected $id;
-
-	/**
-	 * The screen name
-	 *
-	 * @var string
-	 */
-	protected $name;
-
-	/**
-	 * The userid
-	 *
-	 * @var integer
-	 */
-	protected $user_id;
-
-	public function setId($id) {
-		$this->id = $id;
-	}
-
-	public function getId($id) {
-		return $this->id;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName() {
-		return $this->name;
-	}
-
-	/**
-	 * @param string $name
+	 * indexAction
 	 * @return void
 	 */
-	public function setName($name) {
-		$this->name = $name;
+	public function indexAction() {
 	}
 
-	/**
-	 * @param integer $user_id
-	 * @return void
-	 */
-	public function setUserId($user_id) {
-		$this->user_id = $user_id;
-	}
-
-	/**
-	 * @return integer
-	 */
-	public function getUserId() {
-		return $this->user_id;
-	}
 }
-?>

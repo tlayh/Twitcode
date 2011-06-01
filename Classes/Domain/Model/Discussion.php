@@ -34,11 +34,12 @@ namespace F3\Twitcode\Domain\Model;
 class Discussion {
 
 	/**
+	 * @identity
 	 * @var integer
 	 * @Id
 	 * @GeneratedValue
 	 */
-	protected $id = 0;
+	protected $id;
 
 	/**
 	 * The user the discussion belongs to

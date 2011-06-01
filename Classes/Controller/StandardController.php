@@ -59,7 +59,9 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	 */
 	protected $baseUrl;
 
-	/** @var array $settings */
+	/**
+	 * @var array
+	 */
 	protected $settings;
 
 	/**
@@ -69,6 +71,8 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	 * @return void
 	 */
 	public function injectSettings(array $settings) {
+
+		var_dump($settings);
 
 		$this->settings = $settings;
 
@@ -125,6 +129,8 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	 * @return void
 	 */
 	public function indexAction() {
+
+		var_dump($this->settings); die();
 
 		$this->login->setSettings($this->settings);
 

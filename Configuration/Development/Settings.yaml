@@ -1,18 +1,6 @@
-#                                                                        #
-# Configuration for the FLOW3 Framework                                  #
-#                                                                        #
-# This file contains the default base configuration for the FLOW3        #
-# Framework. Don't modify this file but add configuration options to     #
-# the FLOW3.yaml file in the in global Configuration/ directory instead. #
-#                                                                        #
-
-# http://flow3.typo3.org/documentation/manuals/flow3/flow3.configurationframework/#id36401944
-
-# @package Twitcode
-
-FLOW3:
-   oauth:
-     consumerkey: 2Y9OuyccVEgaEJFtVMQeyg
-     consumersecret: mx6gJaMbBfSDxlBuO9N74quNLVdcEjbFJAb1wQB7uQ
-   bitly:
-     url: flow.twitcode.org
+Events:
+  oauth:
+    consumerkey: 2Y9OuyccVEgaEJFtVMQeyg
+    consumersecret: mx6gJaMbBfSDxlBuO9N74quNLVdcEjbFJAb1wQB7uQ
+  bitly:
+    url: flow.twitcode.org

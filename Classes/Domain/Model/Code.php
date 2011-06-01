@@ -34,6 +34,7 @@ namespace F3\Twitcode\Domain\Model;
 class Code {
 
 	/**
+	 * @identity
 	 * @var integer
 	 * @Id
 	 * @GeneratedValue
