@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\ViewHelpers;
+namespace Layh\Twitcode\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -38,7 +37,7 @@ namespace F3\Twitcode\ViewHelpers;
  * @scope prototype
  */
 
-class ReplaceerrorViewHelper extends \F3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class ReplaceerrorViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * Initialize arguments

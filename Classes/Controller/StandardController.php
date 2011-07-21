@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Controller;
+namespace Layh\Twitcode\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -26,20 +25,20 @@ namespace F3\Twitcode\Controller;
  ***************************************************************/
 
 /**
- * Standard controller for the Twitcode package 
+ * Standard controller for the Twitcode package
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class StandardController extends \F3\Twitcode\Controller\DefaultController {
+class StandardController extends \Layh\Twitcode\Controller\DefaultController {
 
 	/**
-	 * @var \F3\Twitcode\Domain\Repository\DiscussionRepository
+	 * @var \Layh\Twitcode\Domain\Repository\DiscussionRepository
 	 * @inject
 	*/
 	protected $discussionRepository;
 
 	/**
-	 * @var \F3\Twitcode\Domain\Repository\UserRepository
+	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
 	 * @inject
 	 */
 	protected $userRepository;
@@ -111,7 +110,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 			$oauthToken = null;
 		    $oauthVerifier = null;
 		}
-		
+
 		$succesfullLogin = $this->login->loginUser($oauthToken, $oauthVerifier);
 
 		if($succesfullLogin) {
@@ -125,7 +124,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 
 	/*
 	 * index action
-	 * 
+	 *
 	 * @return void
 	 */
 	public function indexAction() {
@@ -147,7 +146,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	 * @dontvalidate $code
 	 * @return void
 	 */
-	public function showAction(\F3\Twitcode\Domain\Model\Code $code) {
+	public function showAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$this->initSidebarLogin();
 
 		// check if code belongs to current user
@@ -171,7 +170,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	 *
 	 * @return void
 	 */
-	public function editAction(\F3\Twitcode\Domain\Model\Code $code) {
+	public function editAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$this->initSidebarLogin();
 
 	    // check for login
@@ -189,9 +188,9 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	/**
 	 * update an edited snippet
 	 *
-	 * @param \F3\Twitcode\Domain\Model\Code $code
+	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 */
-	public function updateAction(\F3\Twitcode\Domain\Model\Code $code) {
+	public function updateAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$this->codeRepository->update($code);
 		$this->flashMessageContainer->add('Congratulations!! Your snippet was changed.');
 	    $this->redirect('show', 'Standard', 'Twitcode', array('code'=>$code));
@@ -200,13 +199,13 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	/**
 	 * show snippet form
 	 *
-	 * @param \F3\Twitcode\Domain\Model\Code $code
+	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 * @dontvalidate $code
 	 * @return void
 	 */
-	public function createAction(\F3\Twitcode\Domain\Model\Code $code=NULL) {
+	public function createAction(\Layh\Twitcode\Domain\Model\Code $code=NULL) {
 		$this->initSidebarLogin();
-		
+
 		// check for login
 		if($this->login->isLoggedIn()) {
 			// assign codetypes
@@ -222,11 +221,11 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	/**
 	 * save a new snippet
 	 *
-	 * @param \F3\Twitcode\Domain\Model\Code $code
+	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 *
 	 * @return void
 	 */
-	public function saveAction(\F3\Twitcode\Domain\Model\Code $code) {
+	public function saveAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$message = '';
 
 		// check for login
@@ -243,7 +242,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 			$code->setModified($dateTime);
 
 			// get uid and set +1
-			$uid = $this->codeRepository->findNextHighestUidRecord(); /** @var F3\Twitcode\Domain\Model\Code */
+			$uid = $this->codeRepository->findNextHighestUidRecord(); /** @var \Layh\Twitcode\Domain\Model\Code */
 			$code->setUid(($uid->getUid()+1));
 
 			// persist snippet
@@ -267,7 +266,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	}
 
 
-	public function twitterAction(\F3\Twitcode\Domain\Model\Code $code) {
+	public function twitterAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$this->getLoginData();
 		if($this->login->isLoggedIn()) {
 			// get current user data
@@ -284,11 +283,11 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	/**
 	 * generate short url via bit.ly and send snippet to twitter
 	 *
-	 * @param \F3\Twitcode\Domain\Model\Code $code
+	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 * @param array $data
 	 * @return void
 	 */
-	protected function twitterSnippet(\F3\Twitcode\Domain\Model\Code $code, $data) {
+	protected function twitterSnippet(\Layh\Twitcode\Domain\Model\Code $code, $data) {
 		// build message text
 		$comment = $code->getComment();
 
@@ -307,7 +306,7 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 		}
 
 		// twitter snippet
-		$this->twitterObj = new \F3\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
+		$this->twitterObj = new \Layh\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
 		$this->twitterObj->setToken($data['oauth_token']);
 		$token = $this->twitterObj->getAccessToken(array('oauth_verifier' => $data['oauth_token_secret']));
 		$this->twitterObj->setToken($data['oauth_token'], $data['oauth_token_secret']);
@@ -322,9 +321,9 @@ class StandardController extends \F3\Twitcode\Controller\DefaultController {
 	/**
 	 * delete a snippet
 	 *
-	 * @param \F3\Twitcode\Domain\Model\Code $code
+	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 */
-	public function deleteAction(\F3\Twitcode\Domain\Model\Code $code) {
+	public function deleteAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$this->codeRepository->remove($code);
 	    $this->flashMessageContainer->add('Snippet deleted successfully');
 	    $this->redirect('index');

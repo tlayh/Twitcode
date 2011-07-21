@@ -8,25 +8,25 @@
 #                                                                        #
 
 ##
-# Subroutes for the Twitcode package
+# Subroutes for the Layh.Twitcode package
 #
 
 --
     name: 'Codelibrary Routes with type'
     uriPattern: 'codelib/{@action}/{codetype}'
     defaults:
-        @package: Twitcode
+        @package: Layh.Twitcode
         @controller: Codelib
         @format: 'html'
     routeParts:
       codetype:
-        handler: F3\Twitcode\RoutePartHandlers\CodelibRoutePartHandler
+        handler: Layh\Twitcode\RoutePartHandlers\CodelibRoutePartHandler
 
 --
     name: 'Codelibrary Routes'
     uriPattern: 'codelib/{@action}'
     defaults:
-        @package: Twitcode
+        @package: Layh.Twitcode
         @controller: Codelib
         @format: 'html'
 
@@ -34,7 +34,7 @@
     name: 'Discussion Routes'
     uriPattern: 'discussion/{@action}'
     defaults:
-        @package: Twitcode
+        @package: Layh.Twitcode
         @controller: Discussion
         @format: 'html'
 
@@ -42,7 +42,7 @@
     name: 'Pages Routes'
     uriPattern: 'pages/{@action}'
     defaults:
-        @package: Twitcode
+        @package: Layh.Twitcode
         @controller: Pages
         @format: 'html'
 
@@ -50,18 +50,18 @@
     name: 'Show Snippet Action Route'
     uriPattern: '{@action}/{code}'
     defaults:
-        @package: Twitcode
+        @package: Layh.Twitcode
         @controller: Standard
         @format: 'html'
     routeParts:
       code:
-        handler: F3\Twitcode\RoutePartHandlers\StandardRoutePartHandler
+        handler: Layh\Twitcode\RoutePartHandlers\StandardRoutePartHandler
 
 --
     name: 'Standard Action Route'
     uriPattern: '{@action}'
     defaults:
-        @package: Twitcode
+        @package: Layh.Twitcode
         @controller: Standard
         @format: 'html'
         @action: 'index'
@@ -70,6 +70,6 @@
     name: 'Homepage'
     uriPattern: ''
     defaults:
-        @package: Twitcode
+        @package: Layh.Twitcode
         @format: 'html'
         @action: 'index'

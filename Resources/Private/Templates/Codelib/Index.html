@@ -1,4 +1,4 @@
-{namespace tc=F3\Twitcode\ViewHelpers}
+{namespace tc=Layh\Twitcode\ViewHelpers}
 <f:layout name="Index.html" />
 
 <f:section name="content">
@@ -14,7 +14,7 @@
 	<ul class="showbytype">
 		<f:for each="{codetypes}" as="ct">
 			<li>
-			<f:link.action action="showbytype" controller="Codelib" package="Twitcode" arguments="{codetype: ct.codetype}">
+			<f:link.action action="showbytype" controller="Codelib" package="Layh.Twitcode" arguments="{codetype: ct.codetype}">
 				{ct.codetype.name} <span class="blue">({ct.count})</span><br />
 			</f:link.action>
 			</li>

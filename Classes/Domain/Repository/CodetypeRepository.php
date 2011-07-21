@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Domain\Repository;
+namespace Layh\Twitcode\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -28,10 +27,10 @@ namespace F3\Twitcode\Domain\Repository;
 /**
  * A repository for books
  */
-class CodetypeRepository extends \F3\FLOW3\Persistence\Repository {
+class CodetypeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 
 	/**
-	 * @var F3\Twitcode\Domain\Repository\CodeRepository
+	 * @var Layh\Twitcode\Domain\Repository\CodeRepository
 	 * @inject
 	 */
 	protected $codeRepository;
@@ -44,7 +43,7 @@ class CodetypeRepository extends \F3\FLOW3\Persistence\Repository {
         $query = $this->createQuery();
         $result = $query
                 ->matching($query->logicalNot($query->equals('name', '')))
-				->setOrderings(array('name' => \F3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING))
+				->setOrderings(array('name' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING))
                 ->execute();
         return $result->toArray();
     }
@@ -59,7 +58,7 @@ class CodetypeRepository extends \F3\FLOW3\Persistence\Repository {
 		$query = $this->createQuery();
 		$codeTypes = $query
 				->matching($query->logicalNot($query->equals('name', '')))
-				->setOrderings(array('name' => \F3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING))
+				->setOrderings(array('name' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING))
 				->execute();
 
 		$codetypesWithSnippets = array();
@@ -77,7 +76,7 @@ class CodetypeRepository extends \F3\FLOW3\Persistence\Repository {
 		}
 
 		return $codetypesWithSnippets;
-		 
+
 	}
 
 	/**

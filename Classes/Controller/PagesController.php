@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Controller;
+namespace Layh\Twitcode\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -25,7 +24,7 @@ namespace F3\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class PagesController extends \F3\Twitcode\Controller\DefaultController {
+class PagesController extends \Layh\Twitcode\Controller\DefaultController {
 
 	public function aboutAction() {
 		$this->initSidebarLogin();

@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode;
+namespace Layh\Twitcode;
 
-class Package extends \F3\FLOW3\Package {}
- 
+class Package extends \TYPO3\FLOW3\Package {}
+

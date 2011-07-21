@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Controller;
+namespace Layh\Twitcode\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -30,15 +29,15 @@ namespace F3\Twitcode\Controller;
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class DiscussionController extends \F3\Twitcode\Controller\DefaultController {
+class DiscussionController extends \Layh\Twitcode\Controller\DefaultController {
 
 	/**
 	 * Save the discussion
 	 *
-	 * @param \F3\Twitcode\Domain\Model\Discussion $discussion
+	 * @param \Layh\Twitcode\Domain\Model\Discussion $discussion
 	 * @return void
 	 */
-	public function saveAction(\F3\Twitcode\Domain\Model\Discussion $discussion, \F3\Twitcode\Domain\Model\Code $code) {
+	public function saveAction(\Layh\Twitcode\Domain\Model\Discussion $discussion, \Layh\Twitcode\Domain\Model\Code $code) {
 		die('discussion controller action = save');
 	}
 

@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\ViewHelpers;
+namespace Layh\Twitcode\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -25,7 +24,7 @@ namespace F3\Twitcode\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Application/Twitcode/Resources/Private/Lib/geshi/geshi.php');
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Application/Layh.Twitcode/Resources/Private/Lib/geshi/geshi.php');
 
 /**
  * A view helper to display the sintaxhighlight using GeSHi
@@ -39,7 +38,7 @@ require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Applicati
  * @scope prototype
  */
 
-class GeSHiViewHelper extends \F3\Fluid\Core\ViewHelper\AbstractViewHelper {
+class GeSHiViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * Initialize arguments

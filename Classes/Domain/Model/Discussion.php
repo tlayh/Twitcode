@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Domain\Model;
+namespace Layh\Twitcode\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -43,7 +42,7 @@ class Discussion {
 
 	/**
 	 * The user the discussion belongs to
-	 * @var F3\Twitcode\Domain\Model\User
+	 * @var Layh\Twitcode\Domain\Model\User
 	 */
 	protected $user;
 
@@ -56,8 +55,8 @@ class Discussion {
 
 	/**
 	 * The code the discussion belongs to
-	 * 
-	 * @var F3\Twitcode\Domain\Model\Code
+	 *
+	 * @var Layh\Twitcode\Domain\Model\Code
 	 */
 	protected $code;
 
@@ -80,15 +79,15 @@ class Discussion {
 	}
 
 	/**
-	 * @param \F3\Twitcode\Domain\Model\User $user
+	 * @param \Layh\Twitcode\Domain\Model\User $user
 	 * @return void
 	 */
-	public function setUser(\F3\Twitcode\Domain\Model\User $user) {
+	public function setUser(\Layh\Twitcode\Domain\Model\User $user) {
 		$this->user = $user;
 	}
 
 	/**
-	 * @return F3\Twitcode\Domain\Model\User
+	 * @return Layh\Twitcode\Domain\Model\User
 	 */
 	public function getUser() {
 		return $this->user;
@@ -110,7 +109,7 @@ class Discussion {
 	}
 
 	/**
-	 * @param DateTime $modified
+	 * @param \DateTime $modified
 	 * @return void
 	 */
 	public function setModified(\DateTime $modified) {
@@ -125,7 +124,7 @@ class Discussion {
 	}
 
 	/**
-	 * @param \F3\Twitcode\Domain\Model\Code $code
+	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 * @return void
 	 */
 	public function setCode($code) {
@@ -133,7 +132,7 @@ class Discussion {
 	}
 
 	/**
-	 * @return \F3\Twitcode\Domain\Model\Code
+	 * @return \Layh\Twitcode\Domain\Model\Code
 	 */
 	public function getCode() {
 		return $this->code;

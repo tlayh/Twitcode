@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Controller;
+namespace Layh\Twitcode\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -25,30 +24,30 @@ namespace F3\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class CodelibController extends \F3\Twitcode\Controller\DefaultController {
+class CodelibController extends \Layh\Twitcode\Controller\DefaultController {
 
 	/**
-	 * @var F3\Twitcode\Domain\Repository\CodeRepository
+	 * @var Layh\Twitcode\Domain\Repository\CodeRepository
 	 * @inject
 	 */
 	protected $codeRepository;
 
 	/**
-	 * @var F3\Twitcode\Domain\Repository\CodetypeRepository
+	 * @var Layh\Twitcode\Domain\Repository\CodetypeRepository
 	 * @inject
 	 */
 	protected $codetypeRepository;
 
 	public function indexAction() {
 		$this->initSidebarLogin();
-        
+
 		$codeTypes = $this->codetypeRepository->findAllWithSnippets();
 		$this->view->assign('codetypes', $codeTypes);
 	}
 
 	public function showbyuserAction() {
 		$this->initSidebarLogin();
-        
+
 		if($this->login->isLoggedIn()) {
 			$loginData = $this->login->checkSession();
 			$snippets = $this->codeRepository->findByUser($loginData['user_id']);
@@ -59,10 +58,10 @@ class CodelibController extends \F3\Twitcode\Controller\DefaultController {
 	}
 
 	/**
-	 * @param \F3\Twitcode\Domain\Model\Codetype $codetype
+	 * @param \Layh\Twitcode\Domain\Model\Codetype $codetype
 	 * @return void
 	 */
-	public function showbytypeAction(\F3\Twitcode\Domain\Model\Codetype $codetype) {
+	public function showbytypeAction(\Layh\Twitcode\Domain\Model\Codetype $codetype) {
         $this->initSidebarLogin();
 
 		$snippets = $this->codeRepository->findByCodetype($codetype);

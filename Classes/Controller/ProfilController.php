@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Controller;
+namespace Layh\Twitcode\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -24,16 +23,16 @@ namespace F3\Twitcode\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-	
+
 /**
  * ProfilController
  *
  * Show settings of a user and save them
  *
- * @author Thomas Layh <thomas.@layh.com>
+ * @author Thomas Layh <develop@layh.com>
  * Date: 13.03.11
  * Time: 19:50
  */
-class ProfilController extends \F3\FLOW3\MVC\Controller\ActionController {
+class ProfilController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
 }

@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Domain\Model;
+namespace Layh\Twitcode\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +31,7 @@ namespace F3\Twitcode\Domain\Model;
 class Login {
 
 	/**
-	 * @var \F3\FLOW3\Object\ObjectManagerInterface
+	 * @var \TYPO3\FLOW3\Object\ObjectManagerInterface
 	 * @inject
 	 */
 	protected $objectManager;
@@ -43,17 +42,17 @@ class Login {
 	protected $_isLoggedIn = false;
 
 	/**
-	 * @var \F3\Twitcode\Lib\oauth\EpiTwitter
+	 * @var \Layh\Twitcode\Lib\oauth\EpiTwitter
 	 */
 	protected $twitterObj;
 
 	/**
-	 * @var \F3\Twitcode\Domain\Model\User
+	 * @var \Layh\Twitcode\Domain\Model\User
 	 */
 	protected $user;
 
 	/**
-	 * @var \F3\Twitcode\Domain\Repository\UserRepository
+	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
 	 * @inject
 	 */
 	protected $userRepository;
@@ -111,7 +110,7 @@ class Login {
 	 */
 	public function getLoginUrl() {
 
-		$this->twitterObj = new \F3\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
+		$this->twitterObj = new \Layh\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
 
 		/** @var $requestToken EpiOAuthResponse */
 		$requestToken = $this->twitterObj->getRequestToken();
@@ -135,7 +134,7 @@ class Login {
 		$success = false;
 
 		try {
-			$this->twitterObj = new \F3\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
+			$this->twitterObj = new \Layh\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
 			$this->twitterObj->useSSL(true);
 
 			$this->twitterObj->setToken($this->oauthToken);
@@ -163,7 +162,7 @@ class Login {
 	public function checkForUser() {
 		$user = $this->userRepository->findByUserId(intval($this->userId));
 		if(!$user) {
-			$user = $this->objectManager->create('F3\Twitcode\Domain\Model\User'); /** @var $user \F3\Twitcode\Domain\Model\User */
+			$user = new \Layh\Twitcode\Domain\Model\User();
 			$user->setName($this->screenName);
 			$user->setUserId($this->userId);
 			$this->userRepository->add($user);

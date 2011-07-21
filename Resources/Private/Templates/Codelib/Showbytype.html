@@ -1,4 +1,4 @@
-{namespace tc=F3\Twitcode\ViewHelpers}
+{namespace tc=Layh\Twitcode\ViewHelpers}
 <f:layout name="Index.html" />
 
 <f:section name="content">
@@ -22,7 +22,7 @@
 			<f:for each="{snippets}" as="snippet">
 				<tr>
 					<td class="name">
-						<f:link.action action="show" controller="Standard" package="Twitcode" arguments="{code: snippet}">
+						<f:link.action action="show" controller="Standard" package="Layh.Twitcode" arguments="{code: snippet}">
 							<f:raw><tc:striptag>{snippet.label}</tc:striptag></f:raw>
 						</f:link.action>
 					</td>

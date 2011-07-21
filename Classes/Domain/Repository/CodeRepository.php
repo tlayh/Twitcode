@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Domain\Repository;
+namespace Layh\Twitcode\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -28,10 +27,10 @@ namespace F3\Twitcode\Domain\Repository;
 /**
  * A repository for books
  */
-class CodeRepository extends \F3\FLOW3\Persistence\Repository {
+class CodeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 
 	/**
-	 * @var \F3\Twitcode\Domain\Repository\UserRepository
+	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
 	 * @inject
 	 */
 	protected $userRepository;
@@ -41,7 +40,7 @@ class CodeRepository extends \F3\FLOW3\Persistence\Repository {
 		$result = $query
 			->setLimit($count)
 			->matching($query->logicalNot($query->equals('modified', '')))
-			->setOrderings(array('modified' => \F3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
+			->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
 			->execute();
 		return $result->toArray();
 	}
@@ -51,27 +50,27 @@ class CodeRepository extends \F3\FLOW3\Persistence\Repository {
 		$result = $query
 				->setLimit(1)
 				->matching($query->logicalNot($query->equals('uid', '')))
-				->setOrderings(array('uid' => \F3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
+				->setOrderings(array('uid' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
 				->execute();
 		return $result->getFirst();
 	}
 
 	public function findByUser($userId) {
 		$user = $this->userRepository->findByUserId($userId);
-		
+
 		$query = $this->createQuery();
 		$result = $query
 				->matching($query->equals('user', $user))
-				->setOrderings(array('modified' => \F3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
+				->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
 				->execute();
 		return $result->toArray();
 	}
 
 	/**
-	 * @param \F3\Twitcode\Domain\Model\Codetype $ct
+	 * @param \Layh\Twitcode\Domain\Model\Codetype $ct
 	 * @return int
 	 */
-	public function findCountByCodetype(\F3\Twitcode\Domain\Model\Codetype $ct) {
+	public function findCountByCodetype(\Layh\Twitcode\Domain\Model\Codetype $ct) {
 		$query = $this->createQuery();
 		$result = $query->matching($query->equals('codetype', $ct))
 				->execute()
@@ -80,13 +79,13 @@ class CodeRepository extends \F3\FLOW3\Persistence\Repository {
 	}
 
 	/**
-	 * @param \F3\Twitcode\Domain\Model\Codetype $ct
-	 * @return \F3\Twitcode\Domain\Model\CodeRepository
+	 * @param \Layh\Twitcode\Domain\Model\Codetype $ct
+	 * @return \Layh\Twitcode\Domain\Model\CodeRepository
 	 */
-	public function findByCodetype(\F3\Twitcode\Domain\Model\Codetype $ct) {
+	public function findByCodetype(\Layh\Twitcode\Domain\Model\Codetype $ct) {
 		$query = $this->createQuery();
 		$result = $query->matching($query->equals('codetype', $ct))
-				->setOrderings(array('modified' => \F3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
+				->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
 				->execute();
 		return $result;
 	}

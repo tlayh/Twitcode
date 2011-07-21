@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\RoutePartHandlers;
+namespace Layh\Twitcode\RoutePartHandlers;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +29,7 @@ namespace F3\Twitcode\RoutePartHandlers;
  *
  * @scope prototype
  */
-class StandardRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart {
+class StandardRoutePartHandler extends \TYPO3\FLOW3\MVC\Web\Routing\DynamicRoutePart {
 
 	/**
 	 * Splits the given value into the date and title of the post and sets this
@@ -70,11 +69,11 @@ class StandardRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePar
 	/**
 	 * Resolves the name of the code
 	 *
-	 * @param \F3\Twitcode\Domain\Model\Code $value The Code object
+	 * @param \Layh\Twitcode\Domain\Model\Code $value The Code object
 	 * @return boolean TRUE if the code could be resolved and stored in $this->value, otherwise FALSE.
 	 */
 	protected function resolveValue($value) {
-		if (!$value instanceof \F3\Twitcode\Domain\Model\Code) return FALSE;
+		if (!$value instanceof \Layh\Twitcode\Domain\Model\Code) return FALSE;
 		$this->value = $value->getUid();
 
 		// prepare label for url

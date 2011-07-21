@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Domain\Model;
+namespace Layh\Twitcode\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -50,7 +49,7 @@ class Code {
 
 	/**
 	 * The user the snippet belongs to
-	 * @var F3\Twitcode\Domain\Model\User
+	 * @var Layh\Twitcode\Domain\Model\User
 	 */
 	protected $user;
 
@@ -63,8 +62,8 @@ class Code {
 
 	/**
 	 * The code type the snippet belongs to
-	 * 
-	 * @var F3\Twitcode\Domain\Model\Codetype
+	 *
+	 * @var Layh\Twitcode\Domain\Model\Codetype
 	 */
 	protected $codetype;
 
@@ -101,15 +100,15 @@ class Code {
 	}
 
 	/**
-	 * @param \F3\Twitcode\Domain\Model\User $user
+	 * @param \Layh\Twitcode\Domain\Model\User $user
 	 * @return void
 	 */
-	public function setUser(\F3\Twitcode\Domain\Model\User $user) {
+	public function setUser(\Layh\Twitcode\Domain\Model\User $user) {
 		$this->user = $user;
 	}
 
 	/**
-	 * @return F3\Twitcode\Domain\Model\User
+	 * @return Layh\Twitcode\Domain\Model\User
 	 */
 	public function getUser() {
 		return $this->user;
@@ -131,15 +130,15 @@ class Code {
 	}
 
 	/**
-	 * @param \F3\Twitcode\Domain\Model\Codetype $codetype
+	 * @param \Layh\Twitcode\Domain\Model\Codetype $codetype
 	 * @return void
 	 */
-	public function setCodetype(\F3\Twitcode\Domain\Model\Codetype $codetype) {
+	public function setCodetype(\Layh\Twitcode\Domain\Model\Codetype $codetype) {
 		$this->codetype = $codetype;
 	}
 
 	/**
-	 * @return \F3\Twitcode\Domain\Model\Codetype
+	 * @return \Layh\Twitcode\Domain\Model\Codetype
 	 */
 	public function getCodetype() {
 		return $this->codetype;

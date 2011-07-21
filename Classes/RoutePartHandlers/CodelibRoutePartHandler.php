@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\RoutePartHandlers;
+namespace Layh\Twitcode\RoutePartHandlers;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +29,7 @@ namespace F3\Twitcode\RoutePartHandlers;
  *
  * @scope prototype
  */
-class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart {
+class CodelibRoutePartHandler extends \TYPO3\FLOW3\MVC\Web\Routing\DynamicRoutePart {
 
 	/**
 	 * Checks for the current code type
@@ -51,7 +50,7 @@ class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart
 	}
 
 	/**
-	 * 
+	 *
 	 *
 	 * @param string $requestPath The request path acting as the subject for matching in this Route Part
 	 * @return string The post identifying part of the request path or an empty string if it doesn't match
@@ -63,11 +62,11 @@ class CodelibRoutePartHandler extends \F3\FLOW3\MVC\Web\Routing\DynamicRoutePart
 	/**
 	 * Resolves the name of the codetype
 	 *
-	 * @param \F3\Twitcode\Domain\Model\Codetype $value The Codetype object
+	 * @param \Layh\Twitcode\Domain\Model\Codetype $value The Codetype object
 	 * @return boolean TRUE if the codetype could be resolved and stored in $this->value, otherwise FALSE.
 	 */
 	protected function resolveValue($value) {
-		if (!$value instanceof \F3\Twitcode\Domain\Model\Codetype) { return FALSE; }
+		if (!$value instanceof \Layh\Twitcode\Domain\Model\Codetype) { return FALSE; }
 		$this->value = $value->getType();
 
 		return TRUE;

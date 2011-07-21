@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Domain\Model;
+namespace Layh\Twitcode\Domain\Model;
 
 /***************************************************************
  *  Copyright notice

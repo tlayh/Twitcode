@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Domain\Repository;
+namespace Layh\Twitcode\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -28,7 +27,7 @@ namespace F3\Twitcode\Domain\Repository;
 /**
  * A repository for comments
  */
-class DiscussionRepository extends \F3\FLOW3\Persistence\Repository {
+class DiscussionRepository extends \TYPO3\FLOW3\Persistence\Repository {
 
 }
 ?>

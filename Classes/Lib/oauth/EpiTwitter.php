@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Lib\oauth;
+namespace Layh\Twitcode\Lib\oauth;
 
 /*
  *  Class to integrate with Twitter's API.

@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Twitcode\Controller;
+namespace Layh\Twitcode\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -29,22 +28,22 @@ namespace F3\Twitcode\Controller;
  * Default controller with some basic stuff, each other controller should extend
  * this controller to get functions like the sidebar snippetes and the login data
  */
-class DefaultController extends \F3\FLOW3\MVC\Controller\ActionController {
+class DefaultController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
 	/**
-	 * @var F3\Twitcode\Domain\Model\Login
+	 * @var \Layh\Twitcode\Domain\Model\Login
 	 * @inject
 	 */
 	protected $login;
 
 	/**
-	 * @var \F3\Twitcode\Domain\Repository\CodetypeRepository
+	 * @var \Layh\Twitcode\Domain\Repository\CodetypeRepository
 	 * @inject
 	 */
 	protected $codetypeRepository;
 
 	/**
-	 * @var \F3\Twitcode\Domain\Repository\CodeRepository
+	 * @var \Layh\Twitcode\Domain\Repository\CodeRepository
 	 * @inject
 	 */
 	protected $codeRepository;
