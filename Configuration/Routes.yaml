@@ -12,6 +12,15 @@
 #
 
 --
+    name: 'Temp Import route'
+    uriPattern: 'import/{@action}'
+    defaults:
+      @package: 'Layh.Twitcode'
+      @controller: 'Import'
+      @action: 'index'
+      @format: 'html'
+
+--
     name: 'Codelibrary Routes with type'
     uriPattern: 'codelib/{@action}/{codetype}'
     defaults:

@@ -8,12 +8,12 @@
 
 # http://flow3.typo3.org/documentation/manuals/flow3/flow3.configurationframework/#id36401944
 
-# @package Twitcode
+# @package Layh.Twitcode
 
-Twitcode:
-
-   oauth:
-     consumerkey: <consumerkey>
-     consumersecret: <consumersecret>
-   bitly:
-     url: <baseurl without http:// and slashes like yourdomain.com>
+Layh:
+  Twitcode:
+    oauth:
+      consumerkey: <consumerkey>
+      consumersecret: <consumersecret>
+    bitly:
+      url: <baseurl without http:// and slashes like yourdomain.com>
