@@ -1,6 +1,8 @@
 <?php
 namespace Layh\Twitcode\Domain\Model;
 
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Application/Layh.Twitcode/Resources/Private/Lib/oauth/EpiTwitter.php');
+
 /***************************************************************
  *  Copyright notice
  *
@@ -110,7 +112,7 @@ class Login {
 	 */
 	public function getLoginUrl() {
 
-		$this->twitterObj = new \Layh\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
+		$this->twitterObj = new \EpiTwitter($this->consumerKey, $this->consumerSecret);
 
 		/** @var $requestToken EpiOAuthResponse */
 		$requestToken = $this->twitterObj->getRequestToken();

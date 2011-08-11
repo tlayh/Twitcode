@@ -1,5 +1,4 @@
 <?php
-namespace Layh\Twitcode\Lib\oauth;
 
 class EpiOAuthResponse
 {

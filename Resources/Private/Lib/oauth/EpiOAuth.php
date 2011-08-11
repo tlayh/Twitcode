@@ -1,5 +1,8 @@
 <?php
-namespace Layh\Twitcode\Lib\oauth;
+
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Application/Layh.Twitcode/Resources/Private/Lib/oauth/EpiOAuthException.php');
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Application/Layh.Twitcode/Resources/Private/Lib/oauth/EpiCurl.php');
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Application/Layh.Twitcode/Resources/Private/Lib/oauth/EpiOAuthResponse.php');
 
 class EpiOAuth
 {
@@ -358,7 +361,7 @@ class EpiOAuth
     $this->consumerKey = $consumerKey;
     $this->consumerSecret = $consumerSecret;
     $this->signatureMethod = $signatureMethod;
-    $this->curl = EpiCurl::getInstance();
+    $this->curl = \EpiCurl::getInstance();
   }
 }
 

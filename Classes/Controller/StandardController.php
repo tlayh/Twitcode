@@ -71,8 +71,6 @@ class StandardController extends \Layh\Twitcode\Controller\DefaultController {
 	 */
 	public function injectSettings(array $settings) {
 
-		var_dump($settings);
-
 		$this->settings = $settings;
 
 		if(isset($settings['oauth']['consumerkey'])) {
@@ -128,8 +126,6 @@ class StandardController extends \Layh\Twitcode\Controller\DefaultController {
 	 * @return void
 	 */
 	public function indexAction() {
-
-		var_dump($this->settings); die();
 
 		$this->login->setSettings($this->settings);
 

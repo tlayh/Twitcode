@@ -1,5 +1,6 @@
 <?php
-namespace Layh\Twitcode\Lib\oauth;
+
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Application/Layh.Twitcode/Resources/Private/Lib/oauth/EpiOAuth.php');
 
 /*
  *  Class to integrate with Twitter's API.
@@ -274,12 +275,12 @@ class EpiTwitterException extends \Exception
     }
   }
 }
-class EpiTwitterBadRequestException extends EpiTwitterException{}
-class EpiTwitterNotAuthorizedException extends EpiTwitterException{}
-class EpiTwitterForbiddenException extends EpiTwitterException{}
-class EpiTwitterNotFoundException extends EpiTwitterException{}
-class EpiTwitterNotAcceptableException extends EpiTwitterException{}
-class EpiTwitterEnhanceYourCalmException extends EpiTwitterException{}
-class EpiTwitterInternalServerException extends EpiTwitterException{}
-class EpiTwitterBadGatewayException extends EpiTwitterException{}
-class EpiTwitterServiceUnavailableException extends EpiTwitterException{}
+class EpiTwitterBadRequestException extends EpiTwitterException {}
+class EpiTwitterNotAuthorizedException extends EpiTwitterException {}
+class EpiTwitterForbiddenException extends EpiTwitterException {}
+class EpiTwitterNotFoundException extends EpiTwitterException {}
+class EpiTwitterNotAcceptableException extends EpiTwitterException {}
+class EpiTwitterEnhanceYourCalmException extends EpiTwitterException {}
+class EpiTwitterInternalServerException extends EpiTwitterException {}
+class EpiTwitterBadGatewayException extends EpiTwitterException {}
+class EpiTwitterServiceUnavailableException extends EpiTwitterException {}
