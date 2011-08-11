@@ -23,7 +23,7 @@
 				<tr>
 					<td class="name">
 						<f:link.action action="show" controller="Standard" package="Layh.Twitcode" arguments="{code: snippet}">
-							<f:raw><tc:striptag>{snippet.label}</tc:striptag></f:raw>
+							<f:format.raw><tc:striptag>{snippet.label}</tc:striptag></f:format.raw>
 						</f:link.action>
 					</td>
 					<td class="date"><f:format.date>{snippet.modified}</f:format.date></td>

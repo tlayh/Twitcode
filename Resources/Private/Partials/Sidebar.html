@@ -5,7 +5,7 @@
 	<f:for each="{latestSnippets}" as="snippet">
 		<li>
 			<f:link.action action="show" controller="Standard" package="Layh.Twitcode" arguments="{code: snippet}">
-				<f:raw><tc:striptag>{snippet.label}</tc:striptag></f:raw>
+				<f:format.raw><tc:striptag>{snippet.label}</tc:striptag></f:format.raw>
 			</f:link.action>
 		</li>
 		<li>
