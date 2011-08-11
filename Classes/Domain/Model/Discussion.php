@@ -33,16 +33,9 @@ namespace Layh\Twitcode\Domain\Model;
 class Discussion {
 
 	/**
-	 * @identity
-	 * @var integer
-	 * @Id
-	 * @GeneratedValue
-	 */
-	protected $id;
-
-	/**
 	 * The user the discussion belongs to
 	 * @var Layh\Twitcode\Domain\Model\User
+	 * @ManyToOne
 	 */
 	protected $user;
 
@@ -57,6 +50,7 @@ class Discussion {
 	 * The code the discussion belongs to
 	 *
 	 * @var Layh\Twitcode\Domain\Model\Code
+	 * @ManyToOne
 	 */
 	protected $code;
 
@@ -68,14 +62,6 @@ class Discussion {
 
 	public function __construct() {
 		$this->modified = new \DateTime();
-	}
-
-	public function setId($id) {
-		$this->id = $id;
-	}
-
-	public function getId() {
-		return $this->id;
 	}
 
 	/**

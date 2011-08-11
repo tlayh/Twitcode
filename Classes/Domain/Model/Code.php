@@ -49,7 +49,9 @@ class Code {
 
 	/**
 	 * The user the snippet belongs to
+	 *
 	 * @var Layh\Twitcode\Domain\Model\User
+	 * @ManyToOne
 	 */
 	protected $user;
 
@@ -64,6 +66,7 @@ class Code {
 	 * The code type the snippet belongs to
 	 *
 	 * @var Layh\Twitcode\Domain\Model\Codetype
+	 * @ManyToOne
 	 */
 	protected $codetype;
 
@@ -79,6 +82,7 @@ class Code {
 	 * @var \DateTime
 	 */
 	protected $modified;
+
 
 	public function __construct() {
 		$this->modified = new \DateTime();
