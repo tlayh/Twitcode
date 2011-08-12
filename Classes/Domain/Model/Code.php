@@ -33,10 +33,7 @@ namespace Layh\Twitcode\Domain\Model;
 class Code {
 
 	/**
-	 * @identity
 	 * @var integer
-	 * @Id
-	 * @GeneratedValue
 	 */
 	protected $uid;
 

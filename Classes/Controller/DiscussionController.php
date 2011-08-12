@@ -29,7 +29,7 @@ namespace Layh\Twitcode\Controller;
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class DiscussionController extends \Layh\Twitcode\Controller\DefaultController {
+class DiscussionController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
 	 * Save the discussion

@@ -24,7 +24,7 @@ namespace Layh\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class PagesController extends \Layh\Twitcode\Controller\DefaultController {
+class PagesController extends \Layh\Twitcode\Controller\BaseController {
 
 	public function aboutAction() {
 		$this->initSidebarLogin();

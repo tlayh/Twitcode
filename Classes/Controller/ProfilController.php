@@ -33,6 +33,6 @@ namespace Layh\Twitcode\Controller;
  * Date: 13.03.11
  * Time: 19:50
  */
-class ProfilController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
+class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 
 }

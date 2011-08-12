@@ -24,7 +24,7 @@ namespace Layh\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class CodelibController extends \Layh\Twitcode\Controller\DefaultController {
+class CodelibController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
 	 * @var Layh\Twitcode\Domain\Repository\CodeRepository

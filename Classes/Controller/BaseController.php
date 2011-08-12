@@ -28,7 +28,7 @@ namespace Layh\Twitcode\Controller;
  * Default controller with some basic stuff, each other controller should extend
  * this controller to get functions like the sidebar snippetes and the login data
  */
-class DefaultController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
+class BaseController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Model\Login
