@@ -42,10 +42,12 @@ class StandardRoutePartHandler extends \TYPO3\FLOW3\MVC\Web\Routing\DynamicRoute
 		if (!parent::matchValue($value)) {
 			return FALSE;
 		}
+
 		$value = substr($value, 0, strpos($value, '/'));
+
 		$this->value = array(
 			'__identity' => array(
-				'uid' => intval($value)
+				'uid' => $value
 			)
 		);
 		return TRUE;
