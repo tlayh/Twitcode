@@ -55,21 +55,21 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 	 */
 	public function indexAction() {
 
-		//$this->importCodeType();
-		$string = 'CodeType import finished';
+		//$count = $this->importCodeType();
+		//$string = "CodeType import finished - imported $count codetypes";
 
-		//$this->importUser();
-		$string = '\nUser import finished';
+		//$count = $this->importUser();
+		//$string = "\nUser import finished - imported $count users";
 
-		$this->importCode();
-		$string = '\nCode import finished';
+		$count = $this->importCode();
+		$string = "\nCode import finished - imported $count snippets";
 
 		return $string;
 
 	}
 
 	/**
-	 * @return void
+	 * @return integer
 	 */
 	protected function importCode() {
 		$jsonString = \file_get_contents('code.json');
@@ -79,9 +79,10 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 		// remove all code
 		$this->codeRepository->removeAll();
 
-		echo "<pre>";
+		$count = 0;
 		foreach($data as $da) {
-			print_r($da);
+
+			$count++;
 
 			// resolve user and codetype for code object
 			$user = $this->userRepository->findOneByUser_id($da->user);
@@ -102,10 +103,11 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
 		}
 
+		return $count;
 	}
 
 	/**
-	 * @return void
+	 * @return integer
 	 */
 	protected function importUser() {
 		$jsonString = \file_get_contents('users.json');
@@ -115,17 +117,21 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 		// remove all users
 		$this->userRepository->removeAll();
 
+
+		$count = 0;
 		foreach($data as $da) {
+			$count++;
 			$user = new \Layh\Twitcode\Domain\Model\User();
 			$user->setName($da->name);
 			$user->setUserId($da->user_id);
 			$this->userRepository->add($user);
 		}
 
+		return $count;
 	}
 
 	/**
-	 * @return void
+	 * @return integer
 	 */
 	protected function importCodeType() {
 		$jsonString = \file_get_contents('codetypes.json');
@@ -135,13 +141,16 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 		// remove all codetypes
 		$this->codeTypeRepository->removeAll();
 
+		$count = 0;
 		foreach($data as $da) {
+			$count++;
 			$codetype = new \Layh\Twitcode\Domain\Model\Codetype();
 			$codetype->setName($da->name);
 			$codetype->setType($da->type);
 			$this->codeTypeRepository->add($codetype);
 		}
 
+		return $count;
 	}
 
 }
