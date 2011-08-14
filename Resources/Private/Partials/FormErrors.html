@@ -1,0 +1,12 @@
+<f:form.validationResults for="{for}">
+	<f:if condition="{validationResults.flattenedErrors}">
+		<div class="error">
+			<strong>
+				<tc:replaceerror error="{error.propertyName}"/>
+			</strong>:
+			<f:for each="{error.errors}" as="errorDetail">
+				{errorDetail.message}
+			</f:for>
+		</div>
+	</f:if>
+</f:form.validationResults>
