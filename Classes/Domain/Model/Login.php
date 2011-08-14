@@ -136,7 +136,7 @@ class Login {
 		$success = false;
 
 		try {
-			$this->twitterObj = new \Layh\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
+			$this->twitterObj = new \EpiTwitter($this->consumerKey, $this->consumerSecret);
 			$this->twitterObj->useSSL(true);
 
 			$this->twitterObj->setToken($this->oauthToken);
