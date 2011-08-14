@@ -35,4 +35,11 @@ namespace Layh\Twitcode\Controller;
  */
 class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 
+	/**
+	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
+	 */
+	public function indexAction() {
+
+	}
 }
