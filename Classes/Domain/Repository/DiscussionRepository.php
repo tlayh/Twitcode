@@ -29,5 +29,10 @@ namespace Layh\Twitcode\Domain\Repository;
  */
 class DiscussionRepository extends \TYPO3\FLOW3\Persistence\Repository {
 
+	/**
+	 * @var array
+	 */
+	protected $defaultOrderings = array('modified'=> \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING);
+
 }
 ?>
