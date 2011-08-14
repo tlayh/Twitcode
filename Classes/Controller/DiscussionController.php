@@ -32,13 +32,26 @@ namespace Layh\Twitcode\Controller;
 class DiscussionController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
+	 * @var \Layh\Twitcode\Domain\Repository\DiscussionRepository
+	 * @inject
+	 */
+	protected $discussionRepository;
+
+	/**
 	 * Save the discussion
 	 *
 	 * @param \Layh\Twitcode\Domain\Model\Discussion $discussion
 	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
 	 */
-	public function saveAction(\Layh\Twitcode\Domain\Model\Discussion $discussion, \Layh\Twitcode\Domain\Model\Code $code) {
-		die('discussion controller action = save');
+	public function saveAction(\Layh\Twitcode\Domain\Model\Discussion $discussion, \Layh\Twitcode\Domain\Model\Code $code, \Layh\Twitcode\Domain\Model\User $user) {
+
+		// add code and user to discussion and add the discussion to the repository
+		$discussion->setCode($code);
+		$discussion->setUser($user);
+		$this->discussionRepository->add($discussion);
+
+		$this->redirect('show', 'Standard', NULL, array('code' => $code));
 	}
 
 }

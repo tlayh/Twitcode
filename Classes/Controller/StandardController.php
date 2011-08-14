@@ -158,6 +158,8 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 			$this->view->assign('loogedin', false);
 		}
 
+		$discussions = $this->discussionRepository->findByCode($code);
+		$this->view->assign('discussions', $discussions);
 		$this->view->assign('code', $code);
 	}
 

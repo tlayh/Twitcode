@@ -61,13 +61,27 @@
 	<!-- area for comments -->
 	<div id="wrapper-discussions">
 
+		<h2>Recent comments:</h2>
 		<!--list discussions for this snippet -->
+		<f:if condition="{discussions}">
+			<f:for each="{discussions}" as="disc">
+				From: {disc.user.name} on <f:format.date format="d.m.Y - H:i">{disc.modified}</f:format.date>
+				<br />
+				{disc.discussion}
+				<hr />
+			</f:for>
+		</f:if>
+
+		<br />
+		<hr />
+		<br />
 
 		<!-- show form for discussion -->
 		<f:if condition="{loggedin}">
 		<f:then>
 			<f:form actionUri="/discussion/save" object="{discussion}" name="discussion" method="post">
-				<f:form.hidden name="code" id="code" property="code" value="{code}" />
+				<f:form.hidden name="code" value="{code}" />
+				<f:form.hidden name="user" value="{code.user}" />
 				<label for="discussion">Comment:</label>
 				<f:form.textarea name="discussion" id="discussion" property="discussion" rows="5" cols="70" /><br /><br />
 				<f:form.submit class="submit" value="" />
