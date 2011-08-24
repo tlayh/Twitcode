@@ -30,7 +30,7 @@ namespace Layh\Twitcode\Domain\Model;
  * @scope prototype
  * @entity
  */
-class Discussion {
+class Comment {
 
 	/**
 	 * The user the discussion belongs to
@@ -44,7 +44,7 @@ class Discussion {
 	 * @var string
 	 * @validate StringLength(minimum = 10)
 	 */
-	protected $discussion;
+	protected $comment;
 
 	/**
 	 * The code the discussion belongs to
@@ -80,18 +80,18 @@ class Discussion {
 	}
 
 	/**
-	 * @param string $discussion
+	 * @param string $comment
 	 * @return void
 	 */
-	public function setDiscussion($discussion) {
-		$this->discussion = $discussion;
+	public function setComment($comment) {
+		$this->comment = $comment;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getDiscussion() {
-		return $this->discussion;
+	public function getComment() {
+		return $this->comment;
 	}
 
 	/**

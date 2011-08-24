@@ -69,11 +69,11 @@ class Code {
 	protected $codetype;
 
 	/**
-	 * The code comment
+	 * The code description
 	 * @var string
      * @validate StringLength(minimum = 5)
 	 */
-	protected $comment;
+	protected $description;
 
 	/**
 	 * Last modified
@@ -117,18 +117,18 @@ class Code {
 	}
 
 	/**
-	 * @param string $comment
+	 * @param string $description
 	 * @return void
 	 */
-	public function setComment($comment) {
-		$this->comment = $comment;
+	public function setDescription($description) {
+		$this->description = $description;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getComment() {
-		return $this->comment;
+	public function getDescription() {
+		return $this->description;
 	}
 
 	/**

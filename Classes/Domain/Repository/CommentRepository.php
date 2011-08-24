@@ -27,7 +27,7 @@ namespace Layh\Twitcode\Domain\Repository;
 /**
  * A repository for comments
  */
-class DiscussionRepository extends \TYPO3\FLOW3\Persistence\Repository {
+class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
 
 	/**
 	 * @var array

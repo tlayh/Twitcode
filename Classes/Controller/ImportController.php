@@ -92,7 +92,7 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 			$code->setUser($user);
 
 			$code->setCode($da->code);
-			$code->setComment($da->comment);
+			$code->setDescription($da->comment);
 			$code->setLabel($da->label);
 			$code->setUid($da->uid);
 

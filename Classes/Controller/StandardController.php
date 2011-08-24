@@ -32,10 +32,10 @@ namespace Layh\Twitcode\Controller;
 class StandardController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
-	 * @var \Layh\Twitcode\Domain\Repository\DiscussionRepository
+	 * @var \Layh\Twitcode\Domain\Repository\CommentRepository
 	 * @inject
 	*/
-	protected $discussionRepository;
+	protected $commentRepository;
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
@@ -158,7 +158,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 			$this->view->assign('loogedin', false);
 		}
 
-		$discussions = $this->discussionRepository->findByCode($code);
+		$discussions = $this->commentRepository->findByCode($code);
 		$this->view->assign('discussions', $discussions);
 		$this->view->assign('code', $code);
 	}
@@ -287,7 +287,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	 */
 	protected function twitterSnippet(\Layh\Twitcode\Domain\Model\Code $code, $data) {
 		// build message text
-		$comment = $code->getComment();
+		$comment = $code->getDescription();
 
 		// build short url
 		$url = 'http://'.$this->baseUrl.'/show/';
