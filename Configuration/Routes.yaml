@@ -40,11 +40,11 @@
         @format: 'html'
 
 --
-    name: 'Discussion Routes'
-    uriPattern: 'discussion/{@action}'
+    name: 'Comment Routes'
+    uriPattern: 'comment/{@action}'
     defaults:
         @package: Layh.Twitcode
-        @controller: Discussion
+        @controller: Comment
         @format: 'html'
 
 --
