@@ -65,8 +65,11 @@ class CodelibController extends \Layh\Twitcode\Controller\BaseController {
 	}
 
 	/**
+	 * shows the different snippets sorted by snippet type
+	 *
 	 * @param \Layh\Twitcode\Domain\Model\Codetype $codetype
 	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function showbytypeAction(\Layh\Twitcode\Domain\Model\Codetype $codetype) {
         $this->initSidebarLogin();
