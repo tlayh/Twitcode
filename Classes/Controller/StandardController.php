@@ -154,6 +154,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 
 		if($this->login->isLoggedIn()) {
 			$this->view->assign('loggedin', true);
+			$this->view->assign('user', $this->login->getUser());
 		} else {
 			$this->view->assign('loogedin', false);
 		}

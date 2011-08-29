@@ -79,7 +79,7 @@
 		<f:then>
 			<f:form action="save" controller="comment" object="{comment}" name="comment" method="post">
 				<f:form.hidden name="code" value="{code}" />
-				<f:form.hidden name="user" value="{code.user}" />
+				<f:form.hidden name="user" value="{user}" />
 				<label for="discussion">Comment:</label>
 				<f:form.textarea name="comment" id="comment" property="comment" rows="5" cols="70" /><br /><br />
 				<f:form.submit class="submit" value="" />
