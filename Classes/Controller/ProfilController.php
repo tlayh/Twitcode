@@ -73,4 +73,27 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 
 	}
 
+	/**
+	 * Display settings for comment notifications
+	 *
+	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
+	 */
+	public function notificationSettingsAction() {
+
+	}
+
+	/**
+	 * Save the notification settings
+	 *
+	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
+	 */
+	public function saveNotificationSettingsAction() {
+		// @todo save the notification settings
+
+		$this->redirect('notificationSettings');
+
+	}
+
 }
