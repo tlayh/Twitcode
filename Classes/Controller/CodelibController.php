@@ -45,6 +45,13 @@ class CodelibController extends \Layh\Twitcode\Controller\BaseController {
 		$this->view->assign('codetypes', $codeTypes);
 	}
 
+	/**
+	 * show snippets by users
+	 *
+	 * @deprecated
+	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
+	 */
 	public function showbyuserAction() {
 		$this->initSidebarLogin();
 

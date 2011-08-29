@@ -36,6 +36,12 @@ namespace Layh\Twitcode\Controller;
 class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
+	 * @var Layh\Twitcode\Domain\Repository\CodeRepository
+	 * @inject
+	 */
+	protected $codeRepository;
+
+	/**
 	 * @return void
 	 * @author Thomas Layh <develop@layh.com>
 	 */
@@ -50,7 +56,7 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function commentAction() {
-
+		$this->initSidebarLogin();
 	}
 
 	/**
@@ -60,7 +66,15 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function snippetAction() {
+		$this->initSidebarLogin();
 
+		if($this->login->isLoggedIn()) {
+			$loginData = $this->login->checkSession();
+			$snippets = $this->codeRepository->findByUser($loginData['user_id']);
+			$this->view->assign('snippets', $snippets);
+		} else {
+			$this->flashMessageContainer->add('No User logged in!!');
+		}
 	}
 
 	/**
@@ -70,7 +84,7 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function showFavoriteSnippetsAction() {
-
+		$this->initSidebarLogin();
 	}
 
 	/**
@@ -80,7 +94,7 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function notificationSettingsAction() {
-
+		$this->initSidebarLogin();
 	}
 
 	/**
@@ -90,6 +104,8 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function saveNotificationSettingsAction() {
+		$loginData = $this->getLoginData();
+
 		// @todo save the notification settings
 
 		$this->redirect('notificationSettings');

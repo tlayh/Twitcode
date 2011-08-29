@@ -54,4 +54,18 @@ class Settings {
 	public function getUser() {
 		return $this->user;
 	}
+
+	/**
+	 * @param boolean $commentNotification
+	 */
+	public function setCommentNotification($commentNotification) {
+		$this->commentNotification = $commentNotification;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isCommentNotificationActive() {
+		return $this->commentNotification;
+	}
 }

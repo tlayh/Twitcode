@@ -22,7 +22,7 @@
 
 --
     name: 'Profil routes'
-    uriPattern: 'profil/{/@action}'
+    uriPattern: 'profil/{@action}'
     defaults:
       @package: 'Layh.Twitcode'
       @controller: 'Profil'
