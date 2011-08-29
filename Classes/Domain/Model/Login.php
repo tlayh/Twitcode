@@ -169,6 +169,8 @@ class Login {
 			$user->setUserId($this->userId);
 			$this->userRepository->add($user);
 		}
+		// set the user object
+		$this->user = $user;
 	}
 
     public function getUserId() {
@@ -235,6 +237,20 @@ class Login {
 		$data['oauth_token_secret'] = $this->oauthTokenSecret;
 
 		return $data;
+	}
+
+	/**
+	 * @param \Layh\Twitcode\Domain\Model\User $user
+	 */
+	public function setUser($user) {
+		$this->user = $user;
+	}
+
+	/**
+	 * @return \Layh\Twitcode\Domain\Model\User
+	 */
+	public function getUser() {
+		return $this->user;
 	}
 
 }
