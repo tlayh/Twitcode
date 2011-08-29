@@ -21,6 +21,15 @@
       @format: 'html'
 
 --
+    name: 'Profil routes'
+    uriPattern: 'profil/{/@action}'
+    defaults:
+      @package: 'Layh.Twitcode'
+      @controller: 'Profil'
+      @action: 'index'
+      @format: 'html'
+
+--
     name: 'Codelibrary Routes with type'
     uriPattern: 'codelib/{@action}/{codetype}'
     defaults:
