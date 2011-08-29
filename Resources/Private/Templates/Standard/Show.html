@@ -59,21 +59,19 @@
 	<!-- end of popup layer -->
 
 	<!-- area for comments -->
-	<div id="wrapper-discussions">
+	<section id="discussions">
 
-		<h2>Recent comments:</h2>
+		<h2>Recent comments: ( <f:count subject="{comments}" /> )</h2>
 		<!--list discussions for this snippet -->
 		<f:if condition="{comments}">
 			<f:for each="{comments}" as="comment">
-				From: {comment.user.name} on <f:format.date format="d.m.Y - H:i">{comment.modified}</f:format.date>
+				<label>From:</label> {comment.user.name} on <f:format.date format="d.m.Y - H:i">{comment.modified}</f:format.date>
 				<br />
-				{comment.comment}
+				<p class="comment">{comment.comment}</p>
 				<hr />
 			</f:for>
 		</f:if>
 
-		<br />
-		<hr />
 		<br />
 
 		<!-- show form for discussion -->
@@ -93,7 +91,7 @@
 		</f:if>
 		<!-- end form for discussions -->
 
-	</div>
+	</section>
 	<!-- end of comments -->
 
 </f:section>

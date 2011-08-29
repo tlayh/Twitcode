@@ -528,3 +528,8 @@ table.showbyuser td.type {
 table.showbyuser td span.editable {
 	margin:0;
 }
+
+section#discussions p.comment {
+	margin-top:5px;
+	font-style: italic;
+}
