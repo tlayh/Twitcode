@@ -42,6 +42,12 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 	protected $codeRepository;
 
 	/**
+	 * @var Layh\Twitcode\Domain\Repository\CommentRepository
+	 * @inject
+	 */
+	protected $commentRepository;
+
+	/**
 	 * @return void
 	 * @author Thomas Layh <develop@layh.com>
 	 */
@@ -57,6 +63,14 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 	 */
 	public function commentAction() {
 		$this->initSidebarLogin();
+
+		if($this->login->isLoggedIn()) {
+			$loginData = $this->login->checkSession();
+			$comments = $this->commentRepository->findCommentsByUser($loginData['user_id']);
+			$this->view->assign('comments', $comments);
+		} else {
+			$this->flashMessageContainer->add('No User logged in!!');
+		}
 	}
 
 	/**

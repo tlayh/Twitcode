@@ -34,5 +34,29 @@ class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
 	 */
 	protected $defaultOrderings = array('modified'=> \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING);
 
+	/**
+	 * @var Layh\Twitcode\Domain\Repository\UserRepository
+	 * @inject
+	 */
+	protected $userRepository;
+
+	/**
+	 * returns all comments by a single user
+	 *
+	 * @param int $user
+	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
+	 */
+	public function findCommentsByUser($userId) {
+		$user = $this->userRepository->findByUserId($userId);
+
+		$query = $this->createQuery();
+		$result = $query
+				->matching($query->equals('user', $user))
+				->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
+				->execute();
+		return $result->toArray();
+	}
+
 }
 ?>
