@@ -40,6 +40,37 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function indexAction() {
+		$this->initSidebarLogin();
+	}
+
+	/**
+	 * Show all snippets you added a comment
+	 *
+	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
+	 */
+	public function commentAction() {
 
 	}
+
+	/**
+	 * Show snippets by user
+	 *
+	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
+	 */
+	public function snippetAction() {
+
+	}
+
+	/**
+	 * Show the users favoruite snippets
+	 *
+	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
+	 */
+	public function showFavoriteSnippetsAction() {
+
+	}
+
 }
