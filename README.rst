@@ -6,6 +6,11 @@ Project homepage
 ---------------------
 http://twitcode.org
 
+Facebook page
+---------------------
+Feel free to click the like button ;)
+http://www.facebook.com/Twitcode
+
 Author homepage
 ---------------------
 http://www.layh.com
