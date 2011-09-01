@@ -533,3 +533,7 @@ section#discussions p.comment {
 	margin-top:5px;
 	font-style: italic;
 }
+
+p.not-logged-in {
+	color: #FF0000;
+}
