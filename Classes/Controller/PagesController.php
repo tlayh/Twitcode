@@ -46,4 +46,12 @@ class PagesController extends \Layh\Twitcode\Controller\BaseController {
 		$this->initSidebarLogin();
 	}
 
+	public function newsAction() {
+		$this->initSidebarLogin();
+	}
+
+	public function helpAction() {
+		$this->initSidebarLogin();
+	}
+
 }

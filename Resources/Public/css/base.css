@@ -111,6 +111,16 @@ a:hover {
 	color: #3198D3;
 }
 
+a.highlight-link {
+	color: #3198D3;
+	text-decoration:underline;
+}
+
+a.highlight-link:hover {
+	color: #3198D3;
+	text-decoration:none;
+}
+
 #maincontent {
 	clear: both;
 	padding: 0 15px 15px;

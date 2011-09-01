@@ -1,0 +1,23 @@
+<f:layout name="Index.html" />
+
+<f:section name="content">
+
+	<f:render partial="Headernav" arguments="{logindata: logindata}" />
+
+	<f:flashMessages class="flashmessages" />
+
+	<f:render partial="Back" />
+
+	<h3>Twitcode News</h3>
+	<h4>News topic</h4>
+	<p>
+		News text
+	</p>
+
+	<h4>Contact</h4>
+	<p>
+		If you have any questions about this project feel free to contact me.<br /><br />
+		<f:link.action action="contact" controller="Pages" package="Layh.Twitcode">Contact</f:link.action>
+	</p>
+
+</f:section>
