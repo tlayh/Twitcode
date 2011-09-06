@@ -1,6 +1,8 @@
 <?php
 namespace Layh\Twitcode\Controller;
 
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Application/Layh.Twitcode/Resources/Private/Lib/oauth/EpiTwitter.php');
+
 /***************************************************************
  *  Copyright notice
  *
@@ -167,6 +169,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	/**
 	 * edit a snippet
 	 *
+	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 * @return void
 	 */
 	public function editAction(\Layh\Twitcode\Domain\Model\Code $code) {
@@ -192,7 +195,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	public function updateAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$this->codeRepository->update($code);
 		$this->flashMessageContainer->add('Congratulations!! Your snippet was changed.');
-	    $this->redirect('show', 'Standard', 'Twitcode', array('code'=>$code));
+	    $this->redirect('show', 'Standard', 'Layh.Twitcode', array('code'=>$code));
 	}
 
 	/**
@@ -221,10 +224,11 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	 * save a new snippet
 	 *
 	 * @param \Layh\Twitcode\Domain\Model\Code $code
+	 * @param string tags
 	 *
 	 * @return void
 	 */
-	public function saveAction(\Layh\Twitcode\Domain\Model\Code $code) {
+	public function saveAction(\Layh\Twitcode\Domain\Model\Code $code, $tags) {
 		$message = '';
 
 		// check for login
@@ -235,6 +239,12 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 			$user = $this->userRepository->findByUserId(intval($data['user_id']));
 
 			$code->setUser($user);
+
+			$tagArray = explode(',', $tags);
+			foreach($tagArray as $tagTitle) {
+				$tag = new \Layh\Twitcode\Domain\Model\Tag(trim(strtoupper($tagTitle)));
+				$code->addTag($tag);
+			}
 
 			// get modified date
 			$dateTime = new \DateTime();
@@ -261,7 +271,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 		}
 
 		// redirect to showSnippetAction
-		$this->redirect('show', 'Standard', 'Twitcode', array('code'=>$code));
+		$this->redirect('show', 'Standard', 'Layh.Twitcode', array('code'=>$code));
 	}
 
 
@@ -276,7 +286,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 			$this->flashMessageContainer->add('Looks like for some reason you got here without being logged in. Please login first.');
 		}
 
-	    $this->redirect('show', 'Standard', 'Twitcode', array('code'=>$code));
+	    $this->redirect('show', 'Standard', 'Layh.Twitcode', array('code'=>$code));
 	}
 
 	/**
@@ -305,7 +315,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 		}
 
 		// twitter snippet
-		$this->twitterObj = new \Layh\Twitcode\Lib\oauth\EpiTwitter($this->consumerKey, $this->consumerSecret);
+		$this->twitterObj = new \EpiTwitter($this->consumerKey, $this->consumerSecret);
 		$this->twitterObj->setToken($data['oauth_token']);
 		$token = $this->twitterObj->getAccessToken(array('oauth_verifier' => $data['oauth_token_secret']));
 		$this->twitterObj->setToken($data['oauth_token'], $data['oauth_token_secret']);
