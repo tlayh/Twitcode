@@ -23,7 +23,7 @@ namespace Layh\Twitcode\Domain\Model;
  * Tag model for the Layh.Twitcode package
  *
  * @scope prototype
- * @entity
+ * @valueobject
  *
  * @author Thomas Layh <develop@layh.com>
 */
@@ -31,14 +31,26 @@ class Tag {
 
 	/**
 	 * @var string
+	 * @validate Alphanumeric, StringLength(minimum = 1, maximum = 20)
 	 */
 	protected $title;
 
 	/**
-	 * @param string $title
+	 * The posts tagged with this tag
+	 *
+	 * @var \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Code>
+	 * @ManyToMany(mappedBy="tags")
 	 */
-	public function setTitle($title) {
+	protected $codes;
+
+	/**
+	 * Constructs this tag
+	 *
+	 * @param string $name
+	 */
+	public function __construct($title) {
 		$this->title = $title;
+		$this->codes = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 	/**
