@@ -76,6 +76,12 @@ class Code {
 	protected $description;
 
 	/**
+	 * @var \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Tag>
+	 * @ManyToMany(inversedBy="posts", cascade={"all"})
+	 */
+	protected $tags;
+
+	/**
 	 * Last modified
 	 * @var \DateTime
 	 */
@@ -84,6 +90,7 @@ class Code {
 
 	public function __construct() {
 		$this->modified = new \DateTime();
+		$this->tags = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 	/**
@@ -189,6 +196,33 @@ class Code {
 	 */
 	public function getUid() {
 		return $this->uid;
+	}
+
+	/**
+	 * setter for tags
+	 *
+	 * @param \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Tag> $tags
+	 * @return void
+	 */
+	public function setTags(\Doctrine\Common\Collections\ArrayCollection $tags) {
+		$this->tags = clone $tags;
+	}
+
+	/**
+	 * @return \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Tag>
+	 */
+	public function getTags() {
+		return clone $this->tags;
+	}
+
+	/**
+	 * Add a tag to this code snippet
+	 *
+	 * @param \Layh\Twitcode\Domain\Model\Tag $tag
+	 * @return void
+	 */
+	public function addTag(\Layh\Twitcode\Domain\Model\Tag $tag) {
+		$this->tags->add($tag);
 	}
 
 }
