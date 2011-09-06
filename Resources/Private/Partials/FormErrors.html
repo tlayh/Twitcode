@@ -1,11 +1,14 @@
+{namespace tc=Layh\Twitcode\ViewHelpers}
+
 <f:form.validationResults for="{for}">
 	<f:if condition="{validationResults.flattenedErrors}">
 		<div class="error">
-			<strong>
-				<tc:replaceerror error="{error.propertyName}"/>
-			</strong>:
-			<f:for each="{error.errors}" as="errorDetail">
-				{errorDetail.message}
+			<f:for each="{validationResults.flattenedErrors}" as="flatErrors" key="label">
+				<strong><tc:replaceerror error="{label}" />:</strong>
+				<f:for each="{flatErrors}" as="error">
+					{error}
+				</f:for>
+				<br />
 			</f:for>
 		</div>
 	</f:if>

@@ -56,9 +56,9 @@ class ReplaceerrorViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHe
 		$error = $this->arguments['error'];
 
 		switch($error) {
-			case 'label': $error = 'Label'; break;
-			case 'comment': $error = 'Comment'; break;
-			case 'code': $error = 'Code'; break;
+			case 'code.label': $error = 'Label'; break;
+			case 'code.description': $error = 'Comment'; break;
+			case 'code.code': $error = 'Code'; break;
 		}
 
 		return $error;
