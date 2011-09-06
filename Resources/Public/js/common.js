@@ -14,8 +14,17 @@ jQuery(document).ready(function () {
 	if($(".twitterlink").length) {
 		$(".twitterlink").click( function() { return confirm('Are you sure you want to twitter your snippet again??'); } );
 	}
-	
+
+	initDelTags();
+
 });
+
+function initDelTags() {
+	$("span.tag a.del-tag").click(function() {
+
+		return false;
+	});
+}
 
 function showPopup() {
 	if($('#wrapper-codetocopy').length > 0) {

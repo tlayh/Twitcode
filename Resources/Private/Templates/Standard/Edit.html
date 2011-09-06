@@ -8,7 +8,7 @@
 
 	<f:render partial="Back" />
 
-	<f:render partial="FormErrors" arguments="{for: code}" />
+	<f:render partial="FormErrors" arguments="{for: 'code'}" />
 
 	<h3>Edit your snippet</h3>
 	<f:form action="/update" controller="Standard" package="Layh.Twitcode" object="{code}" name="code" method="post">
@@ -16,6 +16,15 @@
 		<label for="codetype">Codetype:</label> <f:form.select value="{code.codetype}" id="codetype" property="codetype" options="{codetypes}" optionLabelField="name" size="1" /><br /><br />
 		<label for="code">Code:</label> <f:form.textarea id="code" property="code" rows="15" cols="70" /><br /><br />
 		<label for="description">Description:</label> <f:form.textarea id="description" property="description" rows="5" cols="70" /><br /><br />
+
+		<div class="existing-tags">
+			<f:for each="{code.tags}" as="tag">
+				<span class="tag">{tag.title} <a class="del-tag" id="{tag.title}" href="#">X</a></span>
+			</f:for>
+		</div>
+		<br />
+
+		<label for="tags">Tags:</label><f:form.textbox name="tags" id="tags" /><span class="field-description">(comma seperated)</span><br /><br />
 		<f:form.submit value="Submit" />
 	</f:form>
 

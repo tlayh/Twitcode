@@ -8,7 +8,7 @@
 
 	<f:render partial="Back" />
 
-	<f:render partial="FormErrors" arguments="{for: code}" />
+	<f:render partial="FormErrors" arguments="{for: 'code'}" />
 
 	<h3>Create a new snippet</h3>
 	<f:form action="save" controller="Standard" package="Layh.Twitcode" object="{code}" name="code" method="post">

@@ -559,3 +559,7 @@ p.not-logged-in {
 	font-size: 10px;
 	padding: 2px;
 }
+
+#maincontent span.tag a.del-tag {
+	color:#FF0000;
+}
