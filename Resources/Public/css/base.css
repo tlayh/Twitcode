@@ -326,6 +326,11 @@ p.errormessage {
 	color: #999999;
 }
 
+#maincontent span.field-description {
+	color:#999999;
+	margin-left:5px;
+}
+
 #maincontant ul.flashmessages {
 	display: block;
 	border: 1px solid #FF0000;
@@ -546,4 +551,11 @@ section#discussions p.comment {
 
 p.not-logged-in {
 	color: #FF0000;
+}
+
+#maincontent span.tag {
+	background-color: #E2F2FB;
+    border-radius: 5px 5px 5px 5px;
+	font-size: 10px;
+	padding: 2px;
 }
