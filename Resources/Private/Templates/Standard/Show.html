@@ -40,8 +40,18 @@
 		<a href="#" onclick="showPopup(); return false;">
 			Copy code
 			<img src="{f:uri.resource(path: 'images/disk.png')}" alt="copy code" title="copy code" />
-		</a></span>
+		</a>
+	</span>
+
 	<tc:geshi code="{code.code}" codetype="{code.codetype.type}" /><br />
+
+	<label>Tags:</label>
+
+	<f:for each="{code.tags}" as="tag">
+		<span class="tag">{tag.title}</span>&nbsp;
+	</f:for>
+
+	<br />
 
 	<!-- popup layer to copy code -->
 	<div id="wrapper-codetocopy" style="display:none;">

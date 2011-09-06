@@ -8,13 +8,9 @@
 
 	<f:render partial="Back" />
 
-	<f:form.errors for="code">
-		<div class="error">
-			<strong>{error.propertyName}</strong>: <f:for each="{error.errors}" as="errorDetail">{errorDetail.message}</f:for>
-		</div>
-	</f:form.errors>
+	<f:render partial="FormErrors" arguments="{for: code}" />
 
-	<h3>Create a new snippet</h3>
+	<h3>Edit your snippet</h3>
 	<f:form action="/update" controller="Standard" package="Layh.Twitcode" object="{code}" name="code" method="post">
 		<label for="label">Name:</label> <f:form.textbox property="label" id="label" /><br /><br />
 		<label for="codetype">Codetype:</label> <f:form.select value="{code.codetype}" id="codetype" property="codetype" options="{codetypes}" optionLabelField="name" size="1" /><br /><br />
