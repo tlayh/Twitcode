@@ -21,9 +21,21 @@ jQuery(document).ready(function () {
 
 function initDelTags() {
 	$("span.tag a.del-tag").click(function() {
-
+		deleteTag(this.id);
 		return false;
 	});
+}
+
+function deleteTag(tagName) {
+	currentTags = $('#tags').val();
+
+	currentTags = currentTags.toUpperCase();
+	tagName = tagName.toUpperCase();
+
+	currentTags = currentTags.replace(tagName, '');
+	alert(currentTags);
+	$('#tags').val(currentTags);
+
 }
 
 function showPopup() {
