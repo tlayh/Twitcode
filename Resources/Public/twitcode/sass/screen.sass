@@ -1,0 +1,128 @@
+/** imports and main styles **/
+
+@import "compass"
+
+@import "variables"
+@import "reset-fonts-grids"
+@import "header"
+@import "maincontent"
+@import "footer"
+@import "login"
+@import "table"
+@import "sidebar"
+
+/** define general stuff here **/
+body
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif
+  font-size: 12px
+
+a
+  color: $black
+  text-decoration: none
+  &:hover
+    color: $lightBlue
+  span.blue
+    color: $lightBlue
+
+a.highlight-link
+  color: $lightBlue
+  text-decoration: underline
+  &:hover
+    text-decoration: none
+
+hr
+  background-image: url(/_Resources/Static/Packages/Layh.Twitcode/images/hr.png)
+  background-repeat: repeat-x
+  border-width: 0px
+  width: 100%
+  spacer
+    background: none
+    border-bottom: 1px solid #F0F0F0
+
+abbr, acronym
+  border-bottom: 1px dotted $black
+  cursor: help
+
+em
+  font-style: italic
+
+blockquote, ul, ol, dl
+  margin: 1em
+
+ol, ul, dl
+  margin-left: 2em
+
+ol li
+  list-style: decimal outside
+
+ul li
+  list-style: disc outside
+
+dl dd
+  margin-left: 1em
+
+th, td
+  border: 1px solid #000
+  padding: .5em
+
+th
+  font-weight: bold
+  text-align: center
+
+caption
+  margin-bottom: .5em
+  text-align: center
+
+p, fieldset, table, pre
+  margin-bottom: 1em
+
+
+/** Headlines **/
+
+h1
+  font-size: 138.5%
+
+h2
+  font-size: 123.1%
+
+h3
+  font-size: 18px
+
+h1, h2, h3
+  margin: 1em 0
+  color: $headlineBlue
+
+h1, h2, h3, h4, h5, h6, strong
+  font-weight: bold
+
+h4
+  margin-top: 8px
+  margin-bottom: 5px
+
+#bd
+  clear: both
+  background-image: url(/_Resources/Static/Packages/Layh.Twitcode/images/bg.gif)
+  background-repeat: repeat-y
+  margin-top: 15px
+
+#ft
+  background-image: url(/_Resources/Static/Packages/Layh.Twitcode/images/footerbg.png)
+  background-repeat: no-repeat
+  background-position: top
+  padding-top: 20px
+
+#hd
+  h1
+    float: left
+
+
+.twitcode
+  float: left
+  width: 600px
+  text-align: left
+  height: 85px
+
+.share
+  olor: #8FC8E8
+  font-size: 12px
+  margin-left: 34px
