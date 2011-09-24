@@ -55,7 +55,7 @@ class CodelibController extends \Layh\Twitcode\Controller\BaseController {
 	public function showbyuserAction() {
 		$this->initSidebarLogin();
 
-		if($this->login->isLoggedIn()) {
+		if ($this->login->isLoggedIn()) {
 			$loginData = $this->login->checkSession();
 			$snippets = $this->codeRepository->findByUser($loginData['user_id']);
 			$this->view->assign('snippets', $snippets);

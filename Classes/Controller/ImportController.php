@@ -55,14 +55,14 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 	 */
 	public function indexAction() {
 
-		//$count = $this->importCodeType();
-		//$string = "CodeType import finished - imported $count codetypes";
+		$count = $this->importCodeType();
+		$string = "CodeType import finished - imported $count codetypes";
 
 		//$count = $this->importUser();
 		//$string = "\nUser import finished - imported $count users";
 
-		$count = $this->importCode();
-		$string = "\nCode import finished - imported $count snippets";
+		//$count = $this->importCode();
+		//$string = "\nCode import finished - imported $count snippets";
 
 		return $string;
 
@@ -76,15 +76,15 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
 		$data = json_decode($jsonString);
 
-		// remove all code
+			// remove all code
 		$this->codeRepository->removeAll();
 
 		$count = 0;
-		foreach($data as $da) {
+		foreach ($data as $da) {
 
 			$count++;
 
-			// resolve user and codetype for code object
+				// resolve user and codetype for code object
 			$user = $this->userRepository->findOneByUser_id($da->user);
 			$codetype = $this->codeTypeRepository->findOneByType($da->codetype);
 			$code = new \Layh\Twitcode\Domain\Model\Code();
@@ -114,12 +114,12 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
 		$data = json_decode($jsonString);
 
-		// remove all users
+			// remove all users
 		$this->userRepository->removeAll();
 
 
 		$count = 0;
-		foreach($data as $da) {
+		foreach ($data as $da) {
 			$count++;
 			$user = new \Layh\Twitcode\Domain\Model\User();
 			$user->setName($da->name);
@@ -138,11 +138,11 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
 		$data = json_decode($jsonString);
 
-		// remove all codetypes
+			// remove all codetypes
 		$this->codeTypeRepository->removeAll();
 
 		$count = 0;
-		foreach($data as $da) {
+		foreach ($data as $da) {
 			$count++;
 			$codetype = new \Layh\Twitcode\Domain\Model\Codetype();
 			$codetype->setName($da->name);

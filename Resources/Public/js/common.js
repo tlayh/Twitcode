@@ -15,7 +15,7 @@ jQuery(document).ready(function () {
 		$(".twitterlink").click( function() { return confirm('Are you sure you want to twitter your snippet again??'); } );
 	}
 
-	initDelTags();
+	//initDelTags();
 
 });
 

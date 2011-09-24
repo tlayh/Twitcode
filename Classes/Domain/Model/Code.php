@@ -77,7 +77,7 @@ class Code {
 
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Tag>
-	 * @ManyToMany(inversedBy="posts", cascade={"all"})
+	 * @ManyToMany(inversedBy="codes", cascade={"all"})
 	 */
 	protected $tags;
 
@@ -223,6 +223,30 @@ class Code {
 	 */
 	public function addTag(\Layh\Twitcode\Domain\Model\Tag $tag) {
 		$this->tags->add($tag);
+	}
+
+	/**
+	 * returns a comma seperated tag list
+	 *
+	 * @return string
+	 */
+	public function getTagList() {
+		$tagList = '';
+
+		/** $tag \Layh\Twitcode\Domain\Model\Tag */
+		foreach($this->tags as $tag) {
+			$tagList .= $tag->getTitle();
+			$tagList .= ' ,';
+		}
+
+		// remove last comma
+		$tagList = \substr($tagList, 0, strlen($tagList)-1);
+
+		return $tagList;
+	}
+
+	public function removeAllTags() {
+		$this->tags = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 }

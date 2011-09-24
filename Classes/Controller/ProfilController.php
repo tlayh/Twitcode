@@ -64,7 +64,7 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 	public function commentAction() {
 		$this->initSidebarLogin();
 
-		if($this->login->isLoggedIn()) {
+		if ($this->login->isLoggedIn()) {
 			$loginData = $this->login->checkSession();
 			$comments = $this->commentRepository->findCommentsByUser($loginData['user_id']);
 			$this->view->assign('comments', $comments);
@@ -82,7 +82,7 @@ class ProfilController extends \Layh\Twitcode\Controller\BaseController {
 	public function snippetAction() {
 		$this->initSidebarLogin();
 
-		if($this->login->isLoggedIn()) {
+		if ($this->login->isLoggedIn()) {
 			$loginData = $this->login->checkSession();
 			$snippets = $this->codeRepository->findByUser($loginData['user_id']);
 			$this->view->assign('snippets', $snippets);

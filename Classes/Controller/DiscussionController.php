@@ -29,27 +29,27 @@ namespace Layh\Twitcode\Controller;
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class CommentController extends \Layh\Twitcode\Controller\BaseController {
+class DiscussionController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
-	 * @var \Layh\Twitcode\Domain\Repository\CommentRepository
+	 * @var \Layh\Twitcode\Domain\Repository\DiscussionRepository
 	 * @inject
 	 */
-	protected $commentRepository;
+	protected $discussionRepository;
 
 	/**
 	 * Save the discussion
 	 *
-	 * @param \Layh\Twitcode\Domain\Model\Comment $comment
+	 * @param \Layh\Twitcode\Domain\Model\Discussion $discussion
 	 * @return void
 	 * @author Thomas Layh <develop@layh.com>
 	 */
-	public function saveAction(\Layh\Twitcode\Domain\Model\Comment $comment, \Layh\Twitcode\Domain\Model\Code $code, \Layh\Twitcode\Domain\Model\User $user) {
+	public function saveAction(\Layh\Twitcode\Domain\Model\Discussion $discussion, \Layh\Twitcode\Domain\Model\Code $code, \Layh\Twitcode\Domain\Model\User $user) {
 
-			// add code and user to discussion and add the discussion to the repository
-		$comment->setCode($code);
-		$comment->setUser($user);
-		$this->commentRepository->add($comment);
+		// add code and user to discussion and add the discussion to the repository
+		$discussion->setCode($code);
+		$discussion->setUser($user);
+		$this->discussionRepository->add($discussion);
 
 		$this->redirect('show', 'Standard', NULL, array('code' => $code));
 	}

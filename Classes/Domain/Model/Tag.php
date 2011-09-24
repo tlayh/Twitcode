@@ -32,6 +32,7 @@ class Tag {
 	/**
 	 * @var string
 	 * @validate Alphanumeric, StringLength(minimum = 1, maximum = 20)
+     * @identitiy
 	 */
 	protected $title;
 
@@ -49,7 +50,7 @@ class Tag {
 	 * @param string $name
 	 */
 	public function __construct($title) {
-		$this->title = $title;
+		$this->title = strtoupper($title);
 		$this->codes = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
@@ -57,6 +58,13 @@ class Tag {
 	 * @return string
 	 */
 	public function getTitle() {
+		return $this->title;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function __toString() {
 		return $this->title;
 	}
 }

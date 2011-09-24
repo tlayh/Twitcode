@@ -45,6 +45,12 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	 */
 	protected $userRepository;
 
+    /**
+     * @var \Layh\Twitcode\Domain\Repository\TagRepository
+     * @inject
+     */
+    protected $tagRepository;
+
 	/**
 	 * @var string $consumerKey for oauth, injected via Settings.yaml
 	 */
@@ -75,7 +81,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 
 		$this->settings = $settings;
 
-		if(isset($settings['oauth']['consumerkey'])) {
+		if (isset($settings['oauth']['consumerkey'])) {
 			$this->consumerKey = $settings['oauth']['consumerkey'];
 		}
 		if (isset($settings['oauth']['consumersecret'])) {
@@ -102,7 +108,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	 */
 	public function loginAction() {
 
-		// check if the user really comes back from twitter and if the oauth token is set
+			// check if the user really comes back from twitter and if the oauth token is set
 		try {
 			$oauthToken = $this->request->getArgument('oauth_token');
 		    $oauthVerifier = $this->request->getArgument('oauth_verifier');
@@ -111,9 +117,10 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 		    $oauthVerifier = null;
 		}
 
+			// verify login
 		$succesfullLogin = $this->login->loginUser($oauthToken, $oauthVerifier);
 
-		if($succesfullLogin) {
+		if ($succesfullLogin) {
 			$this->flashMessageContainer->add('Congratulations!! Looks like you still remember your twitter account. Your login was successful!!');
 		} else {
 			$this->flashMessageContainer->add('Login failed!! Sometimes OAuth is a bitch so please be patient and try again.');
@@ -175,8 +182,8 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	public function editAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$this->initSidebarLogin();
 
-	    // check for login
-		if($this->login->isLoggedIn()) {
+	    	// check for login
+		if ($this->login->isLoggedIn()) {
 			// assign codetypes and snippet
 			$codeTypes = $this->codetypeRepository->findAll();
 			$this->view->assign('codetypes', $codeTypes);
@@ -191,12 +198,35 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	 * update an edited snippet
 	 *
 	 * @param \Layh\Twitcode\Domain\Model\Code $code
+	 * @param string $tags
 	 */
-	public function updateAction(\Layh\Twitcode\Domain\Model\Code $code) {
+	public function updateAction(\Layh\Twitcode\Domain\Model\Code $code, $tags) {
+
+		$tagArray = explode(',', $tags);
+
+		$code->removeAllTags();
+
+			// create tag objects and check if they exist
+		foreach ($tagArray as $tag) {
+
+				// remove whitespaces
+			$tag = trim($tag);
+			$tagObject = $this->tagRepository->findOneByTitle($tag);
+
+				// if tag does not yet exist
+			if($tagObject === NULL) {
+				$tagObject = new \Layh\Twitcode\Domain\Model\Tag(trim($tag));
+			}
+
+			$code->addTag($tagObject);
+
+		}
+
 		$this->codeRepository->update($code);
 		$this->flashMessageContainer->add('Congratulations!! Your snippet was changed.');
 	    $this->redirect('show', 'Standard', 'Layh.Twitcode', array('code'=>$code));
 	}
+
 
 	/**
 	 * show snippet form
@@ -220,11 +250,12 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 		}
 	}
 
+
 	/**
 	 * save a new snippet
 	 *
 	 * @param \Layh\Twitcode\Domain\Model\Code $code
-	 * @param string tags
+	 * @param string $tags
 	 *
 	 * @return void
 	 */
@@ -233,7 +264,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 
 		// check for login
 		$this->getLoginData();
-		if($this->login->isLoggedIn()) {
+		if ($this->login->isLoggedIn()) {
 			// get current user
 			$data = $this->login->checkSession();
 			$user = $this->userRepository->findByUserId(intval($data['user_id']));
@@ -241,48 +272,57 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 			$code->setUser($user);
 
 			$tagArray = explode(',', $tags);
-			foreach($tagArray as $tagTitle) {
-				$tag = new \Layh\Twitcode\Domain\Model\Tag(trim(strtoupper($tagTitle)));
-				$code->addTag($tag);
+			foreach ($tagArray as $tagTitle) {
+
+					// remove whitespaces
+				$tagTitle = trim($tagTitle);
+
+					// check if tag already exists
+				$tagObject = $this->tagRepository->findOneByTitle($tagTitle);
+				if ($tagObject === NULL) {
+					$tagObject = new \Layh\Twitcode\Domain\Model\Tag($tagTitle);
+				}
+
+				$code->addTag($tagObject);
 			}
 
-			// get modified date
+				// get modified date
 			$dateTime = new \DateTime();
 			$code->setModified($dateTime);
 
-			// get uid and set +1
+				// get uid and set +1
 			$uid = $this->codeRepository->findNextHighestUidRecord(); /** @var \Layh\Twitcode\Domain\Model\Code */
 			$code->setUid(($uid->getUid()+1));
 
-			// persist snippet
+				// persist snippet
 			$this->codeRepository->add($code);
 
-			// twitter snippet if checkbox is NOT checked
+				// twitter snippet if checkbox is NOT checked
 			if($this->request->getArgument('twitter') != 1) {
 				$this->twitterSnippet($code, $data);
 			}
 
-			// add success message
+				// add success message
 			$this->flashMessageContainer->add('Codesnippet added successfully');
 
 		} else {
-			// add error message
+				// add error message
 			$this->flashMessageContainer->add('Looks like for some reason you got here without being logged in. Please login first.');
 		}
 
-		// redirect to showSnippetAction
+			// redirect to showSnippetAction
 		$this->redirect('show', 'Standard', 'Layh.Twitcode', array('code'=>$code));
 	}
 
 
 	public function twitterAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$this->getLoginData();
-		if($this->login->isLoggedIn()) {
-			// get current user data
+		if ($this->login->isLoggedIn()) {
+				// get current user data
 			$data = $this->login->checkSession();
 		    $this->twitterSnippet($code, $data);
 		} else {
-			// add error message
+				// add error message
 			$this->flashMessageContainer->add('Looks like for some reason you got here without being logged in. Please login first.');
 		}
 

@@ -53,13 +53,23 @@ class BaseController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 	 */
 	protected $loginData = array();
 
+	/**
+	 * Initialize the sidebar and the login
+	 *
+	 * @return void
+	 */
     protected function initSidebarLogin() {
 	    $this->getLoginData();
         $this->sideBarSnippets();
     }
 
+	/**
+	 * Assign the latest snippets to the sidebar
+	 *
+	 * @return void
+	 */
 	protected function sideBarSnippets() {
-		// get latest snippets
+			// get latest snippets
 		$latestSnippets = $this->codeRepository->findLatestSnippets(10);
 		$this->view->assign('latestSnippets', $latestSnippets);
 	}
@@ -70,14 +80,14 @@ class BaseController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 	 * @return void
 	*/
 	protected function getLoginData() {
-		// check login
+			// check login
 		$loginData = array();
-		if($this->login->isLoggedIn()) {
-			// get Login data
+		if ($this->login->isLoggedIn()) {
+				// get Login data
 			$loginData['data'] = $this->login->checkSession();
 			$loginData['loggedin'] = true;
 		} else {
-			// get Login Url
+				// get Login Url
 			$loginData['loggedin'] = false;
 			$loginData['url'] = $this->login->getLoginUrl();
 		}
