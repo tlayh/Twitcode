@@ -1,0 +1,32 @@
+<f:layout name="Index.html" />
+
+<f:section name="content">
+
+	<f:render partial="Headernav" arguments="{logindata: logindata}" />
+
+	<f:flashMessages class="flashmessages" />
+
+	<f:render partial="Back" />
+
+	<h3>Profile</h3>
+
+	<div class="profilenavigation">
+		<ul>
+			<li>
+				<f:link.action action="snippet" controller="Profile">My snippets</f:link.action>
+			</li>
+			<li>
+				<f:link.action action="comment" controller="Profile">My comments</f:link.action>
+			</li>
+			<!--
+			<li>
+				<f:link.action action="showFavoriteSnippets" controller="Profile">My favorite snippets</f:link.action>
+			</li>
+			<li>
+				<f:link.action action="notificationSettings" controller="Profile">My notification settings</f:link.action>
+			</li>
+			-->
+		</ul>
+	</div>
+
+</f:section>

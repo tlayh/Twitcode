@@ -33,7 +33,7 @@ namespace Layh\Twitcode\Controller;
  * Date: 13.03.11
  * Time: 19:50
  */
-class ProfilController extends \Layh\Twitcode\Controller\BaseController {
+class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
 	 * @var Layh\Twitcode\Domain\Repository\CodeRepository

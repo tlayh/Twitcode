@@ -8,6 +8,10 @@
 
 	<f:render partial="Back" />
 
-	<h3>Profil - my favorite snippets</h3>
+	<h3>Profile - my comments</h3>
+
+	<f:for each="{comments}" as="comment">
+		<f:debug title="Debug">{comment}</f:debug>
+	</f:for>
 
 </f:section>
