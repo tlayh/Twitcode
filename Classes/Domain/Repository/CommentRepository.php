@@ -43,9 +43,9 @@ class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
 	/**
 	 * returns all comments by a single user
 	 *
-	 * @param int $user
-	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
+	 * @param int $userId
+	 * @return array
+	 * @author   Thomas Layh <develop@layh.com>
 	 */
 	public function findCommentsByUser($userId) {
 		$user = $this->userRepository->findByUserId($userId);

@@ -27,13 +27,13 @@ namespace Layh\Twitcode\Controller;
 class CodelibController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
-	 * @var Layh\Twitcode\Domain\Repository\CodeRepository
+	 * @var Layh\Twitcode\Domain\Repository\CodeRepository $codeRepository
 	 * @inject
 	 */
 	protected $codeRepository;
 
 	/**
-	 * @var Layh\Twitcode\Domain\Repository\CodetypeRepository
+	 * @var Layh\Twitcode\Domain\Repository\CodetypeRepository $codeypeRepository
 	 * @inject
 	 */
 	protected $codetypeRepository;
@@ -41,6 +41,7 @@ class CodelibController extends \Layh\Twitcode\Controller\BaseController {
 	public function indexAction() {
 		$this->initSidebarLogin();
 
+		/** @noinspection PhpUndefinedMethodInspection */
 		$codeTypes = $this->codetypeRepository->findAllWithSnippets();
 		$this->view->assign('codetypes', $codeTypes);
 	}

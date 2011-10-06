@@ -21,11 +21,11 @@
       @format: 'html'
 
 --
-    name: 'Profil routes'
-    uriPattern: 'profil/{@action}'
+    name: 'Profile routes'
+    uriPattern: 'profile/{@action}'
     defaults:
       @package: 'Layh.Twitcode'
-      @controller: 'Profil'
+      @controller: 'Profile'
       @action: 'index'
       @format: 'html'
 

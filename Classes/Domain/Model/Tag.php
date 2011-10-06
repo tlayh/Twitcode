@@ -47,7 +47,7 @@ class Tag {
 	/**
 	 * Constructs this tag
 	 *
-	 * @param string $name
+	 * @param string $title
 	 */
 	public function __construct($title) {
 		$this->title = strtoupper($title);

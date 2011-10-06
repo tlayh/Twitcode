@@ -41,6 +41,8 @@ class CommentController extends \Layh\Twitcode\Controller\BaseController {
 	 * Save the discussion
 	 *
 	 * @param \Layh\Twitcode\Domain\Model\Comment $comment
+	 * @param \Layh\Twitcode\Domain\Model\Code    $code
+	 * @param \Layh\Twitcode\Domain\Model\User    $user
 	 * @return void
 	 * @author Thomas Layh <develop@layh.com>
 	 */

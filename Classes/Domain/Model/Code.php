@@ -154,7 +154,7 @@ class Code {
 	}
 
 	/**
-	 * @param DateTime $modified
+	 * @param \DateTime|\Layh\Twitcode\Domain\Model\DateTime $modified
 	 * @return void
 	 */
 	public function setModified(\DateTime $modified) {
@@ -201,7 +201,7 @@ class Code {
 	/**
 	 * setter for tags
 	 *
-	 * @param \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Tag> $tags
+	 * @param \Doctrine\Common\Collections\ArrayCollection <\Layh\Twitcode\Domain\Model\Tag> $tags
 	 * @return void
 	 */
 	public function setTags(\Doctrine\Common\Collections\ArrayCollection $tags) {

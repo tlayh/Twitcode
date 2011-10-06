@@ -114,7 +114,7 @@ class Login {
 
 		$this->twitterObj = new \EpiTwitter($this->consumerKey, $this->consumerSecret);
 
-		/** @var $requestToken EpiOAuthResponse */
+			/* @var $requestToken EpiOAuthResponse */
 		$requestToken = $this->twitterObj->getRequestToken();
 
 		$this->oauthToken = $requestToken->__get('oauth_token');
@@ -130,6 +130,8 @@ class Login {
 	 * should receive the information from twitter/oauth if login was successful
 	 * sets cookie after successfull login, otherwise display error message
 	 *
+	 * @param string $oauthtoken
+	 * @param string $oauthVerifier
 	 * @return boolean
 	 */
 	public function loginUser($oauthtoken, $oauthVerifier) {
@@ -161,6 +163,11 @@ class Login {
 		return $success;
 	}
 
+	/**
+	 * check if the current user already exists
+	 *
+	 * @author Thomas Layh <develop@layh.com>
+	 */
 	public function checkForUser() {
 		$user = $this->userRepository->findByUserId(intval($this->userId));
 		if(!$user) {
@@ -168,9 +175,13 @@ class Login {
 			$user->setName($this->screenName);
 			$user->setUserId($this->userId);
 			$this->userRepository->add($user);
+		} else {
+
+				// check if the username is the same
+				// @todo: check if the username is the same
+
+			$this->user = $user;
 		}
-		// set the user object
-		$this->user = $user;
 	}
 
     public function getUserId() {
@@ -199,6 +210,9 @@ class Login {
 	/**
 	 * sets cookies for logged in users
 	 *
+	 * @param mixed $twitterInfo
+	 * @param string $token
+	 * @param string $secret
 	 * @return void
 	 */
 	protected function setSession($twitterInfo, $token, $secret) {

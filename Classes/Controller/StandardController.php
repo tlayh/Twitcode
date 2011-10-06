@@ -72,6 +72,11 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	protected $settings;
 
 	/**
+	 * @var \EpiTwitter
+	 */
+	protected $twitterObj;
+
+	/**
 	 * Inject the settings for oauth
 	 *
 	 * @param array $settings
@@ -118,9 +123,9 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 		}
 
 			// verify login
-		$succesfullLogin = $this->login->loginUser($oauthToken, $oauthVerifier);
+		$successfullyLogin = $this->login->loginUser($oauthToken, $oauthVerifier);
 
-		if ($succesfullLogin) {
+		if ($successfullyLogin) {
 			$this->flashMessageContainer->add('Congratulations!! Looks like you still remember your twitter account. Your login was successful!!');
 		} else {
 			$this->flashMessageContainer->add('Login failed!! Sometimes OAuth is a bitch so please be patient and try again.');
@@ -148,7 +153,8 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	/**
 	 * display snippet with
 	 *
-	 * @dontvalidate $code
+	 * @dontvalidate \Layh\Twitcode\Domain\Model\Code $code
+	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 * @return void
 	 */
 	public function showAction(\Layh\Twitcode\Domain\Model\Code $code) {
@@ -258,11 +264,11 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 	 * @param string $tags
 	 *
 	 * @return void
+	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function saveAction(\Layh\Twitcode\Domain\Model\Code $code, $tags) {
-		$message = '';
 
-		// check for login
+			// check for login
 		$this->getLoginData();
 		if ($this->login->isLoggedIn()) {
 			// get current user
@@ -303,7 +309,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 			}
 
 				// add success message
-			$this->flashMessageContainer->add('Codesnippet added successfully');
+			$this->flashMessageContainer->add('Code snippet added successfully');
 
 		} else {
 				// add error message
@@ -361,9 +367,9 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 		$this->twitterObj->setToken($data['oauth_token'], $data['oauth_token_secret']);
 		$resp = $this->twitterObj->post('/statuses/update.json', array('status' => $statusText));
 		if($resp->__get('code') === 200) {
-			$this->flashMessageContainer->add('Codesnippet twittered successfully');
+			$this->flashMessageContainer->add('Code snippet twittered successfully');
 		} else {
-			$this->flashMessageContainer->add('Twittering codesnippet failed');
+			$this->flashMessageContainer->add('Twittering code snippet failed');
 		}
 	}
 

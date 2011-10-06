@@ -51,7 +51,7 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
 	/**
 	 * indexAction
-	 * @return void
+	 * @return string
 	 */
 	public function indexAction() {
 

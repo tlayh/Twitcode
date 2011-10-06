@@ -53,6 +53,9 @@ class GeSHiViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * Render the syntax highlight
+	 *
+	 * @return string rendered sourcecode
+	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function render() {
 

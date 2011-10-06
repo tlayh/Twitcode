@@ -50,7 +50,10 @@ class ReplaceerrorViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHe
 	}
 
 	/**
-	 * Render the syntax highlight
+	 * Recplace the error with a nicer message
+	 *
+	 * @return string
+	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function render() {
 		$error = $this->arguments['error'];
