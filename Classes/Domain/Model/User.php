@@ -48,6 +48,11 @@ class User {
 	protected $user_id;
 
 	/**
+	 * @var Layh\Twitcode\Domain\Model\Settings
+	 */
+	protected $settings;
+
+	/**
 	 * @return string
 	 */
 	public function getName() {
@@ -75,6 +80,20 @@ class User {
 	 */
 	public function getUserId() {
 		return $this->user_id;
+	}
+
+	/**
+	 * @param \Layh\Twitcode\Domain\Model\Layh\Twitcode\Domain\Model\Settings $settings
+	 */
+	public function setSettings($settings) {
+		$this->settings = $settings;
+	}
+
+	/**
+	 * @return \Layh\Twitcode\Domain\Model\Layh\Twitcode\Domain\Model\Settings
+	 */
+	public function getSettings() {
+		return $this->settings;
 	}
 }
 ?>

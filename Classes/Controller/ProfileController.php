@@ -117,7 +117,7 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 	 * @return void
 	 * @author Thomas Layh <develop@layh.com>
 	 */
-	public function saveNotificationSettingsAction() {
+	public function updateNotificationSettingsAction() {
 		$loginData = $this->getLoginData();
 
 		// @todo save the notification settings
