@@ -29,6 +29,10 @@ namespace Layh\Twitcode\Domain\Repository;
  */
 class UserRepository extends \TYPO3\FLOW3\Persistence\Repository {
 
+	/**
+	 * @param integer $userId
+	 * @return \Layh\Twitcode\Domain\Model\User
+	 */
 	public function findByUserId($userId) {
 		$query = $this->createQuery();
 		$result = $query->matching($query->equals('user_id', $userId))->setLimit(1)->execute();

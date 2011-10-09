@@ -36,16 +36,16 @@ namespace Layh\Twitcode\Controller;
 class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
-	 * @var Layh\Twitcode\Domain\Repository\CodeRepository
-	 * @inject
-	 */
-	protected $codeRepository;
-
-	/**
-	 * @var Layh\Twitcode\Domain\Repository\CommentRepository
+	 * @var \Layh\Twitcode\Domain\Repository\CommentRepository
 	 * @inject
 	 */
 	protected $commentRepository;
+
+	/**
+	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
+	 * @inject
+	 */
+	protected $userRepository;
 
 	/**
 	 * @return void
@@ -109,16 +109,31 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 	 */
 	public function notificationSettingsAction() {
 		$this->initSidebarLogin();
+
+		if($this->login->isLoggedIn()) {
+			$loginData = $this->login->checkSession();
+			$currentUser = $this->userRepository->findByUserId($loginData['user_id']);
+			if (NULL == $currentUser->getNotification()) {
+				$currentUser->setNotification(FALSE);
+			}
+			$this->view->assign('currentUser', $currentUser);
+		} else {
+			$this->flashMessageContainer->add('No user logged in!!');
+		}
+
 	}
 
 	/**
 	 * Save the notification settings
 	 *
+	 * @param \Layh\Twitcode\Domain\Model\User $currentUser
 	 * @return void
 	 * @author Thomas Layh <develop@layh.com>
 	 */
-	public function updateNotificationSettingsAction() {
+	public function updateNotificationSettingsAction(\Layh\Twitcode\Domain\Model\User $currentUser) {
 		$loginData = $this->getLoginData();
+
+		$this->userRepository->update($currentUser);
 
 		// @todo save the notification settings
 

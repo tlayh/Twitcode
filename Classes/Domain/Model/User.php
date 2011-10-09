@@ -48,10 +48,9 @@ class User {
 	protected $user_id;
 
 	/**
-	 * @var \Layh\Twitcode\Domain\Model\Settings
-	 * @OneToOne
+	 * @var boolean
 	 */
-	protected $settings;
+	protected $notification;
 
 	/**
 	 * @return string
@@ -83,18 +82,13 @@ class User {
 		return $this->user_id;
 	}
 
-	/**
-	 * @param \Layh\Twitcode\Domain\Model\Layh\Twitcode\Domain\Model\Settings $settings
-	 */
-	public function setSettings($settings) {
-		$this->settings = $settings;
+	public function setNotification($notification) {
+		$this->notification = $notification;
 	}
 
-	/**
-	 * @return \Layh\Twitcode\Domain\Model\Layh\Twitcode\Domain\Model\Settings
-	 */
-	public function getSettings() {
-		return $this->settings;
+	public function getNotification() {
+		return $this->notification;
 	}
+
 }
 ?>
