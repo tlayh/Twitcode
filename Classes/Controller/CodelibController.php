@@ -26,18 +26,6 @@ namespace Layh\Twitcode\Controller;
 
 class CodelibController extends \Layh\Twitcode\Controller\BaseController {
 
-	/**
-	 * @var Layh\Twitcode\Domain\Repository\CodeRepository $codeRepository
-	 * @inject
-	 */
-	protected $codeRepository;
-
-	/**
-	 * @var Layh\Twitcode\Domain\Repository\CodetypeRepository $codeypeRepository
-	 * @inject
-	 */
-	protected $codetypeRepository;
-
 	public function indexAction() {
 		$this->initSidebarLogin();
 

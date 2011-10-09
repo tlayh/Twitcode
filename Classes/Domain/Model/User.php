@@ -48,7 +48,8 @@ class User {
 	protected $user_id;
 
 	/**
-	 * @var Layh\Twitcode\Domain\Model\Settings
+	 * @var \Layh\Twitcode\Domain\Model\Settings
+	 * @OneToOne
 	 */
 	protected $settings;
 
