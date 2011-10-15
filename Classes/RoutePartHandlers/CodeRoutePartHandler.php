@@ -29,7 +29,7 @@ namespace Layh\Twitcode\RoutePartHandlers;
  *
  * @scope prototype
  */
-class StandardRoutePartHandler extends \TYPO3\FLOW3\MVC\Web\Routing\DynamicRoutePart {
+class CodeRoutePartHandler extends \TYPO3\FLOW3\MVC\Web\Routing\DynamicRoutePart {
 
 	/**
 	 * Splits the given value into the date and title of the post and sets this

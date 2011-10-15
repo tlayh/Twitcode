@@ -69,18 +69,18 @@
     uriPattern: '{@action}/{code}'
     defaults:
         @package: Layh.Twitcode
-        @controller: Standard
+        @controller: Code
         @format: 'html'
     routeParts:
       code:
-        handler: Layh\Twitcode\RoutePartHandlers\StandardRoutePartHandler
+        handler: Layh\Twitcode\RoutePartHandlers\CodeRoutePartHandler
 
 --
     name: 'Standard Action Route'
     uriPattern: '{@action}'
     defaults:
         @package: Layh.Twitcode
-        @controller: Standard
+        @controller: Code
         @format: 'html'
         @action: 'index'
 
