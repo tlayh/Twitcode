@@ -34,7 +34,7 @@
     uriPattern: 'codelib/{@action}/{codetype}'
     defaults:
         @package: Layh.Twitcode
-        @controller: Codelib
+        @controller: 'Codelib'
         @format: 'html'
     routeParts:
       codetype:
@@ -45,7 +45,7 @@
     uriPattern: 'codelib/{@action}'
     defaults:
         @package: Layh.Twitcode
-        @controller: Codelib
+        @controller: 'Codelib'
         @format: 'html'
 
 --
@@ -69,7 +69,7 @@
     uriPattern: '{@action}/{code}'
     defaults:
         @package: Layh.Twitcode
-        @controller: Code
+        @controller: 'Code'
         @format: 'html'
     routeParts:
       code:
@@ -80,7 +80,7 @@
     uriPattern: '{@action}'
     defaults:
         @package: Layh.Twitcode
-        @controller: Code
+        @controller: 'Code'
         @format: 'html'
         @action: 'index'
 
@@ -89,5 +89,6 @@
     uriPattern: ''
     defaults:
         @package: Layh.Twitcode
+        @controler: 'Code'
         @format: 'html'
         @action: 'index'
