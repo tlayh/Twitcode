@@ -24,13 +24,13 @@
 
 	<f:if condition="{editable}">
 		<span class="editable">
-			<f:link.action action="edit" controller="Standard" package="Layh.Twitcode" arguments="{code: code}">
+			<f:link.action action="edit" controller="Code" package="Layh.Twitcode" arguments="{code: code}">
 				<img src="{f:uri.resource(path:'images/edit.gif')}" title="edit" alt="edit" />
 			</f:link.action>
-			<f:link.action action="delete" controller="Standard" package="Layh.Twitcode" arguments="{code: code}" class="deletelink">
+			<f:link.action action="delete" controller="Code" package="Layh.Twitcode" arguments="{code: code}" class="deletelink">
 				<img src="{f:uri.resource(path:'images/delete.gif')}" title="delete" alt="delete" />
 			</f:link.action>
-			<f:link.action action="twitter" controller="Standard" package="Layh.Twitcode" arguments="{code: code}" class="twitterlink">
+			<f:link.action action="twitter" controller="Code" package="Layh.Twitcode" arguments="{code: code}" class="twitterlink">
 				<img src="{f:uri.resource(path:'images/twitter.gif')}" title="twitter" alt="twitter" />
 			</f:link.action>
 		</span>
@@ -87,7 +87,7 @@
 		<!-- show form for discussion -->
 		<f:if condition="{loggedin}">
 		<f:then>
-			<f:form action="save" controller="comment" object="{comment}" name="comment" method="post">
+			<f:form action="save" controller="Comment" object="{comment}" name="comment" method="post">
 				<f:form.hidden name="code" value="{code}" />
 				<f:form.hidden name="user" value="{user}" />
 				<label for="discussion">Comment:</label>

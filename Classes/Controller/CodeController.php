@@ -31,7 +31,7 @@ require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Applicati
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class StandardController extends \Layh\Twitcode\Controller\BaseController {
+class CodeController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\CommentRepository
@@ -230,7 +230,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 
 		$this->codeRepository->update($code);
 		$this->flashMessageContainer->add('Congratulations!! Your snippet was changed.');
-	    $this->redirect('show', 'Standard', 'Layh.Twitcode', array('code'=>$code));
+	    $this->redirect('show', 'Code', 'Layh.Twitcode', array('code'=>$code));
 	}
 
 
@@ -317,7 +317,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 		}
 
 			// redirect to showSnippetAction
-		$this->redirect('show', 'Standard', 'Layh.Twitcode', array('code'=>$code));
+		$this->redirect('show', 'Code', 'Layh.Twitcode', array('code'=>$code));
 	}
 
 
@@ -332,7 +332,7 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 			$this->flashMessageContainer->add('Looks like for some reason you got here without being logged in. Please login first.');
 		}
 
-	    $this->redirect('show', 'Standard', 'Layh.Twitcode', array('code'=>$code));
+	    $this->redirect('show', 'Code', 'Layh.Twitcode', array('code'=>$code));
 	}
 
 	/**
@@ -359,6 +359,9 @@ class StandardController extends \Layh\Twitcode\Controller\BaseController {
 		if(strlen($statusText) > 140) {
 			$statusText = substr($statusText, 0 , 136).'...';
 		}
+
+		// save short url to db
+		$code->setShortUrl($shortenUrl);
 
 		// twitter snippet
 		$this->twitterObj = new \EpiTwitter($this->consumerKey, $this->consumerSecret);
