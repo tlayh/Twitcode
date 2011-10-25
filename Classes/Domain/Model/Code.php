@@ -76,6 +76,13 @@ class Code {
 	protected $description;
 
 	/**
+	 * The short URL that is returned from bit.ly
+	 * it is saved here to minimize the requests to bit.ly for generating short urls
+	 * @var string
+	 */
+	protected $shortUrl;
+
+	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Tag>
 	 * @ManyToMany(inversedBy="codes", cascade={"all"})
 	 */
@@ -117,7 +124,7 @@ class Code {
 	}
 
 	/**
-	 * @return Layh\Twitcode\Domain\Model\User
+	 * @return \Layh\Twitcode\Domain\Model\User
 	 */
 	public function getUser() {
 		return $this->user;
@@ -247,6 +254,20 @@ class Code {
 
 	public function removeAllTags() {
 		$this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+	}
+
+	/**
+	 * @param string $shortUrl
+	 */
+	public function setShortUrl($shortUrl) {
+		$this->shortUrl = $shortUrl;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getShortUrl() {
+		return $this->shortUrl;
 	}
 
 }

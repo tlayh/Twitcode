@@ -25,11 +25,10 @@ namespace Layh\Twitcode\Domain\Model;
  ***************************************************************/
 
 /**
- * A book
+ * A twitter user
  *
  * @scope prototype
  * @entity
- * @lazy
  */
 class User {
 
@@ -48,7 +47,7 @@ class User {
 	protected $user_id;
 
 	/**
-	 * @var boolean
+	 * @var bool
 	 */
 	protected $notification;
 
@@ -82,10 +81,16 @@ class User {
 		return $this->user_id;
 	}
 
+	/**
+	 * @param bool $notification
+	 */
 	public function setNotification($notification) {
 		$this->notification = $notification;
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function getNotification() {
 		return $this->notification;
 	}

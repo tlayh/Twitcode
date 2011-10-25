@@ -27,7 +27,7 @@ require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Applicati
  ***************************************************************/
 
 /**
- * Standard controller for the Twitcode package
+ * Code controller for the Twitcode package
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
@@ -304,7 +304,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 			$this->codeRepository->add($code);
 
 				// twitter snippet if checkbox is NOT checked
-			if($this->request->getArgument('twitter') != 1) {
+			if( $this->request->getArgument('twitter') != 1) {
 				$this->twitterSnippet($code, $data);
 			}
 
@@ -343,27 +343,30 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	 * @return void
 	 */
 	protected function twitterSnippet(\Layh\Twitcode\Domain\Model\Code $code, $data) {
-		// build message text
+
+			// build message text
 		$comment = $code->getDescription();
 
-		// build short url
+			// build short url
 		$url = 'http://'.$this->baseUrl.'/show/';
 		$url .= $code->getUid().'/'.str_replace(' ', '-', $code->getLabel());
 
-		// use bit.ly to shorten url
+			// use bit.ly to shorten url
 		$urlToShorten = 'http://api.bit.ly/v3/shorten?login=twitcodeorg&apiKey=R_9cde3d48cc497d36ddaa84bb41278b48&longUrl='.$url.'&format=txt';
 		$handle = fopen($urlToShorten, 'r');
 		$shortenUrl = fgets($handle);
 
+			// save the short url to the model
+		$code->setShortUrl($shortenUrl);
+		$this->codeRepository->update($code);
+
+			// shorten the status text for twitter
 		$statusText = $shortenUrl.' - '.$comment;
 		if(strlen($statusText) > 140) {
 			$statusText = substr($statusText, 0 , 136).'...';
 		}
 
-		// save short url to db
-		$code->setShortUrl($shortenUrl);
-
-		// twitter snippet
+			// twitter snippet
 		$this->twitterObj = new \EpiTwitter($this->consumerKey, $this->consumerSecret);
 		$this->twitterObj->setToken($data['oauth_token']);
 		$token = $this->twitterObj->getAccessToken(array('oauth_verifier' => $data['oauth_token_secret']));

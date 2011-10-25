@@ -157,7 +157,7 @@ class Login {
 			return false;
 		}
 
-		// check if user exists
+			// check if user exists
 		$this->checkForUser();
 
 		return $success;

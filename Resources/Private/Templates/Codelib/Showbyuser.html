@@ -24,7 +24,7 @@
 			<f:for each="{snippets}" as="snippet">
 				<tr>
 					<td class="name">
-						<f:link.action action="show" controller="Standard" package="Layh.Twitcode" arguments="{code: snippet}">
+						<f:link.action action="show" controller="Code" package="Layh.Twitcode" arguments="{code: snippet}">
 							<f:format.raw><tc:striptag>{snippet.label}</tc:striptag></f:format.raw>
 						</f:link.action>
 					</td>
@@ -32,13 +32,13 @@
 					<td class="type">{snippet.codetype.name}</td>
 					<td>
 						<span class="editable">
-							<f:link.action action="edit" controller="Standard" package="Layh.Twitcode" arguments="{code: snippet}">
+							<f:link.action action="edit" controller="Code" package="Layh.Twitcode" arguments="{code: snippet}">
 								<img src="{f:uri.resource(path:'images/edit.gif')}" title="edit" alt="edit" />
 							</f:link.action>
-							<f:link.action action="delete" controller="Standard" package="Layh.Twitcode" arguments="{code: snippet}" class="deletelink">
+							<f:link.action action="delete" controller="Code" package="Layh.Twitcode" arguments="{code: snippet}" class="deletelink">
 								<img src="{f:uri.resource(path:'images/delete.gif')}" title="delete" alt="delete" />
 							</f:link.action>
-							<f:link.action action="twitter" controller="Standard" package="Layh.Twitcode" arguments="{code: snippet}" class="twitterlink">
+							<f:link.action action="twitter" controller="Code" package="Layh.Twitcode" arguments="{code: snippet}" class="twitterlink">
 								<img src="{f:uri.resource(path:'images/twitter.gif')}" title="twitter" alt="twitter" />
 							</f:link.action>
 						</span>

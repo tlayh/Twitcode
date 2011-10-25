@@ -22,7 +22,7 @@
 			<f:for each="{snippets}" as="snippet">
 				<tr>
 					<td class="name">
-						<f:link.action action="show" controller="Standard" package="Layh.Twitcode" arguments="{code: snippet}">
+						<f:link.action action="show" controller="Code" package="Layh.Twitcode" arguments="{code: snippet}">
 							<f:format.raw><tc:striptag>{snippet.label}</tc:striptag></f:format.raw>
 						</f:link.action>
 					</td>

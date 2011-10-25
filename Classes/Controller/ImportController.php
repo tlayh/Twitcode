@@ -55,17 +55,16 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 	 */
 	public function indexAction() {
 
-		$count = $this->importCodeType();
-		$string = "CodeType import finished - imported $count codetypes";
+		//$count = $this->importCodeType();
+		//$string =  "CodeType import finished - imported $count codetypes";
 
 		//$count = $this->importUser();
 		//$string = "\nUser import finished - imported $count users";
 
-		//$count = $this->importCode();
-		//$string = "\nCode import finished - imported $count snippets";
+		$count = $this->importCode();
+		$string =  "\nCode import finished - imported $count snippets";
 
 		return $string;
-
 	}
 
 	/**
@@ -124,6 +123,7 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 			$user = new \Layh\Twitcode\Domain\Model\User();
 			$user->setName($da->name);
 			$user->setUserId($da->user_id);
+			$user->setNotification(TRUE);
 			$this->userRepository->add($user);
 		}
 

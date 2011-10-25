@@ -113,9 +113,6 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 		if($this->login->isLoggedIn()) {
 			$loginData = $this->login->checkSession();
 			$currentUser = $this->userRepository->findByUserId($loginData['user_id']);
-			if (NULL == $currentUser->getNotification()) {
-				$currentUser->setNotification(FALSE);
-			}
 			$this->view->assign('currentUser', $currentUser);
 		} else {
 			$this->flashMessageContainer->add('No user logged in!!');
@@ -135,8 +132,7 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 
 		$this->userRepository->update($currentUser);
 
-		// @todo save the notification settings
-
+		$this->flashMessageContainer->add('Notification settings updated!');
 		$this->redirect('notificationSettings');
 
 	}

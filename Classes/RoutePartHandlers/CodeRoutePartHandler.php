@@ -25,7 +25,7 @@ namespace Layh\Twitcode\RoutePartHandlers;
  ***************************************************************/
 
 /**
- * Standard route part handler
+ * Code route part handler
  *
  * @scope prototype
  */
