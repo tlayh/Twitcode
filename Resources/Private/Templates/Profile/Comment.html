@@ -10,8 +10,33 @@
 
 	<h3>Profile - my comments</h3>
 
-	<f:for each="{comments}" as="comment">
-		{comment.code.label} <br />
-	</f:for>
+	<p>You commented on the following snippets:</p>
+
+	<table>
+			<thead>
+			<tr>
+				<td class="name">Name</td>
+				<td class="long-date">Date</td>
+			</tr>
+			</thead>
+			<tbody>
+
+		<f:for each="{commentCollection}" as="comment" key="codeUid">
+
+			<tr>
+				<td>
+					<f:link.action action="show" controller="Code" arguments="{code: comment.code}">
+						{comment.codeLabel}
+					</f:link.action>
+				</td>
+				<td>
+					<f:format.date format="d.m.Y - H:i">{comment.commentTime}</f:format.date>
+				</td>
+			</tr>
+
+		</f:for>
+
+		</tbody>
+	</table>
 
 </f:section>

@@ -53,9 +53,9 @@ class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
 		$query = $this->createQuery();
 		$result = $query
 				->matching($query->equals('user', $user))
-				->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
+				->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING))
 				->execute();
-		return $result->toArray();
+		return $result;
 	}
 
 }

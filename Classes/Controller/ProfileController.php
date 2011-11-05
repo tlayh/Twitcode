@@ -67,9 +67,11 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 		if ($this->login->isLoggedIn()) {
 			$loginData = $this->login->checkSession();
 			$comments = $this->commentRepository->findCommentsByUser($loginData['user_id']);
-			$this->view->assign('comments', $comments);
+			$commentCollection = $this->buildCommentCollection($comments);
+			$this->view->assign('commentCollection', $commentCollection);
 		} else {
 			$this->flashMessageContainer->add('No User logged in!!');
+			$this->redirect('index', 'Code');
 		}
 	}
 
@@ -88,6 +90,7 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 			$this->view->assign('snippets', $snippets);
 		} else {
 			$this->flashMessageContainer->add('No User logged in!!');
+			$this->redirect('index', 'Code');
 		}
 	}
 
@@ -116,6 +119,7 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 			$this->view->assign('currentUser', $currentUser);
 		} else {
 			$this->flashMessageContainer->add('No user logged in!!');
+			$this->redirect('index', 'Code');
 		}
 
 	}
@@ -134,7 +138,26 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 
 		$this->flashMessageContainer->add('Notification settings updated!');
 		$this->redirect('notificationSettings');
+	}
 
+	/**
+	 * Build a comment collection
+	 *
+	 * @param mixed $comments
+	 * @return mixed $comments
+	 */
+	private function buildCommentCollection($comments) {
+
+		$commentCollection = array();
+
+		/** @var $comment \Layh\Twitcode\Domain\Model\Comment */
+		foreach ($comments as $comment) {
+			$commentCollection[$comment->getCode()->getUid()]['codeLabel'] = $comment->getCode()->getLabel();
+			$commentCollection[$comment->getCode()->getUid()]['code'] = $comment->getCode();
+			$commentCollection[$comment->getCode()->getUid()]['commentTime'] = $comment->getModified();
+		}
+
+		return $commentCollection;
 	}
 
 }
