@@ -39,24 +39,21 @@ class Code {
 	protected $uid;
 
 	/**
-	 * The code label
 	 * @var string
-	 * @validate StringLength(minimum = 3, maximum = 100)
+	 * @validate StringLength(minimum = 5, maximum=100)
 	 */
 	protected $label;
 
 	/**
-	 * The user the snippet belongs to
-	 *
 	 * @var Layh\Twitcode\Domain\Model\User
 	 * @ManyToOne
 	 */
 	protected $user;
 
 	/**
-	 * The code itself
 	 * @var string
 	 * @validate StringLength(minimum = 10)
+	 * @Column(type="text")
 	 */
 	protected $code;
 
@@ -71,7 +68,8 @@ class Code {
 	/**
 	 * The code description
 	 * @var string
-     * @validate StringLength(minimum = 5)
+     * @validate StringLength(minimum = 10)
+	 * @Column(type="text")
 	 */
 	protected $description;
 

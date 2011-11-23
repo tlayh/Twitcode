@@ -43,6 +43,7 @@ class Comment {
 	 * The discussion
 	 * @var string
 	 * @validate StringLength(minimum = 10)
+	 * @Column(type="text")
 	 */
 	protected $comment;
 
