@@ -13,7 +13,7 @@
 Layh:
   Twitcode:
     oauth:
-      consumerkey: <consumerkey>
-      consumersecret: <consumersecret>
+      consumerkey: jV0kZcU6ZUfGQGDWjNvr6A
+      consumersecret: UzTOAjlu8YflgHz62Tu6GAIyWbjG5I6NSDeu7kyH9Hc
     bitly:
-      url: <baseurl without http:// and slashes like yourdomain.com>
+      url: twitcode.org

@@ -55,6 +55,8 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 	 */
 	public function indexAction() {
 
+		die('no access for you here!!');
+
 		//$count = $this->importCodeType();
 		//$string =  "CodeType import finished - imported $count codetypes";
 
