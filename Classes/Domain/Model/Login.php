@@ -121,7 +121,7 @@ class Login {
 		$this->oauthTokenSecret = $requestToken->__get('oauth_token_secret');
 
 		$loginUrl = $this->twitterObj->getAuthorizeUrl($requestToken->__get('oauth_token'));
-
+			
 		return $loginUrl;
 	}
 

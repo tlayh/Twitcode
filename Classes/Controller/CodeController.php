@@ -158,6 +158,9 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	 * @return void
 	 */
 	public function showAction(\Layh\Twitcode\Domain\Model\Code $code) {
+		
+		$this->login->setSettings($this->settings);
+		
 		$this->initSidebarLogin();
 
 		// check if code belongs to current user
