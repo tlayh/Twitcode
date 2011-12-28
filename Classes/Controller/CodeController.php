@@ -67,35 +67,9 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	protected $baseUrl;
 
 	/**
-	 * @var array
-	 */
-	protected $settings;
-
-	/**
 	 * @var \EpiTwitter
 	 */
 	protected $twitterObj;
-
-	/**
-	 * Inject the settings for oauth
-	 *
-	 * @param array $settings
-	 * @return void
-	 */
-	public function injectSettings(array $settings) {
-
-		$this->settings = $settings;
-
-		if (isset($settings['oauth']['consumerkey'])) {
-			$this->consumerKey = $settings['oauth']['consumerkey'];
-		}
-		if (isset($settings['oauth']['consumersecret'])) {
-			$this->consumerSecret = $settings['oauth']['consumersecret'];
-		}
-		if (isset($settings['bitly']['url'])) {
-			$this->baseUrl = $settings['bitly']['url'];
-		}
-	}
 
 	/**
 	 * logout, delete the session

@@ -54,11 +54,38 @@ class BaseController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 	protected $loginData = array();
 
 	/**
+	 * @var array
+	 */
+	protected $settings;
+
+	/*
+ 	 * Inject the settings
+	 * 
+	 * @param array $settings
+	 * @return void
+	 */
+	public function injectSettings(array $settings) {
+		$this->settings = $settings;
+
+		 if (isset($settings['oauth']['consumerkey'])) {
+	  		$this->consumerKey = $settings['oauth']['consumerkey'];
+	     }
+		 if (isset($settings['oauth']['consumersecret'])) {
+		    $this->consumerSecret = $settings['oauth']['consumersecret'];
+		 }
+		 if (isset($settings['bitly']['url'])) {
+			$this->baseUrl = $settings['bitly']['url'];
+		 }
+
+	}
+
+	/**
 	 * Initialize the sidebar and the login
 	 *
 	 * @return void
 	 */
     protected function initSidebarLogin() {
+		$this->login->setSettings($this->settings);
 	    $this->getLoginData();
         $this->sideBarSnippets();
     }
