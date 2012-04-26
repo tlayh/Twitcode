@@ -24,36 +24,41 @@ namespace Layh\Twitcode\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Doctrine\ORM\Mapping as ORM;
+use \TYPO3\FLOW3\Annotations as FLOW3;
+
 /**
  * A code snippet
  *
- * @scope prototype
- * @entity
+ * @FLOW3\Scope("prototype")
+ * @FLOW3\Entity
  */
 class Code {
 
 	/**
-	 * @identity
+	 * @ORM\Id
 	 * @var integer
 	 */
 	protected $uid;
 
 	/**
 	 * @var string
-	 * @validate StringLength(minimum = 5, maximum=100)
+	 * @FLOW3\Validate(type="Text")
+	 * @FLOW3\Validate(type="StringLength", options={"minimum"=5, "maximum"=100})
 	 */
 	protected $label;
 
 	/**
 	 * @var Layh\Twitcode\Domain\Model\User
-	 * @ManyToOne
+	 * @ORM\ManyToOne
 	 */
 	protected $user;
 
 	/**
 	 * @var string
-	 * @validate StringLength(minimum = 10)
-	 * @Column(type="text")
+	 * @FLOW3\Validate(type="Text")
+	 * @FLOW3\Validate(type="StringLength", options={"minimum"=10})
+	 * @ORM\Column(type="text")
 	 */
 	protected $code;
 
@@ -61,15 +66,15 @@ class Code {
 	 * The code type the snippet belongs to
 	 *
 	 * @var Layh\Twitcode\Domain\Model\Codetype
-	 * @ManyToOne
+	 * @ORM\ManyToOne
 	 */
 	protected $codetype;
 
 	/**
 	 * The code description
 	 * @var string
-     * @validate StringLength(minimum = 10)
-	 * @Column(type="text")
+	 * @FLOW3\Validate(type="StringLength", options={"minimum"=10})
+	 * @ORM\Column(type="text")
 	 */
 	protected $description;
 
@@ -82,7 +87,7 @@ class Code {
 
 	/**
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Tag>
-	 * @ManyToMany(inversedBy="codes", cascade={"all"})
+	 * @ORM\ManyToMany(inversedBy="codes", cascade={"all"})
 	 */
 	protected $tags;
 

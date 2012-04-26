@@ -29,7 +29,7 @@ namespace Layh\Twitcode\RoutePartHandlers;
  *
  * @scope prototype
  */
-class CodelibRoutePartHandler extends \TYPO3\FLOW3\MVC\Web\Routing\DynamicRoutePart {
+class CodelibRoutePartHandler extends \TYPO3\FLOW3\Mvc\Routing\DynamicRoutePart {
 
 	/**
 	 * Checks for the current code type

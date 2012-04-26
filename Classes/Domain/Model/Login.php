@@ -1,7 +1,7 @@
 <?php
 namespace Layh\Twitcode\Domain\Model;
 
-require_once('/var/www/vhosts/twitcode.org/httpdocs/Packages/Applications/Layh.Twitcode/Resources/Private/Lib/oauth/EpiTwitter.php');
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Applications/Layh.Twitcode/Resources/Private/Lib/oauth/EpiTwitter.php');
 
 /***************************************************************
  *  Copyright notice
@@ -26,15 +26,17 @@ require_once('/var/www/vhosts/twitcode.org/httpdocs/Packages/Applications/Layh.T
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\FLOW3\Annotations as FLOW3;
+
 /**
  * responsible for all stuff that has to do with the login
- * @scope session
+ * @FLOW3\Scope("session")
  */
 class Login {
 
 	/**
 	 * @var \TYPO3\FLOW3\Object\ObjectManagerInterface
-	 * @inject
+	 * @FLOW3\Inject
 	 */
 	protected $objectManager;
 
@@ -55,7 +57,7 @@ class Login {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
-	 * @inject
+	 * @FLOW3\Inject
 	 */
 	protected $userRepository;
 
@@ -121,7 +123,7 @@ class Login {
 		$this->oauthTokenSecret = $requestToken->__get('oauth_token_secret');
 
 		$loginUrl = $this->twitterObj->getAuthorizeUrl($requestToken->__get('oauth_token'));
-			
+
 		return $loginUrl;
 	}
 

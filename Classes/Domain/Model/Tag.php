@@ -19,11 +19,14 @@ namespace Layh\Twitcode\Domain\Model;
  * If not, see http://www.gnu.org/licenses/lgpl.html                      *
  *                                                                        */
 
+use Doctrine\ORM\Mapping as ORM;
+use \TYPO3\FLOW3\Annotations as FLOW3;
+
 /**
  * Tag model for the Layh.Twitcode package
  *
- * @scope prototype
- * @valueobject
+ * @FLOW3\Scope("prototype")
+ * @FLOW3\ValueObject
  *
  * @author Thomas Layh <develop@layh.com>
 */
@@ -31,8 +34,9 @@ class Tag {
 
 	/**
 	 * @var string
-	 * @validate Alphanumeric, StringLength(minimum = 1, maximum = 20)
-     * @identitiy
+	 * @FLOW3\Validate(type="Alphanumeric")
+	 * @FLOW3\Validate(type="StringLength", options={"minimum"= 1, "maximum"= 20})
+     * @ORM\Id
 	 */
 	protected $title;
 
@@ -40,7 +44,7 @@ class Tag {
 	 * The posts tagged with this tag
 	 *
 	 * @var \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Code>
-	 * @ManyToMany(mappedBy="tags")
+	 * @ORM\ManyToMany(mappedBy="tags")
 	 */
 	protected $codes;
 

@@ -24,26 +24,24 @@ namespace Layh\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\FLOW3\Annotations as FLOW3;
+
 /**
  * ProfilController
  *
  * Show settings of a user and save them
- *
- * @author Thomas Layh <develop@layh.com>
- * Date: 13.03.11
- * Time: 19:50
  */
 class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\CommentRepository
-	 * @inject
+	 * @FLOW3\Inject
 	 */
 	protected $commentRepository;
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
-	 * @inject
+	 * @FLOW3\Inject
 	 */
 	protected $userRepository;
 

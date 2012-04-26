@@ -1,7 +1,7 @@
 <?php
 namespace Layh\Twitcode\Controller;
 
-require_once('/var/www/vhosts/twitcode.org/httpdocs/Packages/Applications/Layh.Twitcode/Resources/Private/Lib/oauth/EpiTwitter.php');
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Applications/Layh.Twitcode/Resources/Private/Lib/oauth/EpiTwitter.php');
 
 /***************************************************************
  *  Copyright notice
@@ -26,6 +26,8 @@ require_once('/var/www/vhosts/twitcode.org/httpdocs/Packages/Applications/Layh.T
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\FLOW3\Annotations as FLOW3;
+
 /**
  * Code controller for the Twitcode package
  *
@@ -35,19 +37,19 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\CommentRepository
-	 * @inject
+	 * @FLOW3\Inject
 	*/
 	protected $commentRepository;
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
-	 * @inject
+	 * @FLOW3\Inject
 	 */
 	protected $userRepository;
 
     /**
      * @var \Layh\Twitcode\Domain\Repository\TagRepository
-     * @inject
+     * @FLOW3\Inject
      */
     protected $tagRepository;
 
@@ -108,7 +110,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 		$this->redirect('');
 	}
 
-	/*
+	/**
 	 * index action
 	 *
 	 * @return void
@@ -127,14 +129,14 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	/**
 	 * display snippet with
 	 *
-	 * @dontvalidate \Layh\Twitcode\Domain\Model\Code $code
+	 * @FLOW3\IgnoreValidation("\Layh\Twitcode\Domain\Model\Code $code")
 	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 * @return void
 	 */
 	public function showAction(\Layh\Twitcode\Domain\Model\Code $code) {
-		
+
 		$this->login->setSettings($this->settings);
-		
+
 		$this->initSidebarLogin();
 
 		// check if code belongs to current user
@@ -215,7 +217,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	 * show snippet form
 	 *
 	 * @param \Layh\Twitcode\Domain\Model\Code $code
-	 * @dontvalidate $code
+	 * @@FLOW3\IgnoreValidation("\Layh\Twitcode\Domain\Model\Code $code")
 	 * @return void
 	 */
 	public function createAction(\Layh\Twitcode\Domain\Model\Code $code=NULL) {

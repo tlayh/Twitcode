@@ -24,6 +24,9 @@ namespace Layh\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+/**
+ * Controller for more or less static pages
+ */
 class PagesController extends \Layh\Twitcode\Controller\BaseController {
 
 	public function aboutAction() {

@@ -1,6 +1,6 @@
 <?php
 
-require_once('/var/www/vhosts/twitcode.org/httpdocs/Packages/Applications/Layh.Twitcode/Resources/Private/Lib/oauth/EpiOAuth.php');
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Applications/Layh.Twitcode/Resources/Private/Lib/oauth/EpiOAuth.php');
 
 /*
  *  Class to integrate with Twitter's API.

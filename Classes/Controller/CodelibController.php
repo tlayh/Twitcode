@@ -24,6 +24,11 @@ namespace Layh\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\FLOW3\Annotations as FLOW3;
+
+/**
+ *
+ */
 class CodelibController extends \Layh\Twitcode\Controller\BaseController {
 
 	public function indexAction() {

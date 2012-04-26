@@ -24,6 +24,8 @@ namespace Layh\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\FLOW3\Annotations as FLOW3;
+
 /**
  * Import controller for the Twitcode package
  *
@@ -33,19 +35,19 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
 	/**
 	 * @var Layh\Twitcode\Domain\Repository\CodeRepository
-	 * @inject
+	 * @FLOW3\Inject
 	 */
 	protected $codeRepository;
 
 	/**
 	 * @var Layh\Twitcode\Domain\Repository\CodetypeRepository
-	 * @inject
+	 * @FLOW3\Inject
 	 */
 	protected $codeTypeRepository;
 
 	/**
 	 * @var Layh\Twitcode\Domain\Repository\UserRepository
-	 * @inject
+	 * @FLOW3\Inject
 	 */
 	protected $userRepository;
 

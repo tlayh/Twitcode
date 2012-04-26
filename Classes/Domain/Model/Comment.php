@@ -24,26 +24,29 @@ namespace Layh\Twitcode\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Doctrine\ORM\Mapping as ORM;
+use \TYPO3\FLOW3\Annotations as FLOW3;
+
 /**
  * A discussion
  *
- * @scope prototype
- * @entity
+ * @FLOW3\Scope("prototype")
+ * @FLOW3\Entity
  */
 class Comment {
 
 	/**
 	 * The user the discussion belongs to
 	 * @var Layh\Twitcode\Domain\Model\User
-	 * @ManyToOne
+	 * @ORM\ManyToOne
 	 */
 	protected $user;
 
 	/**
 	 * The discussion
 	 * @var string
-	 * @validate StringLength(minimum = 10)
-	 * @Column(type="text")
+	 * @FLOW3\Validate(type="StringLength", options={"minimum"=10})
+	 * @ORM\Column(type="text")
 	 */
 	protected $comment;
 
@@ -51,7 +54,7 @@ class Comment {
 	 * The code the discussion belongs to
 	 *
 	 * @var Layh\Twitcode\Domain\Model\Code
-	 * @ManyToOne
+	 * @ORM\ManyToOne
 	 */
 	protected $code;
 

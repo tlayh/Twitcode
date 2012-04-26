@@ -24,6 +24,8 @@ namespace Layh\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+	use \TYPO3\FLOW3\Annotations as FLOW3;
+
 /**
  * Discussion controller for the Twitcode package
  *
@@ -33,7 +35,7 @@ class CommentController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\CommentRepository
-	 * @inject
+	 * @FLOW3\Inject
 	 */
 	protected $commentRepository;
 

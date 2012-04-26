@@ -11,84 +11,84 @@
 # Subroutes for the Layh.Twitcode package
 #
 
---
-    name: 'Temp Import route'
-    uriPattern: 'import/{@action}'
-    defaults:
-      @package: 'Layh.Twitcode'
-      @controller: 'Import'
-      @action: 'index'
+-
+  name: 'Temp Import route'
+  uriPattern: 'import/{@action}'
+  defaults:
+    @package: 'Layh.Twitcode'
+    @controller: 'Import'
+    @action: 'index'
+    @format: 'html'
+
+-
+  name: 'Profile routes'
+  uriPattern: 'profile/{@action}'
+  defaults:
+    @package: 'Layh.Twitcode'
+    @controller: 'Profile'
+    @action: 'index'
+    @format: 'html'
+
+-
+  name: 'Codelibrary Routes with type'
+  uriPattern: 'codelib/{@action}/{codetype}'
+  defaults:
+      @package: Layh.Twitcode
+      @controller: 'Codelib'
+      @format: 'html'
+  routeParts:
+    codetype:
+      handler: Layh\Twitcode\RoutePartHandlers\CodelibRoutePartHandler
+
+-
+  name: 'Codelibrary Routes'
+  uriPattern: 'codelib/{@action}'
+  defaults:
+      @package: Layh.Twitcode
+      @controller: 'Codelib'
       @format: 'html'
 
---
-    name: 'Profile routes'
-    uriPattern: 'profile/{@action}'
-    defaults:
-      @package: 'Layh.Twitcode'
-      @controller: 'Profile'
-      @action: 'index'
+-
+  name: 'Comment Routes'
+  uriPattern: 'comment/{@action}'
+  defaults:
+      @package: Layh.Twitcode
+      @controller: Comment
       @format: 'html'
 
---
-    name: 'Codelibrary Routes with type'
-    uriPattern: 'codelib/{@action}/{codetype}'
-    defaults:
-        @package: Layh.Twitcode
-        @controller: 'Codelib'
-        @format: 'html'
-    routeParts:
-      codetype:
-        handler: Layh\Twitcode\RoutePartHandlers\CodelibRoutePartHandler
+-
+  name: 'Pages Routes'
+  uriPattern: 'pages/{@action}'
+  defaults:
+      @package: Layh.Twitcode
+      @controller: Pages
+      @format: 'html'
 
---
-    name: 'Codelibrary Routes'
-    uriPattern: 'codelib/{@action}'
-    defaults:
-        @package: Layh.Twitcode
-        @controller: 'Codelib'
-        @format: 'html'
+-
+  name: 'Show Snippet Action Route'
+  uriPattern: '{@action}/{code}'
+  defaults:
+      @package: Layh.Twitcode
+      @controller: 'Code'
+      @format: 'html'
+  routeParts:
+    code:
+      handler: Layh\Twitcode\RoutePartHandlers\CodeRoutePartHandler
 
---
-    name: 'Comment Routes'
-    uriPattern: 'comment/{@action}'
-    defaults:
-        @package: Layh.Twitcode
-        @controller: Comment
-        @format: 'html'
+-
+  name: 'Code Action Route'
+  uriPattern: '{@action}'
+  defaults:
+      @package: Layh.Twitcode
+      @controller: 'Code'
+      @format: 'html'
+      @action: 'index'
 
---
-    name: 'Pages Routes'
-    uriPattern: 'pages/{@action}'
-    defaults:
-        @package: Layh.Twitcode
-        @controller: Pages
-        @format: 'html'
-
---
-    name: 'Show Snippet Action Route'
-    uriPattern: '{@action}/{code}'
-    defaults:
-        @package: Layh.Twitcode
-        @controller: 'Code'
-        @format: 'html'
-    routeParts:
-      code:
-        handler: Layh\Twitcode\RoutePartHandlers\CodeRoutePartHandler
-
---
-    name: 'Code Action Route'
-    uriPattern: '{@action}'
-    defaults:
-        @package: Layh.Twitcode
-        @controller: 'Code'
-        @format: 'html'
-        @action: 'index'
-
---
-    name: 'Homepage'
-    uriPattern: ''
-    defaults:
-        @package: Layh.Twitcode
-        @controller: 'Code'
-        @format: 'html'
-        @action: 'index'
+-
+  name: 'Homepage'
+  uriPattern: ''
+  defaults:
+      @package: Layh.Twitcode
+      @controller: 'Code'
+      @format: 'html'
+      @action: 'index'

@@ -24,6 +24,8 @@ namespace Layh\Twitcode\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\FLOW3\Annotations as FLOW3;
+
 /**
  * A repository for comments
  */
@@ -36,7 +38,7 @@ class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
 
 	/**
 	 * @var Layh\Twitcode\Domain\Repository\UserRepository
-	 * @inject
+	 * @FLOW3\Inject
 	 */
 	protected $userRepository;
 
