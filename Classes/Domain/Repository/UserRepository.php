@@ -24,6 +24,8 @@ namespace Layh\Twitcode\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use \TYPO3\FLOW3\Annotations as FLOW3;
+
 /**
  * A repository for users
  * @FLOW3\Scope("singleton")
