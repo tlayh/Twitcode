@@ -28,6 +28,7 @@ use \TYPO3\FLOW3\Annotations as FLOW3;
 
 /**
  * A repository for comments
+ * @FLOW3\Scope("singleton")
  */
 class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
 

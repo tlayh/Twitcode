@@ -26,6 +26,7 @@ namespace Layh\Twitcode\Domain\Repository;
 
 /**
  * A repository for users
+ * @FLOW3\Scope("singleton")
  */
 class UserRepository extends \TYPO3\FLOW3\Persistence\Repository {
 

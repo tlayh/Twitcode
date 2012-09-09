@@ -28,6 +28,8 @@ use \TYPO3\FLOW3\Annotations as FLOW3;
 
 /**
  * A repository for books
+ *
+ * @FLOW3\Scope("singleton")
  */
 class CodeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 
