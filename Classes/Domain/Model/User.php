@@ -43,16 +43,25 @@ class User {
 	protected $name;
 
 	/**
-	 * The userid
+	 * The twitter userid
 	 *
 	 * @var integer
 	 */
 	protected $user_id;
 
 	/**
+	 * Notifications enabled or disabeld
+	 *
 	 * @var bool
 	 */
-	protected $notification;
+	protected $notification = FALSE;
+
+	/**
+	 * Flattr id if any is set
+	 *
+	 * @var string
+	 */
+	protected $flattrId = '';
 
 	/**
 	 * @return string
@@ -96,6 +105,20 @@ class User {
 	 */
 	public function getNotification() {
 		return $this->notification;
+	}
+
+	/**
+	 * @param string $flattrId
+	 */
+	public function setFlattrId($flattrId) {
+		$this->flattrId = $flattrId;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getFlattrId() {
+		return $this->flattrId;
 	}
 
 }

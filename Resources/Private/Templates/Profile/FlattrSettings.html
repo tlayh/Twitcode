@@ -1,0 +1,27 @@
+<f:layout name="Index.html" />
+
+<f:section name="content">
+
+	<f:render partial="Headernav" arguments="{logindata: logindata}" />
+
+	<f:flashMessages class="flashmessages" />
+
+	<f:render partial="Back" />
+
+	<h3>Profile - Flattr</h3>
+
+	<p>
+		Do you have a flattr account? Then add your flattr-id here and the people who love your Twitcode-Tweets can flattr you.
+	</p>
+
+	<f:form action="updateFlattrSettings" method="GET" controller="Profile" package="Layh.Twitcode" name="currentUser" object="{currentUser}">
+
+		<f:form.textfield name="flattrId" property="flattrId" value="{currentUser.flattrId}" />
+		<label style="width:300px;">Flattr-Id:</label>
+
+		<br/>
+		<br/>
+		<f:form.submit class="submit" value=""/>
+	</f:form>
+
+</f:section>

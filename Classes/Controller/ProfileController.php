@@ -47,7 +47,6 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function indexAction() {
 		$this->initSidebarLogin();
@@ -57,7 +56,6 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 	 * Show all snippets you added a comment
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function commentAction() {
 		$this->initSidebarLogin();
@@ -77,7 +75,6 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 	 * Show snippets by user
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function snippetAction() {
 		$this->initSidebarLogin();
@@ -93,20 +90,29 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 	}
 
 	/**
-	 * Show the users favoruite snippets
+	 * Show the users favorite snippets
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function showFavoriteSnippetsAction() {
 		$this->initSidebarLogin();
+	}
+
+	public function flattrSettingsAction() {
+		$this->initSidebarLogin();
+	}
+
+	public function updateFlattrSettingsAction(\Layh\Twitcode\Domain\Model\User $currentUser) {
+		$this->userRepository->update($currentUser);
+
+		$this->flashMessageContainer->add('Flattr-Id updated!');
+		$this->redirect('flattrSettings');
 	}
 
 	/**
 	 * Display settings for comment notifications
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function notificationSettingsAction() {
 		$this->initSidebarLogin();
@@ -127,7 +133,6 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 	 *
 	 * @param \Layh\Twitcode\Domain\Model\User $currentUser
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function updateNotificationSettingsAction(\Layh\Twitcode\Domain\Model\User $currentUser) {
 		$loginData = $this->getLoginData();

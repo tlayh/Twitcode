@@ -49,7 +49,7 @@ class Code {
 	protected $label;
 
 	/**
-	 * @var Layh\Twitcode\Domain\Model\User
+	 * @var \Layh\Twitcode\Domain\Model\User
 	 * @ORM\ManyToOne
 	 */
 	protected $user;
@@ -65,7 +65,7 @@ class Code {
 	/**
 	 * The code type the snippet belongs to
 	 *
-	 * @var Layh\Twitcode\Domain\Model\Codetype
+	 * @var \Layh\Twitcode\Domain\Model\Codetype
 	 * @ORM\ManyToOne
 	 */
 	protected $codetype;
@@ -86,7 +86,7 @@ class Code {
 	protected $shortUrl;
 
 	/**
-	 * @var \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Tag>
+	 * @var \Doctrine\Common\Collections\Collection<\Layh\Twitcode\Domain\Model\Tag>
 	 * @ORM\ManyToMany(inversedBy="codes", cascade={"all"})
 	 */
 	protected $tags;

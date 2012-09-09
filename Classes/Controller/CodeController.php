@@ -94,17 +94,21 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 			$oauthToken = $this->request->getArgument('oauth_token');
 		    $oauthVerifier = $this->request->getArgument('oauth_verifier');
 		} catch (\Exception $e) {
-			$oauthToken = null;
-		    $oauthVerifier = null;
+			$oauthToken = NULL;
+		    $oauthVerifier = NULL;
 		}
 
 			// verify login
 		$successfullyLogin = $this->login->loginUser($oauthToken, $oauthVerifier);
 
 		if ($successfullyLogin) {
-			$this->flashMessageContainer->add('Congratulations!! Looks like you still remember your twitter account. Your login was successful!!');
+			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+				'Congratulations!! Looks like you still remember your twitter account. Your login was successful!!'
+			));
 		} else {
-			$this->flashMessageContainer->add('Login failed!! Sometimes OAuth is a bitch so please be patient and try again.');
+			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+				'Login failed!! Sometimes OAuth is a bitch so please be patient and try again.'
+			));
 		}
 
 		$this->redirect('');
@@ -129,7 +133,6 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	/**
 	 * display snippet with
 	 *
-	 * @FLOW3\IgnoreValidation("\Layh\Twitcode\Domain\Model\Code $code")
 	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 * @return void
 	 */
@@ -141,16 +144,16 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 
 		// check if code belongs to current user
 		if($code->getUser()->getUserId() === $this->login->getUserId()) {
-			$this->view->assign('editable', true);
+			$this->view->assign('editable', TRUE);
 		} else {
-			$this->view->assign('editable', false);
+			$this->view->assign('editable', FALSE);
 		}
 
 		if($this->login->isLoggedIn()) {
-			$this->view->assign('loggedin', true);
+			$this->view->assign('loggedin', TRUE);
 			$this->view->assign('user', $this->login->getUser());
 		} else {
-			$this->view->assign('loogedin', false);
+			$this->view->assign('loogedin', FALSE);
 		}
 
 		$comments = $this->commentRepository->findByCode($code);
