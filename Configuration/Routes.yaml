@@ -71,9 +71,9 @@
       @package: Layh.Twitcode
       @controller: 'Code'
       @format: 'html'
-  routeParts:
-    code:
-      handler: Layh\Twitcode\RoutePartHandlers\CodeRoutePartHandler
+#  routeParts:
+#    code:
+#      handler: Layh\Twitcode\RoutePartHandlers\CodeRoutePartHandler
 
 -
   name: 'Code Action Route'

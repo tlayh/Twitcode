@@ -133,6 +133,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	/**
 	 * display snippet with
 	 *
+	 * @FLOW3\IgnoreValidation(argumentName="code")
 	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 * @return void
 	 */

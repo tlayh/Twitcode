@@ -46,7 +46,7 @@ class CodeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 			->matching($query->logicalNot($query->equals('modified', '')))
 			->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
 			->execute();
-		return $result->toArray();
+		return $result;
 	}
 
 	public function findNextHighestUidRecord() {

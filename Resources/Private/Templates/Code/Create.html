@@ -12,11 +12,11 @@
 
 	<h3>Create a new snippet</h3>
 	<f:form action="save" controller="Code" package="Layh.Twitcode" object="{code}" name="code" method="post">
-		<label for="label">Label:</label> <f:form.textbox property="label" id="label" /><br /><br />
+		<label for="label">Label:</label> <f:form.textfield property="label" id="label" /><br /><br />
 		<label for="codetype">Codetype:</label> <f:form.select id="codetype" property="codetype" options="{codetypes}" optionLabelField="name" size="1" /><br /><br />
 		<label for="code">Code:</label> <f:form.textarea id="code" property="code" rows="15" cols="70" /><br /><br />
 		<label for="description">Description:</label> <f:form.textarea id="description" property="description" rows="5" cols="70" /><br /><br />
-		<label for="tags">Tags:</label><f:form.textbox name="tags" id="tags" /><span class="field-description">(comma seperated)</span><br /><br />
+		<label for="tags">Tags:</label><f:form.textfield name="tags" id="tags" /><span class="field-description">(comma seperated)</span><br /><br />
 		<label for="twitter">Don't tweet:</label> <f:form.checkbox id="twitter" value="1" name="twitter" /><br /><br />
 		<f:form.submit class="submit" value="" />
 	</f:form>
