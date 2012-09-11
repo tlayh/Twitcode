@@ -19,6 +19,7 @@ class Version20120910213620 extends AbstractMigration {
 
 		//$this->addSql("ALTER TABLE layh_twitcode_domain_model_tag DROP PRIMARY KEY");
 		//$this->addSql("ALTER TABLE layh_twitcode_domain_model_tag DROP flow3_persistence_identifier, CHANGE title title VARCHAR(255) NOT NULL");
+		/*
 		$this->addSql("ALTER TABLE layh_twitcode_domain_model_tag ADD PRIMARY KEY (title)");
 		$this->addSql("ALTER TABLE layh_twitcode_domain_model_code DROP FOREIGN KEY FK_6243DA2129957979");
 		$this->addSql("ALTER TABLE layh_twitcode_domain_model_code DROP PRIMARY KEY");
@@ -36,6 +37,7 @@ class Version20120910213620 extends AbstractMigration {
 		$this->addSql("ALTER TABLE layh_twitcode_domain_model_comment DROP FOREIGN KEY FK_7862784177153098");
 		$this->addSql("ALTER TABLE layh_twitcode_domain_model_comment CHANGE code code INT DEFAULT NULL, CHANGE modified modified DATETIME NOT NULL");
 		$this->addSql("ALTER TABLE layh_twitcode_domain_model_comment ADD CONSTRAINT FK_7862784177153098 FOREIGN KEY (code) REFERENCES layh_twitcode_domain_model_code (uid)");
+		*/
 		$this->addSql("ALTER TABLE layh_twitcode_domain_model_user ADD flattrid VARCHAR(255) NOT NULL, CHANGE name name VARCHAR(255) NOT NULL, CHANGE user_id user_id INT NOT NULL, CHANGE notification notification TINYINT(1) NOT NULL");
 	}
 

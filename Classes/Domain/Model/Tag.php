@@ -36,7 +36,6 @@ class Tag {
 	 * @var string
 	 * @FLOW3\Validate(type="Alphanumeric")
 	 * @FLOW3\Validate(type="StringLength", options={"minimum"= 1, "maximum"= 20})
-     * @ORM\Id
 	 */
 	protected $title;
 

@@ -178,6 +178,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 			$this->view->assign('codetypes', $codeTypes);
 		    $this->view->assign('code', $code);
 		} else {
+
 			$this->flashMessageContainer->add('Well, if you want to edit something, it really should belong to you. So please login first.');
 			$this->redirect('index');
 		}
@@ -210,9 +211,8 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 			$code->addTag($tagObject);
 
 		}
-
 		$this->codeRepository->update($code);
-		$this->flashMessageContainer->add('Congratulations!! Your snippet was changed.');
+		$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Congratulations!! Your snippet was changed.'));
 	    $this->redirect('show', 'Code', 'Layh.Twitcode', array('code'=>$code));
 	}
 
@@ -234,7 +234,9 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 			$this->view->assign('codetypes', $codeTypes);
 		    $this->view->assign('code', $code);
 		} else {
-			$this->flashMessageContainer->add('Wouldn\'t it be nice if people would know that this is your snippet? So please login first before creating a snippet!!');
+			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+				'Wouldn\'t it be nice if people would know that this is your snippet? So please login first before creating a snippet!!'
+			));
 			$this->redirect('index');
 		}
 	}
@@ -292,11 +294,15 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 			}
 
 				// add success message
-			$this->flashMessageContainer->add('Code snippet added successfully');
+			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+				'Code snippet added successfully'
+			));
 
 		} else {
 				// add error message
-			$this->flashMessageContainer->add('Looks like for some reason you got here without being logged in. Please login first.');
+			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+				'Looks like for some reason you got here without being logged in. Please login first.'
+			));
 		}
 
 			// redirect to showSnippetAction
@@ -312,7 +318,9 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 		    $this->twitterSnippet($code, $data);
 		} else {
 				// add error message
-			$this->flashMessageContainer->add('Looks like for some reason you got here without being logged in. Please login first.');
+			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+				'Looks like for some reason you got here without being logged in. Please login first.'
+			));
 		}
 
 	    $this->redirect('show', 'Code', 'Layh.Twitcode', array('code'=>$code));
@@ -356,9 +364,9 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 		$this->twitterObj->setToken($data['oauth_token'], $data['oauth_token_secret']);
 		$resp = $this->twitterObj->post('/statuses/update.json', array('status' => $statusText));
 		if($resp->__get('code') === 200) {
-			$this->flashMessageContainer->add('Code snippet twittered successfully');
+			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Code snippet twittered successfully'));
 		} else {
-			$this->flashMessageContainer->add('Twittering code snippet failed');
+			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Twittering code snippet failed'));
 		}
 	}
 
@@ -369,7 +377,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	 */
 	public function deleteAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$this->codeRepository->remove($code);
-	    $this->flashMessageContainer->add('Snippet deleted successfully');
+		$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Snippet deleted successfully'));
 	    $this->redirect('index');
 	}
 

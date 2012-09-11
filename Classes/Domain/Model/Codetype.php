@@ -45,7 +45,6 @@ class Codetype {
 	/**
 	 * The type
 	 *
-	 * @ORM\Id
 	 * @var string
 	 */
 	protected $type = '';
