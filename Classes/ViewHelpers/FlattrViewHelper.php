@@ -31,7 +31,7 @@ namespace Layh\Twitcode\ViewHelpers;
  * = Examples =
  *
  * <code title="Simple">
- * <tc:flattr flattrId="<theFlattrId>" />
+ * <tc:flattr flattrId="<theFlattrId>" title="<title>" description="<description>" />
  * </code>
  *
  * @scope prototype
@@ -47,18 +47,31 @@ class FlattrViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 	public function initializeArguments() {
 		parent::initializeArguments();
 		$this->registerArgument('flattrId', 'string', 'flattrId');
+		$this->registerArgument('title', 'string', 'title');
+		$this->registerArgument('description', 'string', 'description');
 	}
 
 	/**
-	 * Recplace the error with a nicer message
+	 * Render a flattr button
 	 *
 	 * @return string
 	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function render() {
 		$flattrId = $this->arguments['flattrId'];
-		$flattrTag = 'FlattrMe';
-		return $flattrTag;
+		$title = $this->arguments['title'];
+		$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+		$description = $this->arguments['description'];
+		$flattrButton = '
+		<a class="FlattrButton"
+			title="' . $title . '"
+			data-flattr-uid="' . $flattrId . '"
+			data-flattr-category="text"
+			href="' . $url . '">
+			' . $description . '
+		</a>
+		';
+		return $flattrButton;
 	}
 
 }

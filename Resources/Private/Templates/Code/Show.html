@@ -17,7 +17,10 @@
 
 	<label>User</label> <f:link.external uri="http://twitter.com/{code.user.name}">{code.user.name}</f:link.external><br />
 
-	<label>Flattr</label> <tc:flattr flattrId="{code.user.flattrid}" /><br />
+	<f:if condition="{code.user.flattrid} != ''">
+		<br/>
+		<label>Flattr</label> <tc:flattr flattrId="{code.user.flattrid}" title="{code.label}" description="{code.description}" /><br />
+	</f:if>
 
 	<hr class="spacer" />
 

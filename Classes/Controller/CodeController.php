@@ -47,11 +47,11 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	 */
 	protected $userRepository;
 
-    /**
-     * @var \Layh\Twitcode\Domain\Repository\TagRepository
-     * @FLOW3\Inject
-     */
-    protected $tagRepository;
+	/**
+	 * @var \Layh\Twitcode\Domain\Repository\TagRepository
+	 * @FLOW3\Inject
+	 */
+	protected $tagRepository;
 
 	/**
 	 * @var string $consumerKey for oauth, injected via Settings.yaml

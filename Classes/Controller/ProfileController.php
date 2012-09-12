@@ -144,8 +144,6 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 	 * @return void
 	 */
 	public function updateNotificationSettingsAction(\Layh\Twitcode\Domain\Model\User $currentUser) {
-		$loginData = $this->getLoginData();
-
 		$this->userRepository->update($currentUser);
 
 		$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Notification settings updated!'));

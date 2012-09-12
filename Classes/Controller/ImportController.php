@@ -31,22 +31,22 @@ use \TYPO3\FLOW3\Annotations as FLOW3;
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
+class ImportController extends \TYPO3\FLOW3\Mvc\Controller\ActionController {
 
 	/**
-	 * @var Layh\Twitcode\Domain\Repository\CodeRepository
+	 * @var \Layh\Twitcode\Domain\Repository\CodeRepository
 	 * @FLOW3\Inject
 	 */
 	protected $codeRepository;
 
 	/**
-	 * @var Layh\Twitcode\Domain\Repository\CodetypeRepository
+	 * @var \Layh\Twitcode\Domain\Repository\CodetypeRepository
 	 * @FLOW3\Inject
 	 */
 	protected $codeTypeRepository;
 
 	/**
-	 * @var Layh\Twitcode\Domain\Repository\UserRepository
+	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
 	 * @FLOW3\Inject
 	 */
 	protected $userRepository;
@@ -59,14 +59,14 @@ class ImportController extends \TYPO3\FLOW3\MVC\Controller\ActionController {
 
 		die('no access for you here!!');
 
-		//$count = $this->importCodeType();
-		//$string =  "CodeType import finished - imported $count codetypes";
+			//$count = $this->importCodeType();
+			//$string =  "CodeType import finished - imported $count codetypes";
 
-		//$count = $this->importUser();
-		//$string = "\nUser import finished - imported $count users";
+			//$count = $this->importUser();
+			//$string = "\nUser import finished - imported $count users";
 
-		$count = $this->importCode();
-		$string =  "\nCode import finished - imported $count snippets";
+			//$count = $this->importCode();
+			//$string =  "\nCode import finished - imported $count snippets";
 
 		return $string;
 	}

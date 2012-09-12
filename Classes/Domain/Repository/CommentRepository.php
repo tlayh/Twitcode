@@ -35,10 +35,10 @@ class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
 	/**
 	 * @var array
 	 */
-	protected $defaultOrderings = array('modified'=> \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING);
+	protected $defaultOrderings = array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING);
 
 	/**
-	 * @var Layh\Twitcode\Domain\Repository\UserRepository
+	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
 	 * @FLOW3\Inject
 	 */
 	protected $userRepository;
@@ -48,7 +48,7 @@ class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
 	 *
 	 * @param int $userId
 	 * @return array
-	 * @author   Thomas Layh <develop@layh.com>
+	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function findCommentsByUser($userId) {
 		$user = $this->userRepository->findByUserId($userId);

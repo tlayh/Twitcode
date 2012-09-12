@@ -43,7 +43,7 @@ class Login {
 	/**
 	 * @var boolean
 	 */
-	protected $_isLoggedIn = false;
+	protected $_isLoggedIn = FALSE;
 
 	/**
 	 * @var \Layh\Twitcode\Lib\oauth\EpiTwitter

@@ -28,7 +28,7 @@ use \TYPO3\FLOW3\Annotations as FLOW3;
 
 /**
  * Default controller with some basic stuff, each other controller should extend
- * this controller to get functions like the sidebar snippetes and the login data
+ * this controller to get functions like the sidebar snippets and the login data
  */
 class BaseController extends \TYPO3\FLOW3\Mvc\Controller\ActionController {
 
@@ -50,7 +50,7 @@ class BaseController extends \TYPO3\FLOW3\Mvc\Controller\ActionController {
 	 */
 	protected $codeRepository;
 
-    /**
+	/**
 	 * @var array
 	 */
 	protected $loginData = array();

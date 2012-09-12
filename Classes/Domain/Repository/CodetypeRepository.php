@@ -42,14 +42,14 @@ class CodetypeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 	* overriding findAll method to get the oder of the codetypes
 	* @return Array of Codetypes
 	*/
-    public function findAll() {
-        $query = $this->createQuery();
-        $result = $query
-                ->matching($query->logicalNot($query->equals('name', '')))
+	public function findAll() {
+		$query = $this->createQuery();
+		$result = $query
+				->matching($query->logicalNot($query->equals('name', '')))
 				->setOrderings(array('name' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING))
-                ->execute();
-        return $result->toArray();
-    }
+				->execute();
+		return $result->toArray();
+	}
 
 	/**
 	* get all codetypes that also have snippets available

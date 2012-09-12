@@ -211,7 +211,8 @@ class Code {
 	/**
 	 * setter for tags
 	 *
-	 * @param \Doctrine\Common\Collections\ArrayCollection <\Layh\Twitcode\Domain\Model\Tag> $tags
+	 * @param \Doctrine\Common\Collections\ArrayCollection $tags
+	 * @internal param $ \Doctrine\Common\Collections\Collection<\Layh\Twitcode\Domain\Model\Tag> $tags
 	 * @return void
 	 */
 	public function setTags(\Doctrine\Common\Collections\ArrayCollection $tags) {
@@ -219,7 +220,7 @@ class Code {
 	}
 
 	/**
-	 * @return \Doctrine\Common\Collections\ArrayCollection<\Layh\Twitcode\Domain\Model\Tag>
+	 * @return \Doctrine\Common\Collections\Collection<\Layh\Twitcode\Domain\Model\Tag>
 	 */
 	public function getTags() {
 		return clone $this->tags;
