@@ -2,38 +2,47 @@
 
 <f:section name="content">
 
-		<f:render partial="Headernav" arguments="{logindata: logindata}" />
+	<f:render partial="Headernav" arguments="{logindata: logindata}" />
 
-        <f:flashMessages class="flashmessages" />
+	<f:flashMessages class="flashmessages" />
 
-		<div class="homepage-logo">
-			<img style="width:330px;" src="{f:uri.resource(path: 'images/hp_twitter.jpg')}" alt="twitter-logo" title="twitter-logo" />
-		</div>
+	<div class="homepage-logo">
+		<img style="width:330px;" src="{f:uri.resource(path: 'images/hp_twitter.jpg')}" alt="twitter-logo" title="twitter-logo" />
+	</div>
 
-		<p class="homepage" style="text-align:center;">
-			A service to make it easy for you to publish and share your code snippets via twitter.
-		</p>
+	<p class="homepage" style="text-align:center;">
+		A service to make it easy for you to publish and share your code snippets via twitter.
+	</p>
 
-		<p class="homepage" style="text-align: center;">
-			There are a lot of new updates here now. Read the latest <f:link.action class="highlight-link" action="news" controller="Pages" package="Layh.Twitcode">news</f:link.action>
-			about this updates or check the <f:link.action class="highlight-link" action="help" controller="Pages" package="Layh.Twitcode">new help section</f:link.action> to find out
-			what you can do here.
-		</p>
+	<p class="homepage" style="text-align: center;">
+		There are a lot of new updates here now. Read the latest <f:link.action class="highlight-link" action="news" controller="Pages" package="Layh.Twitcode">news</f:link.action>
+		about this updates or check the <f:link.action class="highlight-link" action="help" controller="Pages" package="Layh.Twitcode">new help section</f:link.action> to find out
+		what you can do here.
+	</p>
 
-		<div class="share-teaser">
-			<f:link.action action="create" controller="Code" package="Layh.Twitcode">
-				<img style="width:450px" src="{f:uri.resource(path: 'images/hp_share.jpg')}" alt="create share show" title="create share show" />
-			</f:link.action>
-		</div>
+	<p style="text-align:center;">Feel free to support twitcode.org:<br/><br/>
+		<a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://twitcode.org/"></a>
+		<noscript>
+			<a href="http://flattr.com/thing/872170/Twitcode-org" target="_blank">
+				<img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"/>
+			</a>
+		</noscript>
+	</p>
 
-		<br />
-		<p class="homepage">
-			This project is based on FLOW3. An brand new and upcoming, auspicious PHP framework with the original target to create a stable
-			base for TYPO3 v5.
+	<div class="share-teaser">
+		<f:link.action action="create" controller="Code" package="Layh.Twitcode">
+			<img style="width:450px" src="{f:uri.resource(path: 'images/hp_share.jpg')}" alt="create share show" title="create share show" />
+		</f:link.action>
+	</div>
 
-			<span class="right">
-				<img src="{f:uri.resource(path: 'images/flow3.gif')}" alt="FLOW3 Logo" title="FLOW3 Logo" />
-			</span>
-		</p>
+	<br />
+	<p class="homepage">
+		This project is based on FLOW3. An brand new and upcoming, auspicious PHP framework with the original target to create a stable
+		base for TYPO3 v5.
+
+		<span class="right">
+			<img src="{f:uri.resource(path: 'images/flow3.gif')}" alt="FLOW3 Logo" title="FLOW3 Logo" />
+		</span>
+	</p>
 
 </f:section>
