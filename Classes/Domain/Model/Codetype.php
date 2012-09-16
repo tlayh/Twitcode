@@ -46,6 +46,7 @@ class Codetype {
 	 * The type
 	 *
 	 * @var string
+	 * @FLOW3\Identity
 	 */
 	protected $type = '';
 
