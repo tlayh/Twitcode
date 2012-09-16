@@ -1,7 +1,7 @@
 <?php
 namespace Layh\Twitcode\Domain\Model;
 
-require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Applications/Layh.Twitcode/Resources/Private/Lib/oauth/EpiTwitter.php');
+require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Application/Layh.Twitcode/Resources/Private/Lib/oauth/EpiTwitter.php');
 
 /***************************************************************
  *  Copyright notice
