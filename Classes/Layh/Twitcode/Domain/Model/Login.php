@@ -26,17 +26,17 @@ require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Applicati
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * responsible for all stuff that has to do with the login
- * @FLOW3\Scope("session")
+ * @Flow\Scope("session")
  */
 class Login {
 
 	/**
-	 * @var \TYPO3\FLOW3\Object\ObjectManagerInterface
-	 * @FLOW3\Inject
+	 * @var \TYPO3\Flow\Object\ObjectManagerInterface
+	 * @Flow\Inject
 	 */
 	protected $objectManager;
 
@@ -57,7 +57,7 @@ class Login {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $userRepository;
 

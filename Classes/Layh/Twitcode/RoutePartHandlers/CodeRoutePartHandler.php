@@ -24,14 +24,14 @@ namespace Layh\Twitcode\RoutePartHandlers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * Code route part handler
  *
  * @scope prototype
  */
-class CodeRoutePartHandler extends \TYPO3\FLOW3\Mvc\Routing\DynamicRoutePart {
+class CodeRoutePartHandler extends \TYPO3\Flow\Mvc\Routing\DynamicRoutePart {
 
 	/**
 	 * Splits the given value into the date and title of the post and sets this

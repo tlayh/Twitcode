@@ -26,7 +26,7 @@ require_once('/var/www/vhosts/twitcode.org/subdom/flow/htdocs/Packages/Applicati
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * Code controller for the Twitcode package
@@ -37,19 +37,19 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\CommentRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	*/
 	protected $commentRepository;
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $userRepository;
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\TagRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $tagRepository;
 
@@ -102,11 +102,11 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 		$successfullyLogin = $this->login->loginUser($oauthToken, $oauthVerifier);
 
 		if ($successfullyLogin) {
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message(
 				'Congratulations!! Looks like you still remember your twitter account. Your login was successful!!'
 			));
 		} else {
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message(
 				'Login failed!! Sometimes OAuth is a bitch so please be patient and try again.'
 			));
 		}
@@ -133,7 +133,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	/**
 	 * display snippet with
 	 *
-	 * @FLOW3\IgnoreValidation(argumentName="code")
+	 * @Flow\IgnoreValidation(argumentName="code")
 	 * @param \Layh\Twitcode\Domain\Model\Code $code
 	 * @return void
 	 */
@@ -212,7 +212,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 
 		}
 		$this->codeRepository->update($code);
-		$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Congratulations!! Your snippet was changed.'));
+		$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('Congratulations!! Your snippet was changed.'));
 	    $this->redirect('show', 'Code', 'Layh.Twitcode', array('code'=>$code));
 	}
 
@@ -221,7 +221,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	 * show snippet form
 	 *
 	 * @param \Layh\Twitcode\Domain\Model\Code $code
-	 * @@FLOW3\IgnoreValidation("\Layh\Twitcode\Domain\Model\Code $code")
+	 * @@Flow\IgnoreValidation("\Layh\Twitcode\Domain\Model\Code $code")
 	 * @return void
 	 */
 	public function createAction(\Layh\Twitcode\Domain\Model\Code $code=NULL) {
@@ -234,7 +234,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 			$this->view->assign('codetypes', $codeTypes);
 		    $this->view->assign('code', $code);
 		} else {
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message(
 				'Wouldn\'t it be nice if people would know that this is your snippet? So please login first before creating a snippet!!'
 			));
 			$this->redirect('index');
@@ -294,13 +294,13 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 			}
 
 				// add success message
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message(
 				'Code snippet added successfully'
 			));
 
 		} else {
 				// add error message
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message(
 				'Looks like for some reason you got here without being logged in. Please login first.'
 			));
 		}
@@ -318,7 +318,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 		    $this->twitterSnippet($code, $data);
 		} else {
 				// add error message
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message(
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message(
 				'Looks like for some reason you got here without being logged in. Please login first.'
 			));
 		}
@@ -364,9 +364,9 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 		$this->twitterObj->setToken($data['oauth_token'], $data['oauth_token_secret']);
 		$resp = $this->twitterObj->post('/statuses/update.json', array('status' => $statusText));
 		if($resp->__get('code') === 200) {
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Code snippet twittered successfully'));
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('Code snippet twittered successfully'));
 		} else {
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Twittering code snippet failed'));
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('Twittering code snippet failed'));
 		}
 	}
 
@@ -377,7 +377,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	 */
 	public function deleteAction(\Layh\Twitcode\Domain\Model\Code $code) {
 		$this->codeRepository->remove($code);
-		$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Snippet deleted successfully'));
+		$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('Snippet deleted successfully'));
 	    $this->redirect('index');
 	}
 

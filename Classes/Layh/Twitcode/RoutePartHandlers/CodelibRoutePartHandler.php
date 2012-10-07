@@ -24,14 +24,14 @@ namespace Layh\Twitcode\RoutePartHandlers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * Codelib route part handler
  *
  * @scope prototype
  */
-class CodelibRoutePartHandler extends \TYPO3\FLOW3\Mvc\Routing\DynamicRoutePart {
+class CodelibRoutePartHandler extends \TYPO3\Flow\Mvc\Routing\DynamicRoutePart {
 
 	/**
 	 * Checks for the current code type

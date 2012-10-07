@@ -24,13 +24,13 @@ namespace Layh\Twitcode\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * A repository for users
- * @FLOW3\Scope("singleton")
+ * @Flow\Scope("singleton")
  */
-class UserRepository extends \TYPO3\FLOW3\Persistence\Repository {
+class UserRepository extends \TYPO3\Flow\Persistence\Repository {
 
 	/**
 	 * @param integer $userId

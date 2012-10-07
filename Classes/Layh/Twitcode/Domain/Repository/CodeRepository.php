@@ -24,18 +24,18 @@ namespace Layh\Twitcode\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * A repository for books
  *
- * @FLOW3\Scope("singleton")
+ * @Flow\Scope("singleton")
  */
-class CodeRepository extends \TYPO3\FLOW3\Persistence\Repository {
+class CodeRepository extends \TYPO3\Flow\Persistence\Repository {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $userRepository;
 
@@ -44,7 +44,7 @@ class CodeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 		$result = $query
 			->setLimit($count)
 			->matching($query->logicalNot($query->equals('modified', '')))
-			->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
+			->setOrderings(array('modified' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING))
 			->execute();
 		return $result;
 	}
@@ -54,7 +54,7 @@ class CodeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 		$result = $query
 				->setLimit(1)
 				->matching($query->logicalNot($query->equals('uid', '')))
-				->setOrderings(array('uid' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
+				->setOrderings(array('uid' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING))
 				->execute();
 		return $result->getFirst();
 	}
@@ -65,7 +65,7 @@ class CodeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 		$query = $this->createQuery();
 		$result = $query
 				->matching($query->equals('user', $user))
-				->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
+				->setOrderings(array('modified' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING))
 				->execute();
 		return $result->toArray();
 	}
@@ -89,7 +89,7 @@ class CodeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 	public function findByCodetype(\Layh\Twitcode\Domain\Model\Codetype $ct) {
 		$query = $this->createQuery();
 		$result = $query->matching($query->equals('codetype', $ct))
-				->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_DESCENDING))
+				->setOrderings(array('modified' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_DESCENDING))
 				->execute();
 		return $result;
 	}

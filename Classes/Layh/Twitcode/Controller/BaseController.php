@@ -24,29 +24,29 @@ namespace Layh\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * Default controller with some basic stuff, each other controller should extend
  * this controller to get functions like the sidebar snippets and the login data
  */
-class BaseController extends \TYPO3\FLOW3\Mvc\Controller\ActionController {
+class BaseController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Model\Login
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $login;
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\CodetypeRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $codetypeRepository;
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\CodeRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $codeRepository;
 

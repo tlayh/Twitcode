@@ -24,22 +24,22 @@ namespace Layh\Twitcode\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * A repository for comments
- * @FLOW3\Scope("singleton")
+ * @Flow\Scope("singleton")
  */
-class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
+class CommentRepository extends \TYPO3\Flow\Persistence\Repository {
 
 	/**
 	 * @var array
 	 */
-	protected $defaultOrderings = array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING);
+	protected $defaultOrderings = array('modified' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING);
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $userRepository;
 
@@ -56,7 +56,7 @@ class CommentRepository extends \TYPO3\FLOW3\Persistence\Repository {
 		$query = $this->createQuery();
 		$result = $query
 				->matching($query->equals('user', $user))
-				->setOrderings(array('modified' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING))
+				->setOrderings(array('modified' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING))
 				->execute();
 		return $result;
 	}

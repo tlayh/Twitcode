@@ -25,13 +25,13 @@ namespace Layh\Twitcode\Domain\Model;
  ***************************************************************/
 
 use Doctrine\ORM\Mapping as ORM;
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * A code type
  *
- * @FLOW3\Scope("prototype")
- * @FLOW3\Entity
+ * @Flow\Scope("prototype")
+ * @Flow\Entity
  */
 class Codetype {
 
@@ -46,7 +46,7 @@ class Codetype {
 	 * The type
 	 *
 	 * @var string
-	 * @FLOW3\Identity
+	 * @Flow\Identity
 	 */
 	protected $type = '';
 

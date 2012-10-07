@@ -25,26 +25,26 @@ namespace Layh\Twitcode\Domain\Model;
  ***************************************************************/
 
 use Doctrine\ORM\Mapping as ORM;
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use TYPO3\Flow\Annotations as Flow;
 
 /**
  * A code snippet
  *
- * @FLOW3\Scope("prototype")
- * @FLOW3\Entity
+ * @Flow\Scope("prototype")
+ * @Flow\Entity
  */
 class Code {
 
 	/**
 	 * @var integer
-	 * @FLOW3\Identity
+	 * @Flow\Identity
 	 */
 	protected $uid;
 
 	/**
 	 * @var string
-	 * @FLOW3\Validate(type="Text")
-	 * @FLOW3\Validate(type="StringLength", options={"minimum"=5, "maximum"=100})
+	 * @Flow\Validate(type="Text")
+	 * @Flow\Validate(type="StringLength", options={"minimum"=5, "maximum"=100})
 	 */
 	protected $label;
 
@@ -56,8 +56,8 @@ class Code {
 
 	/**
 	 * @var string
-	 * @FLOW3\Validate(type="Text")
-	 * @FLOW3\Validate(type="StringLength", options={"minimum"=10})
+	 * @Flow\Validate(type="Text")
+	 * @Flow\Validate(type="StringLength", options={"minimum"=10})
 	 * @ORM\Column(type="text")
 	 */
 	protected $code;
@@ -73,7 +73,7 @@ class Code {
 	/**
 	 * The code description
 	 * @var string
-	 * @FLOW3\Validate(type="StringLength", options={"minimum"=10})
+	 * @Flow\Validate(type="StringLength", options={"minimum"=10})
 	 * @ORM\Column(type="text")
 	 */
 	protected $description;

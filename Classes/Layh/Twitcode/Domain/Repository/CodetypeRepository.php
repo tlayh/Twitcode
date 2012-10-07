@@ -24,17 +24,17 @@ namespace Layh\Twitcode\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * A repository for books
- * @FLOW3\Scope("singleton")
+ * @Flow\Scope("singleton")
  */
-class CodetypeRepository extends \TYPO3\FLOW3\Persistence\Repository {
+class CodetypeRepository extends \TYPO3\Flow\Persistence\Repository {
 
 	/**
 	 * @var Layh\Twitcode\Domain\Repository\CodeRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $codeRepository;
 
@@ -46,7 +46,7 @@ class CodetypeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 		$query = $this->createQuery();
 		$result = $query
 				->matching($query->logicalNot($query->equals('name', '')))
-				->setOrderings(array('name' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING))
+				->setOrderings(array('name' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING))
 				->execute();
 		return $result->toArray();
 	}
@@ -61,7 +61,7 @@ class CodetypeRepository extends \TYPO3\FLOW3\Persistence\Repository {
 		$query = $this->createQuery();
 		$codeTypes = $query
 				->matching($query->logicalNot($query->equals('name', '')))
-				->setOrderings(array('name' => \TYPO3\FLOW3\Persistence\QueryInterface::ORDER_ASCENDING))
+				->setOrderings(array('name' => \TYPO3\Flow\Persistence\QueryInterface::ORDER_ASCENDING))
 				->execute();
 
 		$codetypesWithSnippets = array();

@@ -24,7 +24,7 @@ namespace Layh\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use \TYPO3\FLOW3\Annotations as FLOW3;
+use \TYPO3\Flow\Annotations as Flow;
 
 /**
  * ProfilController
@@ -35,13 +35,13 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\CommentRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $commentRepository;
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\UserRepository
-	 * @FLOW3\Inject
+	 * @Flow\Inject
 	 */
 	protected $userRepository;
 
@@ -66,7 +66,7 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 			$commentCollection = $this->buildCommentCollection($comments);
 			$this->view->assign('commentCollection', $commentCollection);
 		} else {
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('No user logged in!!'));
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('No user logged in!!'));
 			$this->redirect('index', 'Code');
 		}
 	}
@@ -84,7 +84,7 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 			$snippets = $this->codeRepository->findByUser($loginData['user_id']);
 			$this->view->assign('snippets', $snippets);
 		} else {
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('No user logged in!!'));
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('No user logged in!!'));
 			$this->redirect('index', 'Code');
 		}
 	}
@@ -106,7 +106,7 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 			$currentUser = $this->userRepository->findByUserId($loginData['user_id']);
 			$this->view->assign('currentUser', $currentUser);
 		} else {
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('No user logged in!!'));
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('No user logged in!!'));
 			$this->redirect('index', 'Code');
 		}
 	}
@@ -114,7 +114,7 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 	public function updateFlattrSettingsAction(\Layh\Twitcode\Domain\Model\User $currentUser) {
 		$this->userRepository->update($currentUser);
 
-		$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Flattr-Id updated!'));
+		$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('Flattr-Id updated!'));
 		$this->redirect('flattrSettings');
 	}
 
@@ -131,7 +131,7 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 			$currentUser = $this->userRepository->findByUserId($loginData['user_id']);
 			$this->view->assign('currentUser', $currentUser);
 		} else {
-			$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('No user logged in!!'));
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('No user logged in!!'));
 			$this->redirect('index', 'Code');
 		}
 
@@ -146,7 +146,7 @@ class ProfileController extends \Layh\Twitcode\Controller\BaseController {
 	public function updateNotificationSettingsAction(\Layh\Twitcode\Domain\Model\User $currentUser) {
 		$this->userRepository->update($currentUser);
 
-		$this->flashMessageContainer->addMessage(new \TYPO3\FLOW3\Error\Message('Notification settings updated!'));
+		$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('Notification settings updated!'));
 		$this->redirect('notificationSettings');
 	}
 
