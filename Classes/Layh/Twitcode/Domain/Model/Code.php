@@ -44,6 +44,7 @@ class Code {
 	/**
 	 * @var string
 	 * @Flow\Validate(type="Text")
+	 * @Flow\Validate(type="NotEmpty")
 	 * @Flow\Validate(type="StringLength", options={"minimum"=5, "maximum"=100})
 	 */
 	protected $label;
@@ -56,7 +57,7 @@ class Code {
 
 	/**
 	 * @var string
-	 * @Flow\Validate(type="Text")
+	 * @Flow\Validate(type="NotEmpty")
 	 * @Flow\Validate(type="StringLength", options={"minimum"=10})
 	 * @ORM\Column(type="text")
 	 */

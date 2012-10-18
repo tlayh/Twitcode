@@ -178,8 +178,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 			$this->view->assign('codetypes', $codeTypes);
 		    $this->view->assign('code', $code);
 		} else {
-
-			$this->flashMessageContainer->add('Well, if you want to edit something, it really should belong to you. So please login first.');
+			$this->flashMessageContainer->addMessage(new \TYPO3\Flow\Error\Message('Well, if you want to edit something, it really should belong to you. So please login first.'));
 			$this->redirect('index');
 		}
 	}
@@ -389,7 +388,7 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 	protected function getErrorFlashMessage() {
 		switch ($this->actionMethodName) {
 			case 'saveAction' :
-				return 'Could not save the snippet. Please fill out all required fields.';
+				return new \TYPO3\Flow\Error\Error('Could not save the snippet. Please fill out all required fields.');
 			default :
 				return parent::getErrorFlashMessage();
 		}
