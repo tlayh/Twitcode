@@ -261,6 +261,9 @@ class CodeController extends \Layh\Twitcode\Controller\BaseController {
 
 			$code->setUser($user);
 
+			// set empty shortUrl
+			$code->setShortUrl('');
+
 			$tagArray = explode(',', $tags);
 			foreach ($tagArray as $tagTitle) {
 
