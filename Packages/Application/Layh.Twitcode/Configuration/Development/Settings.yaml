@@ -1,7 +1,9 @@
 Layh:
   Twitcode:
     oauth:
-      consumerkey: 2Y9OuyccVEgaEJFtVMQeyg
-      consumersecret: mx6gJaMbBfSDxlBuO9N74quNLVdcEjbFJAb1wQB7uQ
+      #consumerkey: 2Y9OuyccVEgaEJFtVMQeyg
+      consumerkey: sN3RYeDF9JMqYzmSYHqCbQ
+      #consumersecret: mx6gJaMbBfSDxlBuO9N74quNLVdcEjbFJAb1wQB7uQ
+      consumersecret: xymgRkBaEzZlhiImV6lcQZX46XCCMFh64Rr4HkRo0
     bitly:
       url: flow.twitcode.org

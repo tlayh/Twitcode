@@ -1,0 +1,6 @@
+TYPO3:
+
+  # add some weird tags to the list of ignored tags
+  Flow:
+    reflection:
+      ignoredTags: ['inheritdoc', 'inheritdoc}']
