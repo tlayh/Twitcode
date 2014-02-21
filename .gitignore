@@ -1,0 +1,16 @@
+Packages/Framework/
+Packages/Libraries/
+Readme.txt
+Upgrading.txt
+Web/
+bin/
+composer.lock
+composer.phar
+flow
+flow.bat
+Build/
+Configuration/README
+Configuration/Settings.yaml.example
+Configuration/Development/Settings.yaml.example
+Configuration/Production/Settings.yaml.example
+Configuration/Testing
