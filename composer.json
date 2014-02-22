@@ -9,11 +9,11 @@
     "require": {
         "typo3/flow": "dev-master",
         "typo3/fluid": "@dev",
-		"typo3/party": "@dev",
-		"typo3/eel": "@dev",
-		"doctrine/migrations": "@dev",
-		"easybook/geshi": "dev-master",
-		"twitter/api": "dev-master"
+        "typo3/party": "@dev",
+        "typo3/eel": "@dev",
+        "doctrine/migrations": "@dev",
+        "easybook/geshi": "dev-master",
+        "twitter/api": "dev-master"
     },
     "require-dev": {
         "typo3/kickstart": "dev-master",
@@ -29,10 +29,10 @@
         "post-package-update":"TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
         "post-package-install":"TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
     },
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/tlayh/TwitterApi.git"
-		}
-	]
+    "repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/tlayh/TwitterApi.git"
+    }
+    ]
 }
