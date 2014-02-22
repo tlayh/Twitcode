@@ -15,10 +15,10 @@
 
 -
   name: 'Welcome'
-  uriPattern: '<WelcomeSubroutes>'
+  uriPattern: '<TwitcodeSubroutes>'
   subRoutes:
-    WelcomeSubroutes:
-      package: TYPO3.Welcome
+    TwitcodeSubroutes:
+      package: Layh.Twitcode
 
 ##
 # Flow subroutes
