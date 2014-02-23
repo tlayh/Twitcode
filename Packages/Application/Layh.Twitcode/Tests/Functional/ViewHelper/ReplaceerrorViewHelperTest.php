@@ -3,11 +3,12 @@ namespace Layh\Twitcode\Tests\Functional\ViewHelper;
 /**
  * ReplaceerrorViewHelperTest
  */
+use TYPO3\Flow\Tests\FunctionalTestCase;
 
 /**
  *
  */
-class ReplaceerrorViewHelperTest extends \TYPO3\FLOW3\Tests\FunctionalTestCase {
+class ReplaceerrorViewHelperTest extends FunctionalTestCase {
 
 
 	/**

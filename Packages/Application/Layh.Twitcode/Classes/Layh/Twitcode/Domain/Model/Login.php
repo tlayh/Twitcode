@@ -96,6 +96,11 @@ class Login {
 	protected $consumerSecret = '';
 
 	/**
+	 * @var string $callback the callback URL for the request token
+	 */
+	protected $callback;
+
+	/**
 	 * Set the settings for oauth
 	 *
 	 * @param array $settings
@@ -104,6 +109,8 @@ class Login {
 	public function setSettings(array $settings) {
 		$this->consumerKey = $settings['oauth']['consumerkey'];
 		$this->consumerSecret = $settings['oauth']['consumersecret'];
+		$this->callback = $settings['oauth']['callback'];
+
 	}
 
 	/**
@@ -115,7 +122,7 @@ class Login {
 
 		$this->twitterOAuth = new TwitterOAuth($this->consumerKey, $this->consumerSecret);
 
-		$requestToken = $this->twitterOAuth->getRequestToken('http://typo3.flow/');
+		$requestToken = $this->twitterOAuth->getRequestToken($this->callback);
 
 		$this->oauthToken = $requestToken['oauth_token'];
 		$this->oauthTokenSecret = $requestToken['oauth_token_secret'];
