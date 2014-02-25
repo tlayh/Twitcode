@@ -4,6 +4,6 @@ Layh:
     oauth:
       consumerkey: sN3RYeDF9JMqYzmSYHqCbQ
       consumersecret: xymgRkBaEzZlhiImV6lcQZX46XCCMFh64Rr4HkRo0
-      callback: http://bit.ly/1h2cYpQ
+      callback: http://typo3.flow/login
     bitly:
       url: flow.twitcode.org

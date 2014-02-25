@@ -145,18 +145,20 @@ class Login {
 		$success = false;
 
 		try {
-			$this->twitterOAuth = new \EpiTwitter($this->consumerKey, $this->consumerSecret);
-			$this->twitterOAuth->useSSL(true);
+			$this->twitterOAuth = new TwitterOAuth($this->consumerKey, $this->consumerSecret, $oauthtoken, $oauthVerifier);
+			$tokenCredentials = $this->twitterOAuth->getAccessToken($oauthVerifier);
 
-			$this->twitterOAuth->setToken($this->oauthToken);
-			$token = $this->twitterOAuth->getAccessToken(array('oauth_verifier' => $oauthVerifier));
-			$this->twitterOAuth->setToken($token->oauth_token, $token->oauth_token_secret);
+			$this->twitterOAuth = new TwitterOAuth(
+					$this->consumerKey, $this->consumerSecret,
+					$tokenCredentials['oauth_token'], $tokenCredentials['oauth_token_secret']);
 
-			$twitterInfo = $this->twitterOAuth->get_accountVerify_credentials();
+			$twitterInfo = $this->twitterOAuth->get('account/verify_credentials');
+
+			\var_dump($twitterInfo);
 
 			// if login is successful, set session data
 			if($twitterInfo->__get('code') === 200) {
-				$this->setSession($twitterInfo, $token->oauth_token, $token->oauth_token_secret);
+				$this->setSession($twitterInfo, $tokenCredentials['oauth_token'], $tokenCredentials['oauth_token_secret']);
 				$this->_isLoggedIn = true;
 				$success = true;
 			}
@@ -223,6 +225,8 @@ class Login {
 	 * @return void
 	 */
 	protected function setSession($twitterInfo, $token, $secret) {
+		\TYPO3\Flow\var_dump($twitterInfo);
+		die();
 		$this->screenName = $twitterInfo->__get('screen_name');
 		$this->userId = $twitterInfo->__get('id');
 		$this->userImg = $twitterInfo->__get('profile_image_url');

@@ -113,7 +113,7 @@ class CodeController extends BaseController {
 			));
 		}
 
-		$this->redirect('');
+		$this->redirect('index');
 	}
 
 	/**
