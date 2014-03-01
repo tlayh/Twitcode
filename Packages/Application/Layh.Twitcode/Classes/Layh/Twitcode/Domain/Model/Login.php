@@ -50,7 +50,7 @@ class Login {
 	protected $twitterOAuth;
 
 	/**
-	 * @var \Layh\Twitcode\Domain\Model\User
+	 * @var User
 	 */
 	protected $user;
 
@@ -142,7 +142,6 @@ class Login {
 	 * @return boolean
 	 */
 	public function loginUser($oauthtoken, $oauthVerifier) {
-		$success = false;
 
 		try {
 			$this->twitterOAuth = new TwitterOAuth($this->consumerKey, $this->consumerSecret, $oauthtoken, $oauthVerifier);
@@ -154,14 +153,14 @@ class Login {
 
 			$twitterInfo = $this->twitterOAuth->get('account/verify_credentials');
 
-			\var_dump($twitterInfo);
-
-			// if login is successful, set session data
-			if($twitterInfo->__get('code') === 200) {
-				$this->setSession($twitterInfo, $tokenCredentials['oauth_token'], $tokenCredentials['oauth_token_secret']);
-				$this->_isLoggedIn = true;
-				$success = true;
+			if (isset($twitterInfo->errors)) {
+				return false;
 			}
+
+			$this->setSession($twitterInfo, $tokenCredentials['oauth_token'], $tokenCredentials['oauth_token_secret']);
+			$this->_isLoggedIn = true;
+			$success = true;
+
 		} catch(\Exception $e) {
 			return false;
 		}
@@ -180,7 +179,7 @@ class Login {
 	public function checkForUser() {
 		$user = $this->userRepository->findByUserId(intval($this->userId));
 		if(!$user) {
-			$user = new \Layh\Twitcode\Domain\Model\User();
+			$user = new User();
 			$user->setName($this->screenName);
 			$user->setUserId($this->userId);
 			$this->userRepository->add($user);
@@ -225,11 +224,9 @@ class Login {
 	 * @return void
 	 */
 	protected function setSession($twitterInfo, $token, $secret) {
-		\TYPO3\Flow\var_dump($twitterInfo);
-		die();
-		$this->screenName = $twitterInfo->__get('screen_name');
-		$this->userId = $twitterInfo->__get('id');
-		$this->userImg = $twitterInfo->__get('profile_image_url');
+		$this->screenName = $twitterInfo->screen_name;
+		$this->userId = $twitterInfo->id;
+		$this->userImg = $twitterInfo->profile_image_url;
 		$this->oauthToken = $token;
 		$this->oauthTokenSecret = $secret;
 	}
@@ -265,14 +262,14 @@ class Login {
 	}
 
 	/**
-	 * @param \Layh\Twitcode\Domain\Model\User $user
+	 * @param User $user
 	 */
 	public function setUser($user) {
 		$this->user = $user;
 	}
 
 	/**
-	 * @return \Layh\Twitcode\Domain\Model\User
+	 * @return User
 	 */
 	public function getUser() {
 		return $this->user;

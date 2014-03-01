@@ -101,6 +101,7 @@ class CodeController extends BaseController {
 		}
 
 			// verify login
+		$this->login->setSettings($this->settings);
 		$successfullyLogin = $this->login->loginUser($oauthToken, $oauthVerifier);
 
 		if ($successfullyLogin) {
