@@ -30,7 +30,6 @@ use \TYPO3\Flow\Annotations as Flow;
 /**
  * A twitter user
  *
- * @Flow\Scope("prototype")
  * @Flow\Entity
  */
 class User {
@@ -122,4 +121,3 @@ class User {
 	}
 
 }
-?>

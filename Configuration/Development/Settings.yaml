@@ -12,10 +12,11 @@ TYPO3:
   Flow:
     persistence:
       backendOptions:
-        dbname: 'twitcode'       # adjust to your database name
-        user: 'root'             # adjust to your database user
-        password: 'root'         # adjust to your database password
+        host: 'localhost'
+        dbname: 'twitcode'
+        user: 'root'
+        password: 'root'
 
        # if you want to log executed SQL queries, enable the next 2 lines
-#      doctrine:
-#        sqlLogger: 'TYPO3\Flow\Persistence\Doctrine\Logging\SqlLogger'
+      doctrine:
+        sqlLogger: 'TYPO3\Flow\Persistence\Doctrine\Logging\SqlLogger'

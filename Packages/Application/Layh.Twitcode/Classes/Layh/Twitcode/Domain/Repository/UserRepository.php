@@ -43,4 +43,3 @@ class UserRepository extends \TYPO3\Flow\Persistence\Repository {
 	}
 
 }
-?>

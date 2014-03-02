@@ -26,6 +26,7 @@ namespace Layh\Twitcode\Domain\Model;
 
 use Twitter\Api\TwitterOAuth;
 use \TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Persistence\Doctrine\PersistenceManager;
 
 /**
  * responsible for all stuff that has to do with the login
@@ -101,6 +102,12 @@ class Login {
 	protected $callback;
 
 	/**
+	 * @var PersistenceManager
+	 * @Flow\Inject
+	 */
+	protected $persistenceManager;
+
+	/**
 	 * Set the settings for oauth
 	 *
 	 * @param array $settings
@@ -158,43 +165,45 @@ class Login {
 			}
 
 			$this->setSession($twitterInfo, $tokenCredentials['oauth_token'], $tokenCredentials['oauth_token_secret']);
-			$this->_isLoggedIn = true;
-			$success = true;
-
-		} catch(\Exception $e) {
-			return false;
-		}
+			$this->_isLoggedIn = TRUE;
 
 			// check if user exists
-		$this->checkForUser();
+			$this->checkForUser();
 
-		return $success;
+			return TRUE;
+
+		} catch(\Exception $e) {
+			return FALSE;
+		}
+
 	}
 
 	/**
 	 * check if the current user already exists
 	 *
-	 * @author Thomas Layh <develop@layh.com>
+	 * @return void
 	 */
-	public function checkForUser() {
+	protected function checkForUser() {
 		$user = $this->userRepository->findByUserId(intval($this->userId));
+
 		if(!$user) {
 			$user = new User();
 			$user->setName($this->screenName);
-			$user->setUserId($this->userId);
+			$user->setUserId(intval($this->userId));
 			$this->userRepository->add($user);
+			$this->persistenceManager->persistAll();
 		} else {
-
-				// check if the username is the same
 				// todo: check if the username is the same
-
 			$this->user = $user;
 		}
 	}
 
-    public function getUserId() {
-        return $this->userId;
-    }
+	/**
+	 * @return string
+	 */
+	public function getUserId() {
+		return $this->userId;
+	}
 
 	/**
 	 * logout the current user, delete the cookies

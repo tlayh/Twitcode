@@ -75,6 +75,21 @@ class CodeController extends BaseController {
 	 */
 	protected $twitterObj;
 
+
+	/**
+	 * index action
+	 *
+	 * @return void
+	 */
+	public function indexAction() {
+
+		$this->login->setSettings($this->settings);
+		$this->initSidebarLogin();
+		$snippets = $this->codeRepository->findAll()->toArray();
+
+		$this->view->assign('snippets', $snippets);
+	}
+
 	/**
 	 * logout, delete the session
 	 * @return void
@@ -110,27 +125,11 @@ class CodeController extends BaseController {
 			));
 		} else {
 			$this->flashMessageContainer->addMessage(new Message(
-				'Login failed!! Sometimes OAuth is a bitch so please be patient and try again.'
+				'Login failed!! Sometimes OAuth is complicated so please be patient and try again.'
 			));
 		}
 
 		$this->redirect('index');
-	}
-
-	/**
-	 * index action
-	 *
-	 * @return void
-	 */
-	public function indexAction() {
-
-		$this->login->setSettings($this->settings);
-
-		$this->initSidebarLogin();
-
-		$snippets = $this->codeRepository->findAll()->toArray();
-
-		$this->view->assign('snippets', $snippets);
 	}
 
 	/**
@@ -233,6 +232,7 @@ class CodeController extends BaseController {
 		if($this->login->isLoggedIn()) {
 			// assign codetypes
 			$codeTypes = $this->codetypeRepository->findAll();
+
 			$this->view->assign('codetypes', $codeTypes);
 		    $this->view->assign('code', $code);
 		} else {
@@ -251,7 +251,6 @@ class CodeController extends BaseController {
 	 * @param string $tags
 	 *
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
 	public function saveAction(Code $code, $tags) {
 
@@ -401,5 +400,3 @@ class CodeController extends BaseController {
 	}
 
 }
-
-?>
