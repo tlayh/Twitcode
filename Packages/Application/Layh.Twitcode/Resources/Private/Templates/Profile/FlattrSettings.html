@@ -14,7 +14,7 @@
 		Do you have a flattr account? Then add your flattr-id here and the people who love your Twitcode-Tweets can flattr you.
 	</p>
 
-	<f:form action="updateFlattrSettings" method="GET" controller="Profile" package="Layh.Twitcode" name="currentUser" object="{currentUser}">
+	<f:form action="updateFlattrSettings" method="POST" controller="Profile" package="Layh.Twitcode" name="currentUser" object="{currentUser}">
 
 		<f:form.textfield name="flattrId" property="flattrId" value="{currentUser.flattrId}" />
 		<label style="width:300px;">Flattr-Id:</label>
