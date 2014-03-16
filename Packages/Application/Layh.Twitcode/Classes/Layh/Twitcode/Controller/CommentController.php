@@ -118,6 +118,11 @@ class CommentController extends BaseController {
 			// logged in user
 		$loggedInUserData = $this->login->checkSession();
 
+		// build full url
+		$url = 'http://' . $this->baseUrl . '/show/';
+		$url .= $code->getUid() . '/' . str_replace(' ', '-', $code->getLabel());
+
+/*
 		$shortUrl = $code->getShortUrl();
 		if (!$shortUrl) {
 
@@ -135,9 +140,10 @@ class CommentController extends BaseController {
 			$this->codeRepository->update($code);
 			$shortUrl = $shortenUrl;
 		}
+*/
 
 			// build twitter message
-		$message = $shortUrl . ' - @' . $codeOwnerUser->getName() . ' Someone commented on your snippet @ twitcode.org';
+		$message = '@' . $codeOwnerUser->getName() . ' I just commented on your snippet @ ' . $url;
 
 			// tweet notification
 		$this->twitterObj = new TwitterOAuth($this->consumerKey, $this->consumerSecret, $loggedInUserData['oauth_token'], $loggedInUserData['oauth_token_secret']);

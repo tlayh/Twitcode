@@ -30,6 +30,7 @@ use Twitter\Api\TwitterOAuth;
 use \TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Error;
 use TYPO3\Flow\Error\Message;
+use TYPO3\Flow\Persistence\Doctrine\PersistenceManager;
 
 /**
  * Code controller for the Twitcode package
@@ -347,6 +348,7 @@ class CodeController extends BaseController {
 		$url = 'http://'.$this->baseUrl.'/show/';
 		$url .= $code->getUid().'/'.str_replace(' ', '-', $code->getLabel());
 
+		/*
 			// use bit.ly to shorten url
 		$urlToShorten = 'http://api.bit.ly/v3/shorten?login=twitcodeorg&apiKey=R_9cde3d48cc497d36ddaa84bb41278b48&longUrl='.$url.'&format=txt';
 		$handle = fopen($urlToShorten, 'r');
@@ -355,9 +357,10 @@ class CodeController extends BaseController {
 			// save the short url to the model
 		$code->setShortUrl($shortenUrl);
 		$this->codeRepository->update($code);
+		*/
 
 			// shorten the status text for twitter
-		$statusText = $shortenUrl.' - '.$comment;
+		$statusText = $code->getLabel() . ' - ' . $url.' - '.$comment;
 		if(strlen($statusText) > 140) {
 			$statusText = substr($statusText, 0 , 136).'...';
 		}
@@ -367,7 +370,7 @@ class CodeController extends BaseController {
 		$resp = $this->twitterObj->post('/statuses/update', array('status' => $statusText));
 
 		if (isset($resp->errors)) {
-			$this->flashMessageContainer->addMessage(new Message('Twittering code snippet failed!'));
+			$this->flashMessageContainer->addMessage(new Message('Twittering code snippet failed! ' . $resp->errors[0]->message));
 		} else {
 			$this->flashMessageContainer->addMessage(new Message('Code snippet twittered successfully!'));
 		}
@@ -380,9 +383,23 @@ class CodeController extends BaseController {
 	 * @param Code $code
 	 */
 	public function deleteAction(Code $code) {
-		$this->codeRepository->remove($code);
-		$this->flashMessageContainer->addMessage(new Message('Snippet deleted successfully.'));
-	    $this->redirect('index');
+
+
+		$this->getLoginData();
+		if ($this->login->isLoggedIn()) {
+			$this->codeRepository->remove($code);
+
+			// manually persist the deletion of the snippet because it is a get request
+			$persistenceManager = new PersistenceManager();
+			$persistenceManager->persistAll();
+
+			$this->flashMessageContainer->addMessage(new Message('Snippet deleted successfully.'));
+			$this->redirect('index');
+		} else {
+			$this->flashMessageContainer->addMessage(new Message('You can not delete snippets without being logged in.'));
+			$this->redirect('show', 'Code', 'Layh.Twitcode', array('code' => $code));
+		}
+
 	}
 
 	/**
