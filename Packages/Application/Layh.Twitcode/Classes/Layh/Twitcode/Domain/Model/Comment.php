@@ -37,7 +37,7 @@ class Comment {
 
 	/**
 	 * The user the discussion belongs to
-	 * @var Layh\Twitcode\Domain\Model\User
+	 * @var \Layh\Twitcode\Domain\Model\User
 	 * @ORM\ManyToOne
 	 */
 	protected $user;
@@ -53,7 +53,7 @@ class Comment {
 	/**
 	 * The code the discussion belongs to
 	 *
-	 * @var Layh\Twitcode\Domain\Model\Code
+	 * @var \Layh\Twitcode\Domain\Model\Code
 	 * @ORM\ManyToOne
 	 */
 	protected $code;
@@ -77,7 +77,7 @@ class Comment {
 	}
 
 	/**
-	 * @return Layh\Twitcode\Domain\Model\User
+	 * @return \Layh\Twitcode\Domain\Model\User
 	 */
 	public function getUser() {
 		return $this->user;
@@ -129,4 +129,3 @@ class Comment {
 	}
 
 }
-?>

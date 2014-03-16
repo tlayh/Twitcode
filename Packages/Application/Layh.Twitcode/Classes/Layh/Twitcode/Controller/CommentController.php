@@ -24,20 +24,42 @@ namespace Layh\Twitcode\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-	use \TYPO3\Flow\Annotations as Flow;
+use Twitter\Api\TwitterOAuth;
+use \TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\Error\Message;
 
 /**
  * Discussion controller for the Twitcode package
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class CommentController extends \Layh\Twitcode\Controller\BaseController {
+class CommentController extends BaseController {
 
 	/**
 	 * @var \Layh\Twitcode\Domain\Repository\CommentRepository
 	 * @Flow\Inject
 	 */
 	protected $commentRepository;
+
+	/**
+	 * @var \Twitter\Api\TwitterOAuth
+	 */
+	protected $twitterObj;
+
+	/**
+	 * @var string $consumerKey for oauth, injected via Settings.yaml
+	 */
+	protected $consumerKey = '';
+
+	/**
+	 * @var string $consumerSecret for oauth, injected via Settings.yaml
+	 */
+	protected $consumerSecret = '';
+
+	/**
+	 * @var string $baseUrl used for bit.ly
+	 */
+	protected $baseUrl;
 
 	/**
 	 * Inject the settings for oauth
@@ -65,18 +87,16 @@ class CommentController extends \Layh\Twitcode\Controller\BaseController {
 	 *
 	 * @param \Layh\Twitcode\Domain\Model\Comment $comment
 	 * @param \Layh\Twitcode\Domain\Model\Code    $code
-	 * @param \Layh\Twitcode\Domain\Model\User    $commentUser
 	 * @return void
-	 * @author Thomas Layh <develop@layh.com>
 	 */
-	public function saveAction(\Layh\Twitcode\Domain\Model\Comment $comment, \Layh\Twitcode\Domain\Model\Code $code, \Layh\Twitcode\Domain\Model\User $commentUser) {
+	public function saveAction(\Layh\Twitcode\Domain\Model\Comment $comment, \Layh\Twitcode\Domain\Model\Code $code) {
 
 			// add code and user to discussion and add the discussion to the repository
 		$comment->setCode($code);
-		$comment->setUser($commentUser);
+		$comment->setUser($this->login->getUser());
 		$this->commentRepository->add($comment);
 
-		$this->flashMessageContainer->add('Comment saved!!');
+		$this->flashMessageContainer->addMessage(new Message('Comment saved!!'));
 
 			// check if the code owner wants to have a notification
 		$codeOwnerUser = $code->getUser();
@@ -117,18 +137,16 @@ class CommentController extends \Layh\Twitcode\Controller\BaseController {
 		}
 
 			// build twitter message
-		$message = $shortUrl . ' - @' . $codeOwnerUser->getName() . ' Someone commented on your snippet.';
+		$message = $shortUrl . ' - @' . $codeOwnerUser->getName() . ' Someone commented on your snippet @ twitcode.org';
 
 			// tweet notification
-		$this->twitterObj = new \EpiTwitter($this->consumerKey, $this->consumerSecret);
-		$this->twitterObj->setToken($loggedInUserData['oauth_token']);
-		$token = $this->twitterObj->getAccessToken(array('oauth_verifier' => $loggedInUserData['oauth_token_secret']));
-		$this->twitterObj->setToken($loggedInUserData['oauth_token'], $loggedInUserData['oauth_token_secret']);
-		$resp = $this->twitterObj->post('/statuses/update.json', array('status' => $message));
-		if($resp->__get('code') === 200) {
-			$this->flashMessageContainer->add('Code snippet twittered successfully');
+		$this->twitterObj = new TwitterOAuth($this->consumerKey, $this->consumerSecret, $loggedInUserData['oauth_token'], $loggedInUserData['oauth_token_secret']);
+		$resp = $this->twitterObj->post('/statuses/update', array('status' => $message));
+
+		if (isset($resp->errors)) {
+			$this->flashMessageContainer->addMessage(new Message('Notification failed.'));
 		} else {
-			$this->flashMessageContainer->add('Twittering code snippet failed');
+			$this->flashMessageContainer->addMessage(new Message('Notification send.'));
 		}
 	}
 

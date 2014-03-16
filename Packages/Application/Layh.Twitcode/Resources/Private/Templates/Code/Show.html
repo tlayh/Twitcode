@@ -95,11 +95,12 @@
 			<f:form action="save" controller="Comment" object="{comment}" name="comment" method="post">
 				<f:form.hidden name="code" value="{code}" />
 				<f:form.hidden name="commentUser" value="{user}" />
-				<label for="discussion">Comment:</label>
+				<label for="comment">Comment:</label>
 				<f:form.textarea name="comment" id="comment" property="comment" rows="5" cols="70" />
 				<br /><br />
 				<label for="notifiyCodeOwner">Notify the owner:</label>
 				<f:form.checkbox name="notifiyCodeOwner" value="1" />
+				<span class="note">This will send a tweet to the owner from your account.</span>
 				<br /><br />
 				<f:form.submit class="submit" value="" />
 			</f:form>
