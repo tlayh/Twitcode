@@ -26,6 +26,7 @@ namespace Layh\Twitcode\Controller;
 
 use Layh\Twitcode\Domain\Model\Code;
 use Layh\Twitcode\Domain\Model\Tag;
+use Twitter\Api\TwitterOAuth;
 use \TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Error\Error;
 use TYPO3\Flow\Error\Message;
@@ -71,7 +72,7 @@ class CodeController extends BaseController {
 	protected $baseUrl;
 
 	/**
-	 * @var \EpiTwitter
+	 * @var \Twitter\Api\TwitterOAuth
 	 */
 	protected $twitterObj;
 
@@ -362,16 +363,15 @@ class CodeController extends BaseController {
 		}
 
 			// twitter snippet
-		$this->twitterObj = new \EpiTwitter($this->consumerKey, $this->consumerSecret);
-		$this->twitterObj->setToken($data['oauth_token']);
-		$token = $this->twitterObj->getAccessToken(array('oauth_verifier' => $data['oauth_token_secret']));
-		$this->twitterObj->setToken($data['oauth_token'], $data['oauth_token_secret']);
-		$resp = $this->twitterObj->post('/statuses/update.json', array('status' => $statusText));
-		if($resp->__get('code') === 200) {
-			$this->flashMessageContainer->addMessage(new Message('Code snippet twittered successfully'));
+		$this->twitterObj = new TwitterOAuth($this->consumerKey, $this->consumerSecret, $data['oauth_token'], $data['oauth_token_secret']);
+		$resp = $this->twitterObj->post('/statuses/update', array('status' => $statusText));
+
+		if (isset($resp->errors)) {
+			$this->flashMessageContainer->addMessage(new Message('Twittering code snippet failed!'));
 		} else {
-			$this->flashMessageContainer->addMessage(new Message('Twittering code snippet failed'));
+			$this->flashMessageContainer->addMessage(new Message('Code snippet twittered successfully!'));
 		}
+
 	}
 
 	/**
@@ -381,7 +381,7 @@ class CodeController extends BaseController {
 	 */
 	public function deleteAction(Code $code) {
 		$this->codeRepository->remove($code);
-		$this->flashMessageContainer->addMessage(new Message('Snippet deleted successfully'));
+		$this->flashMessageContainer->addMessage(new Message('Snippet deleted successfully.'));
 	    $this->redirect('index');
 	}
 

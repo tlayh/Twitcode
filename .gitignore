@@ -17,3 +17,4 @@ Configuration/Settings.yaml.example
 Configuration/Development/Settings.yaml.example
 Configuration/Production/Settings.yaml.example
 Configuration/Testing
+latestTwitcodeDump.sql
