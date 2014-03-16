@@ -29,17 +29,19 @@
 
 	<f:if condition="{editable}">
 		<span class="editable">
-			<f:link.action action="edit" controller="Code" package="Layh.Twitcode" arguments="{code: code}">
+			<f:link.action action="edit" controller="Code" package="Layh.Twitcode" arguments="{code: code}" style="height: 20px;width: 20px;display: block;float: left;margin-right: 10px;">
 				<img src="{f:uri.resource(path:'images/edit.gif')}" title="edit" alt="edit" />
 			</f:link.action>
-			<f:link.action action="delete" controller="Code" package="Layh.Twitcode" arguments="{code: code}" class="deletelink">
+			<f:link.action action="delete" controller="Code" package="Layh.Twitcode" arguments="{code: code}" class="deletelink" style="height: 20px;width: 20px;display: block;float: left;margin-right: 10px;">
 				<img src="{f:uri.resource(path:'images/delete.gif')}" title="delete" alt="delete" />
 			</f:link.action>
-			<f:link.action action="twitter" controller="Code" package="Layh.Twitcode" arguments="{code: code}" class="twitterlink">
+			<f:link.action action="twitter" controller="Code" package="Layh.Twitcode" arguments="{code: code}" class="twitterlink" style="height: 20px;width: 20px;display: block;float: left;">
 				<img src="{f:uri.resource(path:'images/twitter.gif')}" title="twitter" alt="twitter" />
 			</f:link.action>
 		</span>
 	</f:if>
+
+	<div style="clear: both;"></div>
 
 	<span class="copycode">
 		<a href="#" onclick="showPopup(); return false;">
